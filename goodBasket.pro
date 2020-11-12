@@ -10,12 +10,15 @@ CONFIG += c++11
 
 SOURCES += \
     Outils/idproduitgenerator.cpp \
+    Test/testProduit.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    produit.cpp
 
 HEADERS += \
     Outils/idproduitgenerator.h \
-    mainwindow.h
+    mainwindow.h \
+    produit.h
 
 FORMS += \
     mainwindow.ui
