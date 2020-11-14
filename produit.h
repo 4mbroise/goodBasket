@@ -1,14 +1,21 @@
 #ifndef PRODUIT_H
 #define PRODUIT_H
 
-#include <QImage>
-#include <QString>
+#include <QtGui/QImage>
+#include <QtCore/QString>
 #include <Outils/idproduitgenerator.h>
 
 class Produit
 {
 public:
-    Produit(const int& q,const double& prix,const QString& nom,const QImage& image);
+    Produit(int id, int q,double prix,std::string nom,std::string imagePath);
+    ~Produit();
+    QString const& getNom();
+    QImage const& getImage();
+    const int& getId();
+    const int& getQuantite();
+    const  double& getPrix();
+
 private:
     int id;
     int quantite;

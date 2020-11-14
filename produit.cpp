@@ -1,12 +1,39 @@
 #include "produit.h"
 
-Produit::Produit(const int& quantite,const double& prix,const QString& nom,const QImage& image)
+Produit::Produit(int id, int q, double prix, std::string nom, std::string imagePath)
 {
-    IdProduitGenerator& idGenerator =IdProduitGenerator::Instance();
-
-    this->nom = nom;
-    this->id = idGenerator.getNewIdProduit();
-    this->image = image;
+    this->nom = QString(nom.c_str());
+    this->id = id;
+    this->image = QImage(imagePath.c_str());
     this->prix = prix;
-    this->quantite = quantite;
+    this->quantite = q;
+}
+
+const int& Produit::getId()
+{
+    return this->id;
+}
+
+const int& Produit::getQuantite()
+{
+    return this->quantite;
+}
+
+const double& Produit::getPrix()
+{
+    return this->prix;
+}
+
+const QString& Produit::getNom()
+{
+    return this->nom;
+}
+
+const QImage& Produit::getImage()
+{
+    return this->image;
+}
+
+Produit::~Produit()
+{
 }
