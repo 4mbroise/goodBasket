@@ -36,4 +36,5 @@ const QImage& Produit::getImage()
 
 Produit::~Produit()
 {
+
 }

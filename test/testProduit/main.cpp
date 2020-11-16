@@ -4,8 +4,36 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //Produit* pr = new Produit(13, 12, 12.3,"test" ,"test2" );
+    cout << "DEBUT TEST"<<endl;
+
+    Produit pr = Produit(13, 12, 12.3,"name" ,"test2" );
+
+    bool constructeurOK = true;
+
+    if(pr.getId() != 13)
+    {
+        cout << "Id probleme"<<endl;
+        constructeurOK = false;
+    }
+    if(pr.getPrix()!=12.3)
+    {
+        cout << "prix probleme"<<endl;
+        constructeurOK = false;
+    }
+    if(pr.getQuantite()!=12)
+    {
+        cout << "quantite probleme"<<endl;
+        constructeurOK = false;
+    }
+    if(pr.getNom().toStdString().compare("name")!=0)
+    {
+        cout << "name probleme"<<endl;
+        constructeurOK = false;
+    }
+
     //delete pr;
-    cout << "aeaze"<<endl;
+
+    cout << "FIN TEST"<<endl;
+
     return 0;
 }
