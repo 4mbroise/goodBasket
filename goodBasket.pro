@@ -10,7 +10,6 @@ CONFIG += c++11
 
 SOURCES += \
     Outils/idproduitgenerator.cpp \
-    Test/testProduit.cpp \
     main.cpp \
     mainwindow.cpp \
     produit.cpp
