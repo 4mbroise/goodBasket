@@ -10,13 +10,15 @@ class DialogueProducteurs
 public:
     DialogueProducteurs();
 
+    void ajouterProducteur();
+    void ajouterProducteur(Producteur pr);
+
 
     //Cas ajouter Produit
     void ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
 
     //Cas retirer Produit
     void retirerProduit(int idProduit, int idProducteur);
-
 private:
     QHash <int,Producteur> producteurs;
 
@@ -28,6 +30,8 @@ private:
     //Cas retirer Produit
     bool producteurExiste(int idProducteur);
     bool produitExiste(int idProduit, int producteurId);
+
+
 
 };
 

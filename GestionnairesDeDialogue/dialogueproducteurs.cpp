@@ -17,6 +17,10 @@ void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
         Producteur pr = retrouverProducteur(idProducteur);
         pr.retirerProduit(idProduit);
     }
+    else
+    {
+        cout<<"PRODUIT INEXISTANT"<<endl;
+    }
 }
 
 void DialogueProducteurs::ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath,int producteurId)
@@ -61,4 +65,16 @@ bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
 const Producteur DialogueProducteurs::retrouverProducteur(int producteurId)
 {
     return this->producteurs.value(producteurId);
+}
+
+void DialogueProducteurs::ajouterProducteur()
+{
+    Producteur pr = Producteur();
+    pr.setGestionnaireDialogue(*this);
+    this->producteurs.insert(pr.getId(),pr);
+}
+
+void DialogueProducteurs::ajouterProducteur(Producteur( pr))
+{
+    this->producteurs.insert(pr.getId(),pr);
 }

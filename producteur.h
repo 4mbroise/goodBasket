@@ -16,6 +16,8 @@ class Producteur
         bool produitExiste(int idProduit);
         void ajouterProduit(int quantite, double prix, std::string nom, std::string imagePath);
         void retirerProduit(int idProduit);
+        const int&  getId();
+        void setGestionnaireDialogue(DialogueProducteurs dp);
     private:
         int id;
         DialogueProducteurs gestionnaireDialogue;

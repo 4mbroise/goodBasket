@@ -30,7 +30,17 @@ void Producteur::demanderRetirerProduit(int idProduit)
     this->gestionnaireDialogue.retirerProduit(idProduit, this->id);
 }
 
+const int& Producteur::getId()
+{
+    return this->id;
+}
+
 void Producteur::retirerProduit(int idProduit)
 {
     this->boutique.remove(idProduit);
+}
+
+void Producteur::setGestionnaireDialogue(DialogueProducteurs dp)
+{
+    this->gestionnaireDialogue = dp;
 }
