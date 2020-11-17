@@ -4,17 +4,18 @@
 
 class IdProduitGenerator
 {
-public:
-    static IdProduitGenerator& Instance();
-    int getNewIdProduit();
-private:
-    int lastIdProduit;
-    IdProduitGenerator& operator= (const IdProduitGenerator&){}
-    IdProduitGenerator (const IdProduitGenerator&){}
+    public:
+        static IdProduitGenerator& Instance();
+        int getNewIdProduit();
+        int getNewIdProducteur();
+    private:
+        int lastIdProduit;
+        int lastIdProducteur;
+        IdProduitGenerator (const IdProduitGenerator&){}
 
-    static IdProduitGenerator m_instance;
-    IdProduitGenerator();
-    ~IdProduitGenerator();
+        static IdProduitGenerator m_instance;
+        IdProduitGenerator();
+        ~IdProduitGenerator();
 
 };
 

@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
         constructeurOK = false;
     }
 
+    cout <<pr.getImage().isNull()<<endl;
+
     //delete pr;
 
     cout << "FIN TEST"<<endl;

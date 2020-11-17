@@ -3,7 +3,6 @@
 
 #include <QtGui/QImage>
 #include <QtCore/QString>
-#include "Outils/idproduitgenerator.h"
 
 class Produit
 {
