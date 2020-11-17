@@ -8,11 +8,11 @@ CONFIG -= app_bundle
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        ../../Outils/azeazeaze.cpp \
+        ../../Outils/idgenerator.cpp \
         main.cpp
 
 HEADERS += \
-        ../../Outils/idproduitgenerator.h
+        ../../Outils/idgenerator.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

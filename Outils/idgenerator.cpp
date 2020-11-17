@@ -25,8 +25,8 @@ int IdGenerator::getNewIdProducteur()
 
 int IdGenerator::getNewIdProduit()
 {
-    int idAReturn = this-> lastIdProducteur;       //Sauvegarde de l'id à retourner avant incrémentation
-    this -> lastIdProducteur ++;                   //Incrémentation
+    int idAReturn = this-> lastIdProduit;       //Sauvegarde de l'id à retourner avant incrémentation
+    this -> lastIdProduit ++;                   //Incrémentation
     return idAReturn;
 }
 
