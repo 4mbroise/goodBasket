@@ -12,7 +12,7 @@ public:
 
 
     //Cas ajouter Produit
-    void ajouterProduit(double prix, int quantite, std::string imagePath);
+    void ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
 
     //Cas retirer Produit
     void retirerProduit(int idProduit);
@@ -20,8 +20,10 @@ public:
 private:
     QHash <int,Producteur> producteurs;
 
+    const Producteur retrouverProducteur(int ProducteurID);
+
     //Cas ajouter Produit
-    bool formulaireOk(double prix, int quantite, std::string nom, int producteurId);
+    bool formulaireOk(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
 
     //Cas retirer Produit
     bool producteurExiste(int idProducteur);

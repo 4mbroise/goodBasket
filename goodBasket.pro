@@ -10,7 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     GestionnairesDeDialogue/dialogueproducteurs.cpp \
-    Outils/idproducteurgenerator.cpp \
+    Outils/idgenerator.cpp \
     main.cpp \
     mainwindow.cpp \
     producteur.cpp \
@@ -18,7 +18,7 @@ SOURCES += \
 
 HEADERS += \
     GestionnairesDeDialogue/dialogueproducteurs.h \
-    Outils/idproduitgenerator.h \
+    Outils/idgenerator.h \
     mainwindow.h \
     producteur.h \
     produit.h
