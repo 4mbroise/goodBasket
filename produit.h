@@ -14,7 +14,8 @@ public:
     const int& getId();
     const int& getQuantite();
     const  double& getPrix();
-
+    const std::string toString();
+    void setPrix(double prix);
 private:
     int id;
     int quantite;

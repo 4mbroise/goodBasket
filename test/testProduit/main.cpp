@@ -31,6 +31,14 @@ int main(int argc, char *argv[])
         constructeurOK = false;
     }
 
+    pr.setPrix(123.321);
+
+    if(pr.getPrix()!=123.321)
+    {
+        cout << "setterPrix probleme"<<endl;
+        constructeurOK = false;
+    }
+
     //delete pr;
 
     cout << "FIN TEST"<<endl;

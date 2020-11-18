@@ -5,6 +5,14 @@
 #include <iostream>
 using namespace std;
 
+DialogueProducteurs DialogueProducteurs::m_instance=DialogueProducteurs();
+
+DialogueProducteurs& DialogueProducteurs::Instance()
+{
+    return m_instance;
+}
+
+
 DialogueProducteurs::DialogueProducteurs()
 {
     cout << "Creation Gestionnaire dialogue Producteur" << endl;
@@ -25,10 +33,12 @@ void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
 
 void DialogueProducteurs::ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath,int producteurId)
 {
+    cout << "AjoutProduit" << endl;
     if(formulaireOk(prix, quantite, nom,imagePath,producteurId))
     {
+        cout << "Formulaire OK" << endl;
         Producteur pr = retrouverProducteur(producteurId);
-        pr.demanderAjoutProduit(quantite, prix, nom, imagePath);
+        pr.ajouterProduit(quantite, prix, nom, imagePath);
     }
 }
 
@@ -72,9 +82,11 @@ void DialogueProducteurs::ajouterProducteur()
     Producteur pr = Producteur();
     pr.setGestionnaireDialogue(*this);
     this->producteurs.insert(pr.getId(),pr);
+
 }
 
-void DialogueProducteurs::ajouterProducteur(Producteur( pr))
+void DialogueProducteurs::ajouterProducteur(Producteur pr)
 {
     this->producteurs.insert(pr.getId(),pr);
+
 }

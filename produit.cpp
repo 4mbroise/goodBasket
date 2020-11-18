@@ -34,6 +34,21 @@ const QImage& Produit::getImage()
     return this->image;
 }
 
+const std::string Produit::toString()
+{
+    std::string returned = "Produit [ID-"+std::to_string(this->getId())+"] : ";
+    returned = returned.append(this->getNom().toStdString()+", ");
+    returned = returned.append(std::to_string(this->getPrix())+"€ ");
+    returned = returned.append("("+ std::to_string(this->getQuantite()) +"kg), ");
+
+    return returned;
+}
+
+void Produit::setPrix(double prix)
+{
+    this->prix = prix;
+}
+
 Produit::~Produit()
 {
 

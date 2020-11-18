@@ -18,6 +18,7 @@ class Producteur
         void retirerProduit(int idProduit);
         const int&  getId();
         void setGestionnaireDialogue(DialogueProducteurs dp);
+        const std::string toString();
     private:
         int id;
         DialogueProducteurs gestionnaireDialogue;
