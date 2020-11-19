@@ -45,5 +45,10 @@ int main(int argc, char *argv[])
 
     cout <<"On demande l'ajout d'un produit de quantitée nul"<< dp.toString() <<endl;
 
+    pr1.demanderAjoutProduit(0,2.285,"","tomates.jpg");
+
+    cout <<"On demande l'ajout d'un produit de nom nul"<< dp.toString() <<endl;
+
+
     return 0;
 }
