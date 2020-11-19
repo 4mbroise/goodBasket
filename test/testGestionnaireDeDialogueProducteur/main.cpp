@@ -11,18 +11,19 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    Producteur pr = Producteur();
+    DialogueProducteurs dp = DialogueProducteurs();
 
-    DialogueProducteurs& dialoguePr = DialogueProducteurs::Instance();
-    if(dialoguePr.producteurExiste(pr.getId()))
-    {
-        cout << "prod ajoutazeatr" <<endl;
-    }
+    cout << "nb Producteur = " + to_string(dp.nbProducteur()) << endl;
+
+    Producteur pr = Producteur(dp);
 
     pr.demanderAjoutProduit(10,5.5,"courgettes","courgettes.jpg");
-
+    pr.demanderAjoutProduit(25,2.285,"tomates","tomates.jpg");
 
     cout <<"PRINTF DANS MAIN:\n"+ pr.toString() <<endl;
+
+    cout << "nb Producteur = " + to_string(dp.nbProducteur()) << endl;
+
 
     return 0;
 }

@@ -7,10 +7,13 @@
 #include "Outils/idgenerator.h"
 #include "GestionnairesDeDialogue/dialogueproducteurs.h"
 
+#include <iostream>
+using namespace std;
+
 class Producteur
 {
     public:
-        Producteur();
+    Producteur(DialogueProducteurs &dp);
         void demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath);
         void demanderRetirerProduit(int idProduit);
         bool produitExiste(int idProduit);
@@ -21,7 +24,7 @@ class Producteur
         const std::string toString();
     private:
         int id;
-        DialogueProducteurs gestionnaireDialogue;
+        DialogueProducteurs &gestionnaireDialogue;
         QHash<int,Produit> boutique;
 };
 

@@ -3,20 +3,20 @@
 #include <iostream>
 using namespace std;
 
-Producteur::Producteur():gestionnaireDialogue(DialogueProducteurs::Instance())
+Producteur::Producteur(DialogueProducteurs &dp):gestionnaireDialogue(dp)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdProducteur();
     this->id = newId;
-    this->gestionnaireDialogue.ajouterProducteur(*this);
-
-}
-
+    gestionnaireDialogue = dp;
+    gestionnaireDialogue.ajouterProducteur(this);
+    cout << "PRODUCTEUR() Nombre de producteur="+to_string(dp.nbProducteur()) <<endl;
+};
 
 void Producteur::demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath)
 {
     cout << "DemanderAjoutProduit" << endl;
-    this->gestionnaireDialogue.ajouterProduit(prix, quantite, nom, imagePath, this->id);
+    gestionnaireDialogue.ajouterProduit(prix, quantite, nom, imagePath, this->id);
 }
 
 void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std::string imagePath)
@@ -24,9 +24,12 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
     IdGenerator& gen = IdGenerator::Instance();
     int idProduit = gen.getNewIdProduit();
     Produit produitAjoute = Produit(idProduit, quantite, prix, nom, imagePath);
-    this->boutique.insert(idProduit,produitAjoute);
 
-    cout <<"PRINTF DANS PRODUCTEUR.CPP:\n"+ this->toString()<< endl;
+    cout <<"ajouterProduit() nbProducteur"+to_string(gestionnaireDialogue.nbProducteur())<< endl;
+
+
+    boutique.insert(idProduit,produitAjoute);
+    //cout <<"PRINTF DANS PRODUCTEUR.CPP:\n"+ this->toString()<< endl;
 }
 
 bool Producteur::produitExiste(int idProduit)
@@ -57,8 +60,6 @@ void Producteur::setGestionnaireDialogue(DialogueProducteurs dp)
 const std::string  Producteur::toString()
 {
     std::string returned = "Producteur [ID-"+std::to_string(this->getId())+"]\n";
-    cout<<this->boutique.size()<<endl;
-
     QHashIterator<int,Produit> i(this->boutique);
     while(i.hasNext())
     {

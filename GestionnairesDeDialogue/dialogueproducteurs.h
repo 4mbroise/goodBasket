@@ -1,6 +1,8 @@
 #ifndef DIALOGUEPRODUCTEURS_H
 #define DIALOGUEPRODUCTEURS_H
 
+#include <iostream>
+#include<map>
 #include <QHash>
 
 class Producteur;
@@ -9,8 +11,10 @@ class DialogueProducteurs
 {
 public:
 
+    DialogueProducteurs();
+
     void ajouterProducteur();
-    void ajouterProducteur(Producteur pr);
+    void ajouterProducteur(Producteur* pr);
 
     bool producteurExiste(int idProducteur);
 
@@ -20,23 +24,20 @@ public:
     //Cas retirer Produit
     void retirerProduit(int idProduit, int idProducteur);
 
-    //Implémentation Singleton
-    static DialogueProducteurs& Instance();
+    int nbProducteur();
 
 private:
-    QHash <int,Producteur> producteurs;
+    //QHash <int,Producteur> producteurs;
 
-    const Producteur retrouverProducteur(int ProducteurID);
+    std::map <int,Producteur*> producteurs;
+
+    Producteur* retrouverProducteur(int ProducteurID);
 
     //Cas ajouter Produit
     bool formulaireOk(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
 
     //Cas retirer Produit
     bool produitExiste(int idProduit, int producteurId);
-
-    //Implémentation Singleton
-    static DialogueProducteurs m_instance;
-    DialogueProducteurs();
 
 
 };

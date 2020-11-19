@@ -5,13 +5,10 @@
 #include <iostream>
 using namespace std;
 
-DialogueProducteurs DialogueProducteurs::m_instance=DialogueProducteurs();
-
-DialogueProducteurs& DialogueProducteurs::Instance()
+int DialogueProducteurs::nbProducteur()
 {
-    return m_instance;
+    return this->producteurs.size();
 }
-
 
 DialogueProducteurs::DialogueProducteurs()
 {
@@ -22,8 +19,8 @@ void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
 {
     if(produitExiste(idProduit, idProducteur))
     {
-        Producteur pr = retrouverProducteur(idProducteur);
-        pr.retirerProduit(idProduit);
+        Producteur* pr = retrouverProducteur(idProducteur);
+        pr->retirerProduit(idProduit);
     }
     else
     {
@@ -34,11 +31,19 @@ void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
 void DialogueProducteurs::ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath,int producteurId)
 {
     cout << "AjoutProduit" << endl;
+    cout << "nbProducteur dans ajouterProduit = "+to_string(nbProducteur())<<endl;
     if(formulaireOk(prix, quantite, nom,imagePath,producteurId))
     {
         cout << "Formulaire OK" << endl;
-        Producteur pr = retrouverProducteur(producteurId);
-        pr.ajouterProduit(quantite, prix, nom, imagePath);
+
+        retrouverProducteur(producteurId)->ajouterProduit(quantite, prix, nom, imagePath);
+
+        //Producteur pr = retrouverProducteur(producteurId);
+
+        std::map<int, Producteur*>::iterator it = producteurs.find(producteurId);
+        //return it->second.ajouterProduit(quantite, prix, nom, imagePath);
+
+        //pr.ajouterProduit(quantite, prix, nom, imagePath);
     }
 }
 
@@ -50,21 +55,20 @@ bool DialogueProducteurs::formulaireOk(double prix, int quantite, std::string no
     }
     else
     {
+        cout << "Nombre de producteur:"+to_string(nbProducteur()) <<endl;
+        cout<<"formulaire not ok"<<endl;
         return false;
     }
 }
 
 bool DialogueProducteurs::producteurExiste(int producteurId)
 {
-    return this->producteurs.contains(producteurId);
-}
 
-bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
-{
-    if(producteurExiste(producteurId))
+    cout << producteurId<<endl;
+    map<int,Producteur*>::iterator it = producteurs.find(producteurId);
+    if(it != producteurs.end())
     {
-        Producteur pr = retrouverProducteur(producteurId);
-        return pr.produitExiste(idProduit);
+       return true;
     }
     else
     {
@@ -72,21 +76,27 @@ bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
     }
 }
 
-const Producteur DialogueProducteurs::retrouverProducteur(int producteurId)
+bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
 {
-    return this->producteurs.value(producteurId);
+    if(producteurExiste(producteurId))
+    {
+        Producteur* pr = retrouverProducteur(producteurId);
+        return pr->produitExiste(idProduit);
+    }
+    else
+    {
+        return false;
+    }
 }
 
-void DialogueProducteurs::ajouterProducteur()
+Producteur* DialogueProducteurs::retrouverProducteur(int producteurId)
 {
-    Producteur pr = Producteur();
-    pr.setGestionnaireDialogue(*this);
-    this->producteurs.insert(pr.getId(),pr);
-
+    std::map<int, Producteur*>::iterator it = producteurs.find(producteurId);
+    return it->second;
+    //return producteurs.at(producteurId);
 }
 
-void DialogueProducteurs::ajouterProducteur(Producteur pr)
+void DialogueProducteurs::ajouterProducteur(Producteur* pr)
 {
-    this->producteurs.insert(pr.getId(),pr);
-
+    producteurs.insert(std::make_pair(pr->getId(), pr));
 }
