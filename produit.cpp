@@ -1,5 +1,6 @@
 #include "produit.h"
 
+
 Produit::Produit(int id, int q, double prix, std::string nom, std::string imagePath)
 {
     this->nom = QString(nom.c_str());

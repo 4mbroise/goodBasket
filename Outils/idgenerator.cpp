@@ -1,19 +1,20 @@
 #include "idgenerator.h"
 #include <iostream>
+#include <QDebug>
 using namespace std;
 
 IdGenerator IdGenerator::m_instance=IdGenerator();
 
 IdGenerator::IdGenerator()
 {
-    //cout<<"Creation IdProducteurGenerator"<<endl;
+    qDebug()<<"Creation IdProducteurGenerator"<<endl;
     lastIdProducteur = 1;
     lastIdProduit = 1;
 }
 
 IdGenerator::~IdGenerator()
 {
-    //cout<<"Destruction IdGenerator"<<endl;
+    qDebug()<<"Destruction IdGenerator"<<endl;
 }
 
 int IdGenerator::getNewIdProducteur()

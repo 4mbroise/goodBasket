@@ -1,3 +1,4 @@
+#include <QtDebug>
 #include "dialogueproducteurs.h"
 
 #include "../producteur.h"
@@ -12,7 +13,7 @@ int DialogueProducteurs::nbProducteur()
 
 DialogueProducteurs::DialogueProducteurs()
 {
-    cout << "Creation Gestionnaire dialogue Producteur" << endl;
+    qDebug() << "Creation Gestionnaire dialogue Producteur" <<endl;
 }
 
 void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
@@ -24,26 +25,19 @@ void DialogueProducteurs::retirerProduit(int idProduit, int idProducteur)
     }
     else
     {
-        cout<<"PRODUIT INEXISTANT"<<endl;
+        qDebug() <<"PRODUIT INEXISTANT"<<endl;
     }
 }
 
 void DialogueProducteurs::ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath,int producteurId)
 {
-    cout << "AjoutProduit" << endl;
-    cout << "nbProducteur dans ajouterProduit = "+to_string(nbProducteur())<<endl;
+    qDebug() << "AjoutProduit" << endl;
+
     if(formulaireOk(prix, quantite, nom,imagePath,producteurId))
     {
-        cout << "Formulaire OK" << endl;
-
-        retrouverProducteur(producteurId)->ajouterProduit(quantite, prix, nom, imagePath);
-
-        //Producteur pr = retrouverProducteur(producteurId);
-
-        std::map<int, Producteur*>::iterator it = producteurs.find(producteurId);
-        //return it->second.ajouterProduit(quantite, prix, nom, imagePath);
-
-        //pr.ajouterProduit(quantite, prix, nom, imagePath);
+        qDebug() << "Formulaire OK" << endl;
+        Producteur* pr = retrouverProducteur(producteurId);
+        pr->ajouterProduit(quantite, prix, nom, imagePath);
     }
 }
 
@@ -55,25 +49,13 @@ bool DialogueProducteurs::formulaireOk(double prix, int quantite, std::string no
     }
     else
     {
-        cout << "Nombre de producteur:"+to_string(nbProducteur()) <<endl;
-        cout<<"formulaire not ok"<<endl;
         return false;
     }
 }
 
 bool DialogueProducteurs::producteurExiste(int producteurId)
 {
-
-    cout << producteurId<<endl;
-    map<int,Producteur*>::iterator it = producteurs.find(producteurId);
-    if(it != producteurs.end())
-    {
-       return true;
-    }
-    else
-    {
-        return false;
-    }
+    return producteurs.contains(producteurId);
 }
 
 bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
@@ -91,12 +73,27 @@ bool DialogueProducteurs::produitExiste(int idProduit, int producteurId)
 
 Producteur* DialogueProducteurs::retrouverProducteur(int producteurId)
 {
-    std::map<int, Producteur*>::iterator it = producteurs.find(producteurId);
-    return it->second;
-    //return producteurs.at(producteurId);
+    return producteurs.value(producteurId);
 }
 
 void DialogueProducteurs::ajouterProducteur(Producteur* pr)
 {
-    producteurs.insert(std::make_pair(pr->getId(), pr));
+    producteurs.insert(pr->getId(),pr);
 }
+
+const std::string DialogueProducteurs::toString()
+{
+    std::string returned = "Gestionnaire de Dialogue PRODUCTEUR (Nb producteur = ";
+    returned.append(to_string(nbProducteur())).append(")\n");
+    QHashIterator<int,Producteur*> i(this->producteurs);
+    while(i.hasNext())
+    {
+        i.next();
+        returned.append("-(key = "+std::to_string(i.key())+")- ");
+        Producteur* pr = i.value();
+        returned.append(pr->toString()+"\n");
+    }
+
+    return returned;
+}
+

@@ -1,5 +1,5 @@
 #include "producteur.h"
-
+#include <QDebug>
 #include <iostream>
 using namespace std;
 
@@ -10,12 +10,11 @@ Producteur::Producteur(DialogueProducteurs &dp):gestionnaireDialogue(dp)
     this->id = newId;
     gestionnaireDialogue = dp;
     gestionnaireDialogue.ajouterProducteur(this);
-    cout << "PRODUCTEUR() Nombre de producteur="+to_string(dp.nbProducteur()) <<endl;
 };
 
 void Producteur::demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath)
 {
-    cout << "DemanderAjoutProduit" << endl;
+    qDebug() << "DemanderAjoutProduit" << endl;
     gestionnaireDialogue.ajouterProduit(prix, quantite, nom, imagePath, this->id);
 }
 
@@ -25,11 +24,7 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
     int idProduit = gen.getNewIdProduit();
     Produit produitAjoute = Produit(idProduit, quantite, prix, nom, imagePath);
 
-    cout <<"ajouterProduit() nbProducteur"+to_string(gestionnaireDialogue.nbProducteur())<< endl;
-
-
     boutique.insert(idProduit,produitAjoute);
-    //cout <<"PRINTF DANS PRODUCTEUR.CPP:\n"+ this->toString()<< endl;
 }
 
 bool Producteur::produitExiste(int idProduit)
