@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     Producteur pr2 = Producteur(dp);
     pr2.demanderAjoutProduit(10,5.5,"courgettes","courgettes.jpg");
 
-    cout <<"Ajout d'un producteur et ajout d'un produit dans celui ci "<< dp.toString() <<endl;
+    cout <<"Ajout d'un producteur et ajout d'un produit dans celui ci "<<  dp.toString() <<endl;
 
     pr1.demanderRetirerProduit(2);
 
