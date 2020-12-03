@@ -42,6 +42,16 @@ const int& Producteur::getId()
     return this->id;
 }
 
+const std::string Producteur::getMessage()
+{
+    return this->message;
+}
+
+void Producteur::setMessage(std::string mess)
+{
+    this->message=mess;
+}
+
 void Producteur::retirerProduit(int idProduit)
 {
     this->boutique.remove(idProduit);
@@ -51,6 +61,8 @@ void Producteur::setGestionnaireDialogue(DialogueProducteurs dp)
 {
     this->gestionnaireDialogue = dp;
 }
+
+
 
 const std::string  Producteur::toString()
 {
