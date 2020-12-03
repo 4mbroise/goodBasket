@@ -14,14 +14,14 @@ SOURCES += \
     GestionnairesDeDialogue/dialogueproducteurs.cpp \
     Outils/idgenerator.cpp \
     consommateur.cpp \
-    consommateur.cpp \
     livraison.cpp \
     main.cpp \
     mainwindow.cpp \
     pc.cpp \
     producteur.cpp \
     produit.cpp \
-    utilisateur.cpp
+    utilisateur.cpp \
+    responsable.cpp
 
 HEADERS += \
     GestionnairesDeDialogue/dialogueconsommateur.h \
@@ -30,12 +30,14 @@ HEADERS += \
     Outils/idgenerator.h \
     consommateur.h \
     livraison.h \
+    main.h \
     mainwindow.h \
     pc.h \
     producteur.h \
     produit.h \
-    responsable.h \
-    utilisateur.h
+    utilisateur.h \
+    responsable.h
+
 
 FORMS += \
     mainwindow.ui
