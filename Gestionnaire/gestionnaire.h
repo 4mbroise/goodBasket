@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../GestionnairesDeDialogue/dialogueproducteurs.h"
 #include "../responsable.h"
-
+#include "../erreur.h"
 class responsable;
 
 
@@ -23,7 +23,7 @@ public:
      * @brief gestion qui appartient à responsable
      * @param dp gestionnaire de dialogue associé au producteur
      */
-    Gestionnaire(DialogueProducteurs &dp);
+    Gestionnaire(DialogueProducteurs &dp, Erreur &e);
 
 
     /**
@@ -35,6 +35,8 @@ public:
      * @brief Permet de vérifeir le montant de payment
      * @param ProducteurID id de producteur
      * @param montant de payment pas trop grand ou moins
+     * @return true si le montant est bien
+     * @return false si le montant a problème
      */
     bool VerifierMontant(int ProducteurID, int montant);
 
@@ -44,6 +46,11 @@ public:
     void Payer();
 
     /**
+     * @brief Permet de set Rsponsable
+     */
+    void AjouteResponsable(Responsable* responsable);
+
+    /**
      * @brief Permet de notifier le payment reçu à dialogueproducteur
      */
     void NotifierDialogueProducteur(int producteurID);
@@ -51,7 +58,19 @@ public:
     /**
      * @brief Permet de notifier le payment reçu à responsable
      */
-    void NotifierResponsable();
+    void NotifierResponsable(int responsableID);
+
+    /**
+     * @brief Permet de vérifeir s'il y erreur dans gestion
+     * @return true quantité erreur inférieur à 0
+     * @return false quantité erreur égale à 0
+     */
+    bool VerifierErreur();
+
+    /**
+     * @brief Permet de notifier les erreurs à responsable
+     */
+    void NotifierErreur(int responsableID);
 
 
 
@@ -67,6 +86,18 @@ private:
      *
      */
     DialogueProducteurs &gestionnaireDialogueProducteur;
+
+    /**
+     * @brief erreur qui fait le lien entre les erreurs reportés et le responsable
+     *
+     */
+    Erreur &erreur;
+
+    /**
+    * @brief HashTable dont la clé est un IdResponsable et la valeur est le Responsable associé à cet Id,
+    * elle représente la liste des responsables dans goodBasket
+    */
+    QHash <int,Responsable*> responsables;
 
 
 };

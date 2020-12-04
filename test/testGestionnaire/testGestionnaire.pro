@@ -12,6 +12,7 @@ SOURCES += \
         ../../produit.cpp \
         ../../producteur.cpp \
         ../../responsable.cpp \
+        ../../erreur.cpp \
         ../../Outils/idGenerator.cpp \
         ../../Gestionnaire/gestionnaire.cpp \
         ../../GestionnairesDeDialogue/dialogueProducteurs.cpp
@@ -20,6 +21,7 @@ HEADERS += \
         ../../produit.h \
         ../../producteur.h \
         ../../responsable.h \
+        ../../erreur.h \
         ../../Outils/idGenerator.h \
         ../../Gestionnaire/gestionnaire.h \
         ../../GestionnairesDeDialogue/dialogueProducteurs.h
