@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <iostream>
 
-Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone)
+Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdProducteur();
@@ -11,50 +11,68 @@ Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,
     this->prenom =QString(prenom.c_str());
     this->adresse=QString(adresse.c_str());
     this->phone = phone;
-
+    this->email =QString(email.c_str());
+    cout << "Utilisateur est créé" << endl;
 }
 
-const int& Utilisateur::getId()
-{
+Utilisateur::Utilisateur(){
+    IdGenerator& gen = IdGenerator::Instance();
+    int newId = gen.getNewIdProducteur();
+    this->id = newId;
+    cout << "Utilisateur est créé" << endl;
+}
+
+Utilisateur::~Utilisateur(){
+    cout << "Utilisateur est enlevé" << endl;
+}
+
+const int& Utilisateur::getId(){
     return this->id;
 }
 
-const int& Produit::getQuantite()
-{
-    return this->quantite;
+
+const QString& Utilisateur::getNom(){
+    return  this->nom;
 }
 
-const double& Produit::getPrix()
-{
-    return this->prix;
+
+const QString& Utilisateur::getPrenom(){
+    return  this->prenom;
 }
 
-const QString& Produit::getNom()
-{
-    return this->nom;
+const QString& Utilisateur::getAdresse(){
+    return this->adresse;
 }
 
-const QImage& Produit::getImage()
-{
-    return this->image;
+const double& Utilisateur::getPhone(){
+    return this->phone;
 }
 
-const std::string Produit::toString()
-{
-    std::string returned = "Produit [ID-"+std::to_string(this->getId())+"] : ";
-    returned = returned.append(this->getNom().toStdString()+", ");
-    returned = returned.append(std::to_string(this->getPrix())+"€ ");
-    returned = returned.append("("+ std::to_string(this->getQuantite()) +"kg), ");
-
-    return returned;
+const QString& Utilisateur::getEmail(){
+    return this->email;
 }
 
-void Produit::setPrix(double prix)
-{
-    this->prix = prix;
+
+void Utilisateur::changeNom(std::string nom){
+    this->nom=QString(nom.c_str());
 }
 
-Produit::~Produit()
-{
 
+void Utilisateur::changePrenom(std::string prenom){
+    this->prenom=QString(prenom.c_str());
 }
+
+
+void Utilisateur::changeAdresse(std::string adresse){
+    this->adresse=QString(adresse.c_str());
+}
+
+void Utilisateur::changePhone(double phone){
+    this->phone=phone;
+}
+
+
+void Utilisateur::changeEmail(std::string email){
+    this->email=QString(email.c_str());
+}
+

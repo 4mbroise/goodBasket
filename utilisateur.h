@@ -26,22 +26,82 @@ class Utilisateur {
          Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
 
          /**
+          * @brief Utilisateur:constructure sans paramètre
+          */
+         Utilisateur();
+
+         /**
           * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
           */
          virtual ~Utilisateur();
 
-
+         /**
+          * @brief getId:retourner identifié
+          * @return Id unique associé à un utilisateur
+          */
          const int& getId();
 
+         /**
+          * @brief getNom
+          * @return nom d'un utilisateur
+          */
          const QString& getNom();
 
+         /**
+          * @brief getPrenom
+          * @return prénom d'un utilisateur
+          */
          const QString& getPrenom();
 
+         /**
+          * @brief getAdresse
+          * @return adresse d'un utilisateur
+          */
          const QString& getAdresse();
 
-         const int& getPhone();
+         /**
+          * @brief getPhone
+          * @return numéro de téléphone d'un utilisateur
+          */
+         const double& getPhone();
 
+         /**
+          * @brief getEmail
+          * @return email d'un utilisateur
+          */
          const QString& getEmail();
+
+         /**
+          * @brief changeNom:modifier ou ajouter le nom d'un utilisateur
+          * @param nom:nouveau nom
+          */
+
+         void changeNom(std::string nom);
+
+         /**
+          * @brief changePrenom:changeNom:modifier ou ajouter le prénom d'un utilisateur
+          * @param prenom:noveau prénom
+          */
+         void changePrenom(std::string prenom);
+
+         /**
+          * @brief changeAdresse:modifier ou ajouter l'adresse d'un utilisateur
+          * @param adresse:nouveau adresse
+          */
+         void changeAdresse(std::string adresse);
+
+         /**
+          * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un utilisateur
+          * @param phone:nouveau nom
+          */
+         void changePhone(double phone);
+
+         /**
+          * @brief changeEmail:modifier ou ajouter l'email d'un utilisateur
+          * @param email:noveau email
+          */
+         void changeEmail(std::string email);
+
 
     private:
         /**
