@@ -36,7 +36,7 @@ public:
      * @param ProducteurID id de producteur
      * @param montant de payment pas trop grand ou moins
      */
-    bool VérifierMontant(int ProducteurID, int montant);
+    bool VerifierMontant(int ProducteurID, int montant);
 
     /**
      * @brief Permet de payer le montant de payment

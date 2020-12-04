@@ -18,12 +18,12 @@ Gestionnaire::Gestionnaire(DialogueProducteurs &dp):gestionnaireDialogueProducte
 void Gestionnaire::CalculerMontantPayement(int producteurID)
 {
     // à compléter
-    cout << producteurID << endl;
+    cout << "payer prodcuteur ID :" << producteurID << endl;
     this->montantPayement=1000;
 }
 
 
-bool Gestionnaire::VérifierMontant(int ProducteurID, int montant)
+bool Gestionnaire::VerifierMontant(int ProducteurID, int montant)
 {
     qDebug() << "Verfier le montant" << endl;
 

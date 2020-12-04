@@ -84,7 +84,7 @@ void DialogueProducteurs::ajouterProducteur(Producteur* pr)
 
 void DialogueProducteurs::notifierProducteurPayment(int producteurid,int montant)
 {
-    std::string s = "vous avez reçu le montant de payment";
+    std::string s = "vous avez reçu le montant de payment ";
     s = s + to_string(montant);
     producteurs.value(producteurid)->setMessage(s);
 
