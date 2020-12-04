@@ -2,6 +2,7 @@
 #include "dialogueproducteurs.h"
 
 #include "../producteur.h"
+#include "../Gestionnaire/gestionnaire.h"
 
 #include <iostream>
 using namespace std;
@@ -79,6 +80,14 @@ Producteur* DialogueProducteurs::retrouverProducteur(int producteurId)
 void DialogueProducteurs::ajouterProducteur(Producteur* pr)
 {
     producteurs.insert(pr->getId(),pr);
+}
+
+void DialogueProducteurs::notifierProducteurPayment(int producteurid,int montant)
+{
+    std::string s = "vous avez reçu le montant de payment";
+    s = s + to_string(montant);
+    producteurs.value(producteurid)->setMessage(s);
+
 }
 
 const std::string DialogueProducteurs::toString()

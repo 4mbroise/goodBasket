@@ -11,8 +11,9 @@
  * il possède tous les livraison et livraisonprévue
  * il peut ajouter le produit au panier
  *
- * @version 1
+ * @version 2
  * @author GE Yuxuan
+ * @author CAI Yunfan
  */
 class Utilisateur;
 
@@ -35,6 +36,16 @@ class Responsable: public Utilisateur
 
 
      void ajouterProduitAuPanier();
+
+     /**
+      * @brief demander à gestionnaire de payer les producteurs
+      */
+     void PayerProducteurs(int producteurid);
+
+     /**
+      * @brief Confirmer le l message envoyé par getionnaire
+      */
+    void confirmerPayment();
 
 
 

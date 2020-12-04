@@ -18,6 +18,7 @@ using namespace std;
  * retirer des produits de la vente
  * @version 1
  * @author Elliot Faugier
+ * @author CAI Yunfan
  */
 class Producteur
 {
@@ -87,6 +88,20 @@ class Producteur
         const int&  getId();
 
         /**
+         * @brief Getter de message par dialogue
+         *
+         * @return le message
+         */
+        const std::string  getMessage();
+
+        /**
+         * @brief Setter du message
+         *
+         * @param mess message envoyé par dialogue
+         */
+        void setMessage(std::string message);
+
+        /**
          * @brief Setter du Gestionnaire de DialogueProducteur
          * 
          * @param dp le gestionnaire de dialogue qu'on associera à ce producteur
@@ -116,6 +131,11 @@ class Producteur
          * elle représente la boutique du producteur.
          */
         QHash<int,Produit> boutique;
+
+        /**
+         * @brief Notification reçu par Dialogue
+         */
+        std::string message;
 };
 
 #endif // PRODUCTEUR_H

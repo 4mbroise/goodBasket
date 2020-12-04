@@ -9,11 +9,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Gestionnaire/gestionnaire.cpp \
     GestionnairesDeDialogue/dialogueconsommateur.cpp \
     GestionnairesDeDialogue/dialoguepc.cpp \
     GestionnairesDeDialogue/dialogueproducteurs.cpp \
     Outils/idgenerator.cpp \
-    consommateur.cpp \
     consommateur.cpp \
     livraison.cpp \
     main.cpp \
@@ -21,21 +21,25 @@ SOURCES += \
     pc.cpp \
     producteur.cpp \
     produit.cpp \
-    utilisateur.cpp
+    utilisateur.cpp \
+    responsable.cpp
 
 HEADERS += \
+    Gestionnaire/gestionnaire.h \
     GestionnairesDeDialogue/dialogueconsommateur.h \
     GestionnairesDeDialogue/dialoguepc.h \
     GestionnairesDeDialogue/dialogueproducteurs.h \
     Outils/idgenerator.h \
     consommateur.h \
     livraison.h \
+    main.h \
     mainwindow.h \
     pc.h \
     producteur.h \
     produit.h \
-    responsable.h \
-    utilisateur.h
+    utilisateur.h \
+    responsable.h
+
 
 FORMS += \
     mainwindow.ui

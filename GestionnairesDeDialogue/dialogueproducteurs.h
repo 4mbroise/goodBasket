@@ -5,12 +5,13 @@
 #include <QHash>
 
 class Producteur;
-
+class Gestionnaire;
 /**
  * @brief DialogueProducteurs permet à un producteur qui connait 1 DialogueProducteurs
  * de dialoguer avec l'interface, d'effectuer des actions sur le systeme
- * @version 1
+ * @version 2
  * @author Elliot Faugier
+ * @author CAI Yunfan
  */
 class DialogueProducteurs
 {
@@ -66,6 +67,14 @@ public:
      * @return le nombre de producteur dans goodBasket
      */
     int nbProducteur();
+
+    /**
+     * @brief Fonction qui notifier payment à producteur
+     * @param producteurId Id du producteur
+     * @param montant de payment
+     */
+    void notifierProducteurPayment(int idProducteur,int montant);
+
 
     /**
      * @brief Fonction qui retourne le nombre de producteur dans goodBasket
