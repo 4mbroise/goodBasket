@@ -15,6 +15,7 @@ SOURCES += \
     GestionnairesDeDialogue/dialogueproducteurs.cpp \
     Outils/idgenerator.cpp \
     consommateur.cpp \
+    erreur.cpp \
     livraison.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     GestionnairesDeDialogue/dialogueproducteurs.h \
     Outils/idgenerator.h \
     consommateur.h \
+    erreur.h \
     livraison.h \
     main.h \
     mainwindow.h \

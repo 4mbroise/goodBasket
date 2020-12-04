@@ -48,10 +48,26 @@ class Responsable: public Utilisateur
     void confirmerPayment();
 
 
+    /**
+     * @brief procedure qui Afficher les messages reçus
+     */
+    void AffichierMessage();
+
+    /**
+     * @brief procedure qui recoit message envoyé par gestionnaire
+     */
+    void RecevoirMessage(std::string);
+
+
 
 
 
     private:
+
+        /**
+         * @brief message renvoyé par gestionaire
+         */
+        std::string message;
 
 
 

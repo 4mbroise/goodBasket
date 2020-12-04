@@ -7,10 +7,9 @@
 using namespace std;
 
 
-Gestionnaire::Gestionnaire(DialogueProducteurs &dp):gestionnaireDialogueProducteur(dp)
+Gestionnaire::Gestionnaire(DialogueProducteurs &dp,Erreur &e):gestionnaireDialogueProducteur(dp), erreur(e)
 {
     /*gestion fabrique tous les gestionnaireDialogue*/
-    gestionnaireDialogueProducteur=dp;
     this->montantPayement=0;
     qDebug() << "Creation Gestionnaire " <<endl;
 }
@@ -20,6 +19,11 @@ void Gestionnaire::CalculerMontantPayement(int producteurID)
     // à compléter
     cout << "payer prodcuteur ID :" << producteurID << endl;
     this->montantPayement=1000;
+}
+
+void Gestionnaire::AjouteResponsable(Responsable* respons)
+{
+  //  this->responsables.insert(respons->getId(),respons);
 }
 
 
@@ -48,8 +52,30 @@ void Gestionnaire::NotifierDialogueProducteur(int producteurID)
     this->gestionnaireDialogueProducteur.notifierProducteurPayment(producteurID, this->montantPayement);
 }
 
-void Gestionnaire::NotifierResponsable()
+void Gestionnaire::NotifierResponsable(int responsableID)
 {
+  //  this->responsables.value(responsableID)->RecevoirMessage("payment reussi");
+  //  this->responsables.value(responsableID)->AffichierMessage();
     cout << "payment reussi" << endl;
+
+}
+
+bool Gestionnaire::VerifierErreur()
+{
+    if(this->erreur.nbErreur()>0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void Gestionnaire::NotifierErreur(int responsableID)
+{
+    if(VerifierErreur()){
+   //     this->responsables.value(responsableID)->RecevoirMessage(this->erreur.toString());
+   //     this->responsables.value(responsableID)->AffichierMessage();
+    }else{
+        cout << "rien affichier" << endl;
+    }
 }
 
