@@ -31,45 +31,49 @@ class Consommateur: public Utilisateur
        */
      Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,DialogueConsommateurs& dc);
 
+     /**
+      * @brief Consommateur:constructure de la classe consommateur sans paramètre
+      */
      Consommateur();
+
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
       */
      ~Consommateur();
 
      /**
-      * @brief getId
-      * @return
+      * @brief getId:obtenir le id du consommateur
+      * @return id unique de consommateur
       */
      virtual const int& getId();
 
      /**
-      * @brief getNom
-      * @return Nom du utlisateur
+      * @brief getNom:obtenir le nom du consommateur
+      * @return Nom du consommateur
       */
      virtual const QString& getNom();
 
      /**
-      * @brief getPrenom
-      * @return
+      * @brief getPrenom:obtenir le prénom du consommateur
+      * @return Nom du consommateur
       */
      virtual const QString& getPrenom();
 
      /**
-      * @brief getAdresse
-      * @return
+      * @brief getAdresse:obtenir l'adresse du consommateur
+      * @return Prénom du consommateur
       */
      virtual const QString& getAdresse();
 
      /**
-      * @brief getPhone
-      * @return
+      * @brief getPhone:obtenir le numéro de téléphone du consommateur
+      * @return numéro de téléphone du consommateur
       */
      virtual const double& getPhone();
 
      /**
-      * @brief getEmail
-      * @return
+      * @brief getEmail:obtenir l'email du consommateur
+      * @return email du consommateur
       */
      virtual const QString& getEmail();
 
@@ -101,15 +105,24 @@ class Consommateur: public Utilisateur
       * @brief changeEmail:modifier ou ajouter l'email d'un consommateur
       * @param email:noveau email
       */
-    virtual void changeEmail(std::string email);
-
-      const QList<Livraison> getPanier();
+     virtual void changeEmail(std::string email);
 
      /**
-      * @brief consulterCatalogue:on chosit Producteur pour consulter le catalogue
+      * @brief getPanier:Obtener une liste d'articles dans le panier
+      * @return la liste des produits
+      */
+     const QList<Livraison> getPanier();
+
+     /**
+      * @brief consulterCatalogue:consutter les catalogues du Goodbasket
       */
      void consulterCatalogue();
 
+     /**
+      * @brief demanderAjouter:Demande d'ajout de produit au panier
+      * @param p:produit
+      * @param commande:nombre du produit commandé
+      */
      void demanderAjouter(Produit p,int commande);
 
      /**
@@ -118,14 +131,36 @@ class Consommateur: public Utilisateur
       */
      void ajouterProduitAuPanier(Livraison l);
 
+     /**
+      * @brief demanderExtraAjouter:demander d'ajoute le produit qui est déjà dans le panier
+      * @param p:produit déjà dans le panier
+      * @param extra:nombre de produit supplémentaire
+      */
      void demanderExtraAjouter(Produit p, int extra);
 
+     /**
+      * @brief ajouterExtraAuPanier:mise à jour de produit dans le panier
+      * @param position:la position du produit dans le panier
+      * @param l:livraison du produit
+      */
      void ajouterExtraAuPanier(int position,Livraison l);
 
-     std::string toString();
+     /**
+      * @brief toString:information du consommateur
+      * @return un string qui contient l'id du consommateur et le toString de tous les tostring et nombre du livraison dans le panier et livraisonprévue
+      */
+     const std::string toString();
 
+     /**
+      * @brief nbLivraison:obtenir le nombre du livraison dans le panier
+      * @return nombre du livraison dans le panier
+      */
      int nbLivraison();
 
+     /**
+      * @brief nbLivraisonPrevues:obtenir le nombre du livraison dans le livraison prévue
+      * @return nombre du livraison dans le livraison prévue
+      */
      int nbLivraisonPrevues();
 
     private:
@@ -140,6 +175,9 @@ class Consommateur: public Utilisateur
           */
          QList<Livraison> LivraisonPrevues;
 
+         /**
+          * @brief gestionnaire:DialogueGestionnaireDeDialogue qui fait le lien entre les requêtes du consommateur et les actions réellement effectuées
+          */
          DialogueConsommateurs &gestionnaireDialogue;
 };
 

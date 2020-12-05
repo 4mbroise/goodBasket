@@ -29,6 +29,9 @@ public:
      */
     DialogueConsommateurs();
 
+    /**
+     * @brief Destructeur de la classe dialogueConsommateur
+     */
     ~DialogueConsommateurs();
 
     /**
@@ -62,16 +65,23 @@ public:
      */
     int nbConsommateur();
 
-    /**
-     * @brief Fonction qui retourne le nombre de producteur dans goodBasket
-     * et le toString de chacun d'entre eux
-     * @return un std::string qui contient le nombre de producteur dans goodBasket et
-     * la description de tout les producteurs contenu dans celui ci
-     */
 
+    /**
+     * @brief extraAjouter:augumenter la quantité du produi qui est déjà dans le panier
+     * il va vérifier l'existance du produit et si le nombre dépasse le stock ou pas
+     * @param p:produit qui est déjà dans le panier
+     * @param extra:nombre ajouté
+     * @param idConsommateur:id du consommateur
+     */
     void extraAjouter(Produit p,int extra,int idConsommateur);
 
-    std::string toSring();
+   /**
+    * @brief Fonction qui retourne le nombre de consommateur dans goodBasket
+    * et le toString de chacun d'entre eux
+    * @return un std::string qui contient le nombre de consommateur dans goodBasket et
+    * la description de tout les consommateurs contenu dans celui ci
+    */
+    const std::string toSring();
 
 
 private:

@@ -61,8 +61,8 @@ bool estDepasse(Produit p,int commande){
     return p.getQuantite()<commande;
 }
 
-std::string DialogueConsommateurs::toSring(){
-    std::string returned = "Gestionnaire de Dialogue Consommateur(Nb producteur = ";
+const std::string DialogueConsommateurs::toSring(){
+    std::string returned = "Gestionnaire de Dialogue Consommateur(Nb consommateur = ";
     returned.append(to_string(nbConsommateur())).append(")\n");
     QHashIterator<int,Consommateur*> i(this->consommateurs);
     while(i.hasNext())
