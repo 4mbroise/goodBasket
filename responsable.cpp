@@ -1,13 +1,61 @@
 #include "responsable.h"
+#include "GestionnairesDeDialogue/dialogueproducteurs.h"
+#include "Gestionnaire/gestionnaire.h"
 #include <QDebug>
 #include <iostream>
 using namespace std;
 
-/*
- * à compléter après utilisateur
-Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email):
+
+Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,Gestionnaire &gestionnaire):gestionnaire(gestionnaire)
 {
     this->nom=nom;
-    this->
+    this->prenom=prenom;
+    this->adresse=adresse;
+    this->phone=phone;
+    this->email=email;
+
+    IdGenerator& gen = IdGenerator::Instance();
+    int newId = gen.getNewIdResponsable();
+    this->id = newId;
+    this->confirmer=false;
+    this->gestionnaire.AjouteResponsable(this);
 }
-*/
+
+
+
+void Responsable::PayerProducteurs(int producteurid)
+{
+    this->gestionnaire.CalculerMontantPayement(this->id, producteurid);
+    /*
+     * procedure que gestionnaire retourner montant confirmer ou non*/
+    if(this->confirmer){
+        this->gestionnaire.Payer(this->id, producteurid);
+    }
+    this->confirmer=false;  // reinitialiser
+}
+
+void Responsable::Confirmer()
+{
+    this->confirmer=true;
+}
+
+std::string Responsable::GetMessage()
+{
+    return this->message;
+}
+
+void Responsable::RecevoirMessage(std::string mess)
+{
+    this->message=mess;
+}
+
+void Responsable::ConsulterReports()
+{
+  //  this->message=this->gestionnaire.
+}
+
+int Responsable::getId()
+{
+    return this->id;
+}
+

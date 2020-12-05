@@ -61,6 +61,17 @@ bool estDepasse(Produit p,int commande){
     return p.getQuantite()<commande;
 }
 
+void DialogueProducteurs::notifierProducteurPayment(int Consommateurid,int montant)
+{
+    std::string s = "vous avez reçu le montant de remboursement ";
+    s = s + to_string(montant);
+    /*
+    consommateurs.value(Consommateurid)->setMessage(s);
+    à compléter plus tard
+    */
+    cout << s <<endl
+}
+
 std::string DialogueConsommateurs::toSring(){
     std::string returned = "Gestionnaire de Dialogue Consommateur(Nb producteur = ";
     returned.append(to_string(nbConsommateur())).append(")\n");

@@ -71,6 +71,13 @@ public:
 
     void extraAjouter(Produit p,int extra,int idConsommateur);
 
+    /**
+     * @brief Fonction qui notifier remboursement à consommateur
+     * @param consomateurId Id du consommateur
+     * @param montant de payment
+     */
+    void notifierProducteurPayment(int idConcommateur,int montant);
+
     std::string toSring();
 
 
