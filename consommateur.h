@@ -1,9 +1,10 @@
 #ifndef CONSOMMATEUR_H
 #define CONSOMMATEUR_H
 
-#include "Utilisateur.h"
+#include "utilisateur.h"
 #include "producteur.h"
 #include "livraison.h"
+#include "GestionnairesDeDialogue/dialogueconsommateurs.h"
 #include <QtCore/QString>
 
 /**
@@ -28,8 +29,9 @@ class Consommateur: public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:numéro de téléphone
        */
-     Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
+     Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,DialogueConsommateurs& dc);
 
+     Consommateur();
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
       */
@@ -39,58 +41,76 @@ class Consommateur: public Utilisateur
       * @brief getId
       * @return
       */
-     const int& getId();
+     virtual const int& getId();
 
      /**
       * @brief getNom
       * @return Nom du utlisateur
       */
-     const QString& getNom();
+     virtual const QString& getNom();
 
      /**
       * @brief getPrenom
       * @return
       */
-     const QString& getPrenom();
+     virtual const QString& getPrenom();
 
      /**
       * @brief getAdresse
       * @return
       */
-     const QString& getAdresse();
+     virtual const QString& getAdresse();
 
      /**
       * @brief getPhone
       * @return
       */
-     const int& getPhone();
+     virtual const double& getPhone();
 
      /**
       * @brief getEmail
       * @return
       */
-     const QString& getEmail();
+     virtual const QString& getEmail();
 
      /**
-      * @brief selectPC:on chosit d'abord le PC pour consulter tous les producteur dans ce PC
-      * @param adressePC:adresse du PC
+      * @brief changeNom:modifier ou ajouter le nom d'un consommateur
+      * @param nom:nouveau nom
       */
-     void selectPC(QString adressePC);
+     virtual void changeNom(std::string nom);
+
+     /**
+      * @brief changePrenom:changeNom:modifier ou ajouter le prénom d'un consommateur
+      * @param prenom:noveau prénom
+      */
+     virtual void changePrenom(std::string prenom);
+
+     /**
+      * @brief changeAdresse:modifier ou ajouter l'adresse d'un consommateur
+      * @param adresse:nouveau adresse
+      */
+     virtual void changeAdresse(std::string adresse);
+
+     /**
+      * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un consommateur
+      * @param phone:nouveau nom
+      */
+     virtual void changePhone(double phone);
+
+     /**
+      * @brief changeEmail:modifier ou ajouter l'email d'un consommateur
+      * @param email:noveau email
+      */
+    virtual void changeEmail(std::string email);
+
+      const QList<Livraison> getPanier();
 
      /**
       * @brief consulterCatalogue:on chosit Producteur pour consulter le catalogue
-      * @param pdct: producteur dans le pc
       */
-     void consulterCatalogue(Producteur pdct);
+     void consulterCatalogue();
 
-     /**
-      * @brief liv:on met le produit comme livraison
-      * @param p:produit
-      * @param quantite:quantité du produit q'on chosit
-      * @return
-      */
-     Livraison liv(Produit p,int quantite);
-
+     void demanderAjouter(Produit p,int commande);
 
      /**
       * @brief ajouterProduitAuPanier:ajouter le prouduit au panier
@@ -98,7 +118,15 @@ class Consommateur: public Utilisateur
       */
      void ajouterProduitAuPanier(Livraison l);
 
+     void demanderExtraAjouter(Produit p, int extra);
 
+     void ajouterExtraAuPanier(int position,Livraison l);
+
+     std::string toString();
+
+     int nbLivraison();
+
+     int nbLivraisonPrevues();
 
     private:
 
@@ -112,7 +140,7 @@ class Consommateur: public Utilisateur
           */
          QList<Livraison> LivraisonPrevues;
 
-
+         DialogueConsommateurs &gestionnaireDialogue;
 };
 
 #endif // CONSOMMATEUR_H

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <QHash>
-
+#include <QList>
 #include "pc.h"
 #include "livraison.h"
 #include "produit.h"
@@ -19,7 +19,7 @@ class PC;
  * @author GE Yuxuan
  */
 
-class DialogueConsommateur
+class DialogueConsommateurs
 {
 public:
 
@@ -27,7 +27,9 @@ public:
      * @brief Constructeur  DialogueConsommateur
      *
      */
-    DialogueConsommateur();
+    DialogueConsommateurs();
+
+    ~DialogueConsommateurs();
 
     /**
      * @brief liv:permet mettre le produit en livraison
@@ -43,14 +45,7 @@ public:
      * il va revenir au consommateur à exécuter la même fonction
      * @param l
      */
-    void ajouterPanier(Livraison l);
-
-    /**
-     * @brief chositPC:on choit un PC par un paramètre d'adresse PC
-     * après la validité de l'existance du pc ,il va revenir consommateur à exécuter la même fonction
-     * @param adressePC:adresse du pc sélectionné
-     */
-    void chositPC(QString adressePC);
+    void ajouterPanier(Produit p,int commande,int idConsommateur);
 
 
     /**
@@ -58,7 +53,7 @@ public:
      * cette fonction est appelée lors de la creation d'un @ref pc
      * @param c
      */
-    void ajouterConsommateur(Consommateur c);
+    void ajouterConsommateur(Consommateur* c);
 
 
     /**
@@ -73,7 +68,10 @@ public:
      * @return un std::string qui contient le nombre de producteur dans goodBasket et
      * la description de tout les producteurs contenu dans celui ci
      */
-    const std::string toString();
+
+    void extraAjouter(Produit p,int extra,int idConsommateur);
+
+    std::string toSring();
 
 
 private:
@@ -91,7 +89,14 @@ private:
      */
     Consommateur* getConsommateur(int idConsommateur);
 
-
+    /**
+     * @brief estDepasse:vérifier si la commande dépasse le stock
+     * @param Produit:produit qui est vérifié pour ajouter au panier
+     * @param commande:nombre de la commande du produit
+     * @return true si la commande dépasse le stock
+     * @return false sinon
+     */
+    bool estDepasse(Produit p,int commande);
 
 };
 

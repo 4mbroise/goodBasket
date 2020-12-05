@@ -16,9 +16,10 @@ using namespace std;
  * il connait un Gestionnaire de dialogue pour ajouter un produit à la vente
  * et/ou
  * retirer des produits de la vente
- * @version 1
+ * @version 2
  * @author Elliot Faugier
  * @author CAI Yunfan
+ * @author GE Yuxuan
  */
 class Producteur
 {
@@ -107,6 +108,8 @@ class Producteur
          * @param dp le gestionnaire de dialogue qu'on associera à ce producteur
          */
         void setGestionnaireDialogue(DialogueProducteurs dp);
+
+        QHashIterator<int,Produit> iterator();
 
         /**
          * @brief toString du producteur

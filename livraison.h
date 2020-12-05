@@ -17,7 +17,28 @@
 
 
 class Livraison{
+    public:
+    Livraison(Produit p,int commande);
 
+    ~Livraison();
+
+    const Produit& getProduit();
+
+    const int& getCommande();
+
+    const time_t& getDateAchat();
+
+    const time_t& getDateLivraison();
+
+    void setLivraison(Produit p,int commande);
+
+    void setDateAchat(time_t date);
+
+    void setDateLivraison(time_t date);
+
+    void ajouterCommande(int extra);
+
+    std::string toSring();
 
     private:
 

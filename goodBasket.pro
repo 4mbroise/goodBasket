@@ -10,8 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Gestionnaire/gestionnaire.cpp \
-    GestionnairesDeDialogue/dialogueconsommateur.cpp \
-    GestionnairesDeDialogue/dialoguepc.cpp \
+    GestionnairesDeDialogue/dialogueconsommateurs.cpp \
     GestionnairesDeDialogue/dialogueproducteurs.cpp \
     Outils/idgenerator.cpp \
     consommateur.cpp \
@@ -27,11 +26,11 @@ SOURCES += \
 
 HEADERS += \
     Gestionnaire/gestionnaire.h \
-    GestionnairesDeDialogue/dialogueconsommateur.h \
-    GestionnairesDeDialogue/dialoguepc.h \
+    GestionnairesDeDialogue/dialogueconsommateurs.h \
     GestionnairesDeDialogue/dialogueproducteurs.h \
     Outils/idgenerator.h \
     consommateur.h \
+    cycle.h \
     erreur.h \
     livraison.h \
     main.h \

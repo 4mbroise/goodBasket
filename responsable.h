@@ -1,7 +1,7 @@
 #ifndef RESPONSABLE_H
 #define RESPONSABLE_H
 
-#include "Utilisateur.h"
+#include "utilisateur.h"
 #include <QtCore/QString>
 
 /**
