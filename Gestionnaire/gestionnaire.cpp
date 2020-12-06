@@ -11,25 +11,34 @@ Gestionnaire::Gestionnaire(DialogueProducteurs &dp,Erreur &e):gestionnaireDialog
 {
     /*gestion fabrique tous les gestionnaireDialogue*/
     this->montantPayement=0;
+    this->montantRemboursement=0;
     qDebug() << "Creation Gestionnaire " <<endl;
 }
 
-void Gestionnaire::CalculerMontantPayement(int producteurID)
+void Gestionnaire::CalculerMontantPayement(int responsableID, int producteurID)
 {
-    // à compléter
-    cout << "payer prodcuteur ID :" << producteurID << endl;
+    // à compléter maintenant on directement parameter 1000
     this->montantPayement=1000;
+    cout << "Calculer doit payer prodcuteur ID :" << producteurID << " "<< this->montantPayement << endl;
+
+    if(VerifierMontant(producteurID,this->montantPayement))
+    {
+        //renvoie à responsable par interface graphique maintenant on directement parameter oui
+        if(1){
+            this->responsables.value(responsableID)->Confirmer();
+        }
+    }
 }
 
 void Gestionnaire::AjouteResponsable(Responsable* respons)
 {
-  //  this->responsables.insert(respons->getId(),respons);
+    responsables.insert(respons->getId(),respons);
 }
 
 
 bool Gestionnaire::VerifierMontant(int ProducteurID, int montant)
 {
-    qDebug() << "Verfier le montant" << endl;
+    qDebug() << " Verfier le montant" << endl;
 
     if(this->gestionnaireDialogueProducteur.producteurExiste(ProducteurID) && montant>0)
     {
@@ -41,10 +50,13 @@ bool Gestionnaire::VerifierMontant(int ProducteurID, int montant)
     }
 }
 
-void Gestionnaire::Payer()
+void Gestionnaire::Payer(int responsableID, int producteurID)
 {
     //à compléter
     //sql si besoin
+    std::string s="Gesionnaire payer :" + to_string(producteurID) + " " + to_string(this->montantPayement);
+    cout << s << endl;
+    this->responsables.value(responsableID)->RecevoirMessage(s);
 }
 
 void Gestionnaire::NotifierDialogueProducteur(int producteurID)
@@ -67,6 +79,25 @@ bool Gestionnaire::VerifierErreur()
     }else{
         return false;
     }
+}
+
+bool Gestionnaire::VerifeirRemboursement(int consommateurID)
+{
+    /* condition de verification directement oui maintenant*/
+    if(1){
+        /* le parametrer plus tard*/
+        this->montantRemboursement=1000;
+        this->erreur.AjouterErreur("manque chou rouge");
+        return true;
+    }
+
+    return false;
+}
+
+void Rembourser()
+{
+    /* reste à compléter*/
+    /*NotifierResponsable();*/
 }
 
 void Gestionnaire::NotifierErreur(int responsableID)

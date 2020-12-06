@@ -2,6 +2,7 @@
 #define RESPONSABLE_H
 
 #include "utilisateur.h"
+#include "Gestionnaire/gestionnaire.h"
 #include <QtCore/QString>
 
 /**
@@ -17,7 +18,9 @@
  */
 class Utilisateur;
 
-class Responsable: public Utilisateur
+//:public Utilisateur (supprimer pour instant)
+
+class Responsable
 {
     public:
      /**
@@ -26,37 +29,49 @@ class Responsable: public Utilisateur
        * @param prenom: Prénom du utlisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:A
+       * @param Gestionnaire: gestionnaire
        */
-     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
+     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,Gestionnaire &gestionnaire);
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
       */
-     ~Responsable();
+    // ~Responsable(); (supprimer pour instant)
 
 
      void ajouterProduitAuPanier();
 
      /**
-      * @brief demander à gestionnaire de payer les producteurs
+      * @brief fonction qui retourner id
+      * @return int id
       */
-     void PayerProducteurs(int producteurid);
+    int getId();
 
      /**
-      * @brief Confirmer le l message envoyé par getionnaire
+      * @brief demander à gestionnaire de payer les producteurs
       */
-    void confirmerPayment();
+    void PayerProducteurs(int producteurid);
 
+     /**
+      * @brief Confirmer la demande
+      */
+    void Confirmer();
 
     /**
-     * @brief procedure qui Afficher les messages reçus
+     * @brief fonction qui retourner le message recu
+     * @return std::string message recu
      */
-    void AffichierMessage();
+    std::string GetMessage();
 
     /**
      * @brief procedure qui recoit message envoyé par gestionnaire
      */
-    void RecevoirMessage(std::string);
+    void RecevoirMessage(std::string mess);
+
+    /**
+     * @brief procedure qui consulter les erreurs
+     */
+    void ConsulterReports();
 
 
 
@@ -69,7 +84,47 @@ class Responsable: public Utilisateur
          */
         std::string message;
 
+        /**
+         * @brief id
+         */
+        int id;
 
+        /**
+         * @brief nom
+         */
+        std::string nom;
+
+        /**
+         * @brief prenom
+         */
+        std::string prenom;
+
+        /**
+         * @brief adresse
+         */
+        std::string adresse;
+
+        /**
+         * @brief numero de telephone
+         */
+        double phone;
+
+        /**
+         * @brief adresse mail
+         */
+        std::string email;
+
+        /**
+         * @brief GestionnaireDeDialogue qui fait le lien entre les requêtes du producteur et les actions réellement effectuées
+         *
+         */
+        Gestionnaire &gestionnaire;
+
+        /**
+         * @brief Pour chaque renvoi on choisi oui ou non
+         *
+         */
+        bool confirmer;
 
 };
 

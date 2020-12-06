@@ -6,7 +6,9 @@
 #include "../GestionnairesDeDialogue/dialogueproducteurs.h"
 #include "../responsable.h"
 #include "../erreur.h"
-class responsable;
+
+
+class Responsable;
 
 
 /**
@@ -28,8 +30,10 @@ public:
 
     /**
      * @brief Calculer le montant d'euro à payer
+     * @param responsableID id de responsable
+     * @param producteurID id de producteur
      */
-    void CalculerMontantPayement(int producteurID);
+    void CalculerMontantPayement(int responsableID, int producteurID);
 
     /**
      * @brief Permet de vérifeir le montant de payment
@@ -42,8 +46,10 @@ public:
 
     /**
      * @brief Permet de payer le montant de payment
+     * @param responsableID id de responsable
+     * @param producteurID id de producteur
      */
-    void Payer();
+    void Payer(int responsableID, int producteurID);
 
     /**
      * @brief Permet de set Rsponsable
@@ -72,6 +78,23 @@ public:
      */
     void NotifierErreur(int responsableID);
 
+    /**
+     * @brief Permet de calculer le montant d'euro à remboursement et raison de erreur
+     *
+     * @return true le montant d'euro à remboursement > 0
+     * @return false le montant d'euro à remboursement =0 0
+     * @param consommateurID id de consommateur
+     */
+    bool VerifeirRemboursement(int consommateurID);
+
+    /**
+     * @brief Permet de rembourser le concommateur
+     *
+     * @param consommateurID id de consommateur
+     */
+    void Rembourser(int consommateurID);
+
+
 
 
 private:
@@ -80,6 +103,11 @@ private:
      * @brief Montant d'euro à payer
      */
     int montantPayement;
+
+    /**
+    * @brief Montant d'euro à rembourser
+    */
+   int montantRemboursement;
 
     /**
      * @brief GestionnaireDeDialogueProducteur qui fait le lien entre les requêtes du gestionnaire et les actions réellement effectuées

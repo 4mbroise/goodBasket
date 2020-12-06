@@ -30,6 +30,13 @@ class IdGenerator
          * @return un nouvel IdProducteur
          */
         int getNewIdProducteur();
+
+        /**
+         * @brief fonction qui retourne un nouvel numero d'IdResponsable
+         *
+         * @return un nouvel IdResponsable
+         */
+        int getNewIdResponsable();
     private:
         /**
         * @brief le dernier numero d'Id Produit généré

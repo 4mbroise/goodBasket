@@ -31,6 +31,13 @@ int IdGenerator::getNewIdProduit()
     return idAReturn;
 }
 
+int IdGenerator::getNewIdResponsable()
+{
+    int idAReturn = this-> lastIdProduit;       //Sauvegarde de l'id à retourner avant incrémentation
+    this -> lastIdProduit ++;                   //Incrémentation
+    return idAReturn;
+}
+
 IdGenerator& IdGenerator::Instance()
 {
     return m_instance;
