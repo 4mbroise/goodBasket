@@ -47,7 +47,7 @@ void Livraison::ajouterCommande(int extra){
     this->commande+=extra;
 }
 
-std::string Livraison::toSring(){
+const std::string Livraison::toSring(){
     string resultat="Livraison: \n";
     Produit p=this->produit;
     string nom=p.getNom().toStdString();

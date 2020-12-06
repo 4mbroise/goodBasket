@@ -63,7 +63,7 @@ QHash<Produit,Producteur> PC::getCatalogue(){
 
 
 
-std::string PC::toString(){
+const std::string PC::toString(){
     string resultat="PC [adress:"+this->adresse.toStdString()+"]\n";
     resultat.append("catalogue:\n");
     QHashIterator<Produit,Producteur>i =getCatalogue();

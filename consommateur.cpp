@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateur& dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc)
+Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateurs& dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdProducteur();
@@ -113,7 +113,7 @@ int Consommateur::nbLivraisonPrevues(){
     return LivraisonPrevues.count();
 }
 
-std::string Consommateur::toString(){
+const std::string Consommateur::toString(){
     string resultat="Consommateur [ID-"+std::to_string(this->getId())+"]\n";
     resultat.append("Panier:\n");
     resultat.append("livraisons totales:"+to_string(nbLivraison()));
