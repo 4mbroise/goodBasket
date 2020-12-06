@@ -12,6 +12,8 @@ Producteur::Producteur(DialogueProducteurs &dp):gestionnaireDialogue(dp)
     gestionnaireDialogue.ajouterProducteur(this);
 };
 
+
+
 void Producteur::demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath)
 {
     qDebug() << "DemanderAjoutProduit" << endl;
@@ -24,7 +26,7 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
     int idProduit = gen.getNewIdProduit();
     Produit produitAjoute = Produit(idProduit, quantite, prix, nom, imagePath);
 
-    boutique.insert(idProduit,&produitAjoute);
+    boutique.insert(idProduit,produitAjoute);
 }
 
 bool Producteur::produitExiste(int idProduit)
@@ -62,22 +64,32 @@ void Producteur::setGestionnaireDialogue(DialogueProducteurs dp)
     this->gestionnaireDialogue = dp;
 }
 
-QHashIterator<int,Produit*> Producteur::iterator(){
-    QHashIterator<int,Produit*> i(this->boutique);
+QHashIterator<int,Produit> Producteur::iterator(){
+    QHashIterator<int,Produit> i(this->boutique);
     return i;
+}
+
+void Producteur::operator=(const Producteur& p ){
+    this->id=p.id;
+    this->boutique=p.boutique;
+    this->message=p.message;
+    this->gestionnaireDialogue=p.gestionnaireDialogue;
+
 }
 
 const std::string  Producteur::toString()
 {
     std::string returned = "Producteur [ID-"+std::to_string(this->getId())+"]\n";
-    QHashIterator<int,Produit*> i=this->iterator();
+    QHashIterator<int,Produit> i=this->iterator();
     while(i.hasNext())
     {
         i.next();
         returned.append("      -(key = "+std::to_string(i.key())+")- ");
-        Produit *pr= i.value();
-        returned.append(pr->toString()+"\n");
+        Produit pr= i.value();
+        returned.append(pr.toString()+"\n");
     }
 
     return returned;
 }
+
+

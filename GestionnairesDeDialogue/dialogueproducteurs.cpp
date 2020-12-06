@@ -7,8 +7,7 @@
 #include <iostream>
 using namespace std;
 
-int DialogueProducteurs::nbProducteur()
-{
+int DialogueProducteurs::nbProducteur(){
     return this->producteurs.size();
 }
 
@@ -99,8 +98,8 @@ const std::string DialogueProducteurs::toString()
     {
         i.next();
         returned.append("-(key = "+std::to_string(i.key())+")- ");
-        Producteur* pr = i.value();
-        returned.append(pr->toString()+"\n");
+        Producteur pr = *i.value();
+        returned.append(pr.toString()+"\n");
     }
 
     return returned;

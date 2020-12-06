@@ -32,7 +32,7 @@ class Producteur
         */
         Producteur(DialogueProducteurs &dp);
 
-        ~Producteur();
+
         /**
          * @brief Envoie une requête d'ajout de produit au gestionnaire de dialogue associé,
          * le producteur doit fournir une quantité, un prix, un nom et une image pour
@@ -114,7 +114,9 @@ class Producteur
          * @brief iterator de tous les produits du producteur
          * @return iterator hashmap
          */
-        QHashIterator<int,Produit*> iterator();
+        QHashIterator<int,Produit> iterator();
+
+        void operator=(const Producteur& p);
 
         /**
          * @brief toString du producteur
@@ -138,7 +140,7 @@ class Producteur
          * @brief HashTable dont la clé est un IdProduit et la valeur est un le Produit associé à cet Id, 
          * elle représente la boutique du producteur.
          */
-        QHash<int,Produit*> boutique;
+        QHash<int,Produit> boutique;
 
         /**
          * @brief Notification reçu par Dialogue

@@ -41,7 +41,7 @@ class PC{
      * @param idProducteur:id du producteur
      * @return le producteur associé à id
      */
-    const Producteur* getProducteur(int idProducteur);
+    const Producteur getProducteur(int idProducteur);
 
     /**
      * @brief setAdresse:installer l'adresse du PC
@@ -63,7 +63,7 @@ class PC{
      * @brief nbProducteur:obtenir le nombre du producteur
      * @return le nombre du producteur
      */
-    int nbProducteur();
+   int nbProducteur();
 
     /**
      * @brief getEtat :obtenir l'état du PC
@@ -81,13 +81,13 @@ class PC{
      * @brief iterator de tous les producteur dans le pc
      * @return iterator hashmap
      */
-    QHashIterator<int,Producteur*> iterator();
+    QHashIterator<int,Producteur> iterator();
 
     /**
      * @brief getCatalogue:obtenir le catalogue du pc
      * @return catalogue de tous les producteurs dans le pc
      */
-    QHash<Produit*,Producteur*> getCatalogue();
+    void setCatalogue();
 
     /**
      * @brief toString du pc
@@ -111,7 +111,9 @@ class PC{
     /**
      * @brief producteurs:Tous les producteurs stockés dans une table de hachage, la clé est l'id du producteur
      */
-    QHash<int,Producteur*> producteurs;
+    QHash<int,Producteur> producteurs;
+
+    QHash<int,Produit> catalogue;
 
 };
 

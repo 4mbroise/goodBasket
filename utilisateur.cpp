@@ -43,7 +43,6 @@ const QString& Utilisateur::getPrenom(){
 const QString& Utilisateur::getAdresse(){
     return this->adresse;
 }
-
 const double& Utilisateur::getPhone(){
     return this->phone;
 }

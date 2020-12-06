@@ -75,7 +75,6 @@ public:
      */
     void extraAjouter(Produit p,int extra,int idConsommateur);
 
-<<<<<<< HEAD
     /**
      * @brief Fonction qui notifier remboursement à consommateur
      * @param consomateurId Id du consommateur
@@ -83,16 +82,13 @@ public:
      */
     void notifierProducteurPayment(int idConcommateur,int montant);
 
-    std::string toSring();
-=======
    /**
     * @brief Fonction qui retourne le nombre de consommateur dans goodBasket
     * et le toString de chacun d'entre eux
     * @return un std::string qui contient le nombre de consommateur dans goodBasket et
     * la description de tout les consommateurs contenu dans celui ci
     */
-    const std::string toSring();
->>>>>>> 21f49ccbfa2d49f817e18f593b8e8a33b7a78319
+   const std::string toSring();
 
 
 private:
@@ -108,7 +104,7 @@ private:
      * @param idConsommateur:id unique associé au consommateur
      * @return  consommateur associé à ce Id
      */
-    Consommateur* getConsommateur(int idConsommateur);
+     Consommateur* getConsommateur(int idConsommateur);
 
     /**
      * @brief estDepasse:vérifier si la commande dépasse le stock

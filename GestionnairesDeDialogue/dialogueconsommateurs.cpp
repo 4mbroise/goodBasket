@@ -61,7 +61,7 @@ bool estDepasse(Produit p,int commande){
     return p.getQuantite()<commande;
 }
 
-<<<<<<< HEAD
+
 void DialogueProducteurs::notifierProducteurPayment(int Consommateurid,int montant)
 {
     std::string s = "vous avez reçu le montant de remboursement ";
@@ -70,15 +70,12 @@ void DialogueProducteurs::notifierProducteurPayment(int Consommateurid,int monta
     consommateurs.value(Consommateurid)->setMessage(s);
     à compléter plus tard
     */
-    cout << s <<endl
+    cout << s <<endl;
 }
 
-std::string DialogueConsommateurs::toSring(){
-    std::string returned = "Gestionnaire de Dialogue Consommateur(Nb producteur = ";
-=======
-const std::string DialogueConsommateurs::toSring(){
+const string DialogueConsommateurs::toSring(){
     std::string returned = "Gestionnaire de Dialogue Consommateur(Nb consommateur = ";
->>>>>>> 21f49ccbfa2d49f817e18f593b8e8a33b7a78319
+
     returned.append(to_string(nbConsommateur())).append(")\n");
     QHashIterator<int,Consommateur*> i(this->consommateurs);
     while(i.hasNext())

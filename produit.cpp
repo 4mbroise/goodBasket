@@ -45,6 +45,14 @@ const std::string Produit::toString()
     return returned;
 }
 
+void Produit::operator=(const Produit& pd){
+    this->id=pd.id;
+    this->nom=pd.nom;
+    this->prix=pd.prix;
+    this->image=pd.image;
+    this->quantite=pd.quantite;
+}
+
 void Produit::setPrix(double prix)
 {
     this->prix = prix;

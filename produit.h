@@ -61,6 +61,8 @@ public:
      */
     const  double& getPrix();
 
+    void operator=(const Produit& pd);
+
     /**
      * @brief toString() de la classe produit qui décrit le produit
      * 
