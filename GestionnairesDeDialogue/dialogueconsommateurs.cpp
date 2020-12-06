@@ -30,6 +30,19 @@ void DialogueConsommateurs::ajouterPanier(Produit p,int commande,int idConsommat
     }
 }
 
+void DialogueConsommateurs::supprimerProduit(Produit p,int idConsommateur){
+    Consommateur *c=getConsommateur(idConsommateur);
+    for(Livraison l:c->getPanier())
+    {
+        Produit p1=l.getProduit();
+        if(p1.getId()==p.getId())
+        {
+            c->supprimerProduit(l);
+        }
+    }
+    qDebug()<<"l'suppression est réussi"<<endl;
+}
+
 void DialogueConsommateurs::ajouterConsommateur(Consommateur* c){
     this->consommateurs.insert(c->getId(),c);
 }

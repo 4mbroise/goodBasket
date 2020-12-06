@@ -5,9 +5,9 @@
 #include <iostream>
 #include <QHash>
 #include <QList>
-#include "pc.h"
-#include "livraison.h"
-#include "produit.h"
+#include "../pc.h"
+#include "../livraison.h"
+#include "../produit.h"
 class Consommateur;
 
 class PC;
@@ -15,8 +15,9 @@ class PC;
 /**
  * @brief DialogueConsommateur permet à un consommateur qui connait 1 DialogueConsommateur
  * de dialoguer avec l'interface, d'effectuer des actions sur le systeme
- * @version 1
+ * @version 2
  * @author GE Yuxuan
+ * @author CAI Yunfan
  */
 
 class DialogueConsommateurs
@@ -46,9 +47,27 @@ public:
     /**
      * @brief ajouterPanier:permet l'ajoute le livraison au panier
      * il va revenir au consommateur à exécuter la même fonction
-     * @param l
+     * @param  p:Produit
+     * @param  commande:quantite de commande
+     * @param  idConsommateur:Id de consommateur
      */
     void ajouterPanier(Produit p,int commande,int idConsommateur);
+
+
+    /**
+     * @brief supprimerPanier:permet l'suppression du panier
+     * il va revenir au consommateur à exécuter la même fonction
+     * @param  idConsommateur:Id de consommateur
+     */
+    void supprimerCommande(int idConsommateur);
+
+    /**
+     * @brief supprimerPanier:permet l'suppression du produit dans panier
+     * il va revenir au consommateur à exécuter la même fonction
+     * @param  p:Produit
+     * @param  idConsommateur:Id de consommateur
+     */
+    void supprimerProduit(Produit p,int idConsommateur);
 
 
     /**

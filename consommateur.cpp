@@ -105,6 +105,23 @@ void Consommateur::ajouterExtraAuPanier(int position,Livraison l){
     this->Panier.insert(position,l);
 }
 
+void Consommateur::demanderSupprimerProduit(Produit p){
+    this->gestionnaireDialogue.supprimerProduit(p,this->id);
+}
+
+void Consommateur::demanderSupprimerProduit(){
+    for(Livraison l:this->Panier)
+    {
+        this->gestionnaireDialogue.supprimerProduit(l.getProduit(),this->id);
+    }
+}
+
+void Consommateur::supprimerProduit(Livraison l){
+    this->Panier.removeOne(l);
+}
+
+
+
 int Consommateur::nbLivraison(){
     return Panier.count();
 }

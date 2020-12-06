@@ -14,8 +14,9 @@
  * il possède tous les livraison et livraisonprévue
  * il peut ajouter le produit au panier
  * il peut consulter le catalogue
- * @version 1
+ * @version 2
  * @author GE Yuxuan
+ * @author CAI Yunfan
  */
 class Utilisateur;
 
@@ -144,6 +145,23 @@ class Consommateur: public Utilisateur
       * @param l:livraison du produit
       */
      void ajouterExtraAuPanier(int position,Livraison l);
+
+     /**
+      * @brief demanderSuppressionProduit:demander de supprimer le produit qui est déjà dans le panier
+      * @param p:produit déjà dans le panier
+      */
+     void demanderSupprimerProduit(Produit p);
+
+     /**
+      * @brief demanderSuppressionProduit:demander de supprimer tous les produit en cas pas param
+      */
+     void demanderSupprimerProduit();
+
+     /**
+      * @brief ajouterExtraAuPanier:mise à jour de produit dans le livraison
+      * @param l:livraison du produit
+      */
+     void supprimerProduit(Livraison l);
 
      /**
       * @brief toString:information du consommateur
