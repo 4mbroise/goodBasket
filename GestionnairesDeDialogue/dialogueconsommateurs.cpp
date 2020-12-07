@@ -15,9 +15,19 @@ DialogueConsommateurs::~DialogueConsommateurs(){
 }
 
 Livraison DialogueConsommateurs::liv(Produit p,int quantite){
+    p.baisserQuantite(quantite);
     Livraison l=Livraison(p,quantite);
     return l;
 }
+
+bool DialogueConsommateurs::estDepasse(Produit p,int commande){
+    return p.getQuantite()<commande;
+}
+
+Consommateur* DialogueConsommateurs::getConsommateur(int idConsommateur){
+    return consommateurs.value(idConsommateur);
+}
+
 
 void DialogueConsommateurs::ajouterPanier(Produit p,int commande,int idConsommateur){
     if(!estDepasse(p,commande)){
@@ -51,6 +61,8 @@ int DialogueConsommateurs::nbConsommateur(){
     return consommateurs.size();
 }
 
+
+
 void DialogueConsommateurs::extraAjouter(Produit p,int extra,int idConsommateur){
     Consommateur *c =getConsommateur(idConsommateur);
     QList<Livraison> panier=c->getPanier();
@@ -70,12 +82,9 @@ void DialogueConsommateurs::extraAjouter(Produit p,int extra,int idConsommateur)
     }
 }
 
-bool estDepasse(Produit p,int commande){
-    return p.getQuantite()<commande;
-}
 
 
-void DialogueProducteurs::notifierProducteurPayment(int Consommateurid,int montant)
+void DialogueConsommateurs::notifierConsommateurPayment(int Consommateurid,int montant)
 {
     std::string s = "vous avez reçu le montant de remboursement ";
     s = s + to_string(montant);

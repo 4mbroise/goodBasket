@@ -99,7 +99,9 @@ public:
      * @param consomateurId Id du consommateur
      * @param montant de payment
      */
-    void notifierProducteurPayment(int idConcommateur,int montant);
+    void notifierConsommateurPayment(int idConcommateur,int montant);
+
+
 
    /**
     * @brief Fonction qui retourne le nombre de consommateur dans goodBasket
@@ -125,14 +127,15 @@ private:
      */
      Consommateur* getConsommateur(int idConsommateur);
 
-    /**
-     * @brief estDepasse:vérifier si la commande dépasse le stock
-     * @param Produit:produit qui est vérifié pour ajouter au panier
-     * @param commande:nombre de la commande du produit
-     * @return true si la commande dépasse le stock
-     * @return false sinon
-     */
-    bool estDepasse(Produit p,int commande);
+     /**
+      * @brief estDepasse:vérifier si la commande dépasse le stock
+      * @param Produit:produit qui est vérifié pour ajouter au panier
+      * @param commande:nombre de la commande du produit
+      * @return true si la commande dépasse le stock
+      * @return false sinon
+      */
+     bool estDepasse(Produit p,int commande);
+
 
 };
 

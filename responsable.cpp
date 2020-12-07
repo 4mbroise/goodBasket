@@ -13,10 +13,8 @@ Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,
     this->adresse=adresse;
     this->phone=phone;
     this->email=email;
-
-    IdGenerator& gen = IdGenerator::Instance();
-    int newId = gen.getNewIdResponsable();
-    this->id = newId;
+    estResponsable=true;
+    estConsommateur=false;
     this->confirmer=false;
     this->gestionnaire.AjouteResponsable(this);
 }
@@ -54,7 +52,7 @@ void Responsable::ConsulterReports()
   //  this->message=this->gestionnaire.
 }
 
-int Responsable::getId()
+const int& Responsable::getId()
 {
     return this->id;
 }

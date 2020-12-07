@@ -116,6 +116,10 @@ class Producteur
          */
         QHashIterator<int,Produit> iterator();
 
+        /**
+         * @brief operator = : redéfinition du = du producteur
+         * @param p:producteur,on assigne des paramètres à cette classe
+         */
         void operator=(const Producteur& p);
 
         /**

@@ -7,6 +7,7 @@ using namespace std;
 
 Livraison::Livraison(Produit p,int commande):produit(p){
     this->commande=commande;
+    this->produit=p;
     qDebug() << "Livraison est créé" << endl;
 }
 
@@ -33,6 +34,7 @@ const time_t& Livraison::getDateLivraison(){
 void Livraison::setLivraison(Produit p,int commande){
     this->produit=p;
     this->commande=commande;
+    p.baisserQuantite(commande);
 }
 
 void Livraison::setDateAchat(time_t date){
@@ -45,6 +47,11 @@ void Livraison::setDateLivraison(time_t date){
 
 void Livraison::ajouterCommande(int extra){
     this->commande+=extra;
+    this->produit.baisserQuantite(extra);
+}
+
+bool Livraison::operator==(const Livraison &l){
+    return this->produit==l.produit;
 }
 
 const std::string Livraison::toSring(){

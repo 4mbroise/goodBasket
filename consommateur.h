@@ -112,7 +112,20 @@ class Consommateur: public Utilisateur
       * @brief getPanier:Obtener une liste d'articles dans le panier
       * @return la liste des produits
       */
-     const QList<Livraison> getPanier();
+     QList<Livraison> getPanier();
+
+     /**
+      * @brief nbLivraison:obtenir le nombre du livraison dans le panier
+      * @return nombre du livraison dans le panier
+      */
+     int nbLivraison();
+
+     /**
+      * @brief nbLivraisonPrevues:obtenir le nombre du livraison dans le livraison prévue
+      * @return nombre du livraison dans le livraison prévue
+      */
+     int nbLivraisonPrevues();
+
 
      /**
       * @brief consulterCatalogue:consutter les catalogues du Goodbasket
@@ -169,17 +182,6 @@ class Consommateur: public Utilisateur
       */
      const std::string toString();
 
-     /**
-      * @brief nbLivraison:obtenir le nombre du livraison dans le panier
-      * @return nombre du livraison dans le panier
-      */
-     int nbLivraison();
-
-     /**
-      * @brief nbLivraisonPrevues:obtenir le nombre du livraison dans le livraison prévue
-      * @return nombre du livraison dans le livraison prévue
-      */
-     int nbLivraisonPrevues();
 
     private:
 

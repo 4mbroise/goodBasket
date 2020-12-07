@@ -20,7 +20,7 @@ class Utilisateur;
 
 //:public Utilisateur (supprimer pour instant)
 
-class Responsable
+class Responsable: public Utilisateur
 {
     public:
      /**
@@ -45,7 +45,7 @@ class Responsable
       * @brief fonction qui retourner id
       * @return int id
       */
-    int getId();
+    virtual const int& getId();
 
      /**
       * @brief demander à gestionnaire de payer les producteurs

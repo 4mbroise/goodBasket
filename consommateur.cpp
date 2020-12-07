@@ -6,84 +6,83 @@ using namespace std;
 
 Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateurs& dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc)
 {
-    IdGenerator& gen = IdGenerator::Instance();
-    int newId = gen.getNewIdProducteur();
-    this->id = newId;
     dc.ajouterConsommateur(this);
+    estConsommateur=true;
     qDebug() << "Consommateur est créé" << endl;
 }
 
-Utilisateur::Utilisateur(){
+/*Consommateur::Consommateur(){
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdProducteur();
     this->id = newId;
     qDebug() << "Consommateur est créé" << endl;
-}
+}*/
 
-Utilisateur::~Utilisateur(){
+Consommateur::~Consommateur(){
     qDebug() << "Consommateur est enlevé" << endl;
 }
 
-const int& Utilisateur::getId(){
+const int& Consommateur::getId(){
     return this->id;
     qDebug()<<"get id du Consommateur"<<endl;
 }
 
 
-const QString& Utilisateur::getNom(){
+const QString& Consommateur::getNom(){
     return  this->nom;
     qDebug()<<"get nom du Consommateur"<<endl;
 }
 
 
-const QString& Utilisateur::getPrenom(){
+const QString& Consommateur::getPrenom(){
     return  this->prenom;
     qDebug()<<"get prenom du Consommateur"<<endl;
 }
 
-const QString& Utilisateur::getAdresse(){
+const QString& Consommateur::getAdresse(){
     return this->adresse;
     qDebug()<<"get adresse du Consommateur"<<endl;
 }
 
-const double& Utilisateur::getPhone(){
+const double& Consommateur::getPhone(){
     return this->phone;
     qDebug()<<"get numéro de téléphon du Consommateur"<<endl;
 }
 
-const QString& Utilisateur::getEmail(){
+const QString& Consommateur::getEmail(){
     return this->email;
     qDebug()<<"get email du Consommateur"<<endl;
 }
 
 
-void Utilisateur::changeNom(std::string nom){
+void Consommateur::changeNom(std::string nom){
     this->nom=QString(nom.c_str());
     qDebug()<<"changer ou setter nom du Consommateur"<<endl;
 }
 
 
-void Utilisateur::changePrenom(std::string prenom){
+void Consommateur::changePrenom(std::string prenom){
     this->prenom=QString(prenom.c_str());
     qDebug()<<"changer ou setter prenom du Consommateur"<<endl;
 }
 
 
-void Utilisateur::changeAdresse(std::string adresse){
+void Consommateur::changeAdresse(std::string adresse){
     this->adresse=QString(adresse.c_str());
     qDebug()<<"changer ou setter adresse du Consommateur"<<endl;
 }
 
-void Utilisateur::changePhone(double phone){
+void Consommateur::changePhone(double phone){
     this->phone=phone;
     qDebug()<<"changer ou setter numéro de téléphone du Consommateur"<<endl;
 }
 
 
-void Utilisateur::changeEmail(std::string email){
+void Consommateur::changeEmail(std::string email){
     this->email=QString(email.c_str());
     qDebug()<<"changer ou setter email du Consommateur"<<endl;
 }
+
 
 void Consommateur::consulterCatalogue(){
 
@@ -120,7 +119,9 @@ void Consommateur::supprimerProduit(Livraison l){
     this->Panier.removeOne(l);
 }
 
-
+QList<Livraison> Consommateur::getPanier(){
+    return Panier;
+}
 
 int Consommateur::nbLivraison(){
     return Panier.count();

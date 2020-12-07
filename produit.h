@@ -21,11 +21,7 @@ public:
      * @param imagePath chemin de l'image du produit
      */
     Produit(int id, int q,double prix,std::string nom,std::string imagePath);
-    /**
-     * @brief Destructeur de la classe produit, ne fait rien de spécial
-     * 
-     */
-    ~Produit();
+
     /**
      * @brief Getter du nom du produit
      * 
@@ -76,6 +72,25 @@ public:
      * @return la description du produit
      */
     void setPrix(double prix);
+
+    /**
+     * @brief baisserQuantite:on baisse le stock du produit
+     * @param q:quantité
+     */
+    void baisserQuantite(int q);
+
+    /**
+     * @brief augmenterQuantite:on augmente le stock du produit
+     * @param q:quantité
+     */
+    void augmenterQuantite(int q);
+
+    /**
+     * @brief operator ==:redéfinition == du produit
+     * @param p:produit
+     * @return true si tous les informations du produit est équivalent,false sinon
+     */
+    bool operator==(const Produit& p);
 
 private:
     /**

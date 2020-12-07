@@ -80,10 +80,19 @@ class Livraison{
     void ajouterCommande(int extra);
 
     /**
+     * @brief operator ==:redéfinition du == de la livraison
+     * @param l: livraison
+     * @return true si le produit de la livraison est équivalent ,false sinon
+     */
+    bool operator==(const Livraison& l);
+
+    /**
      * @brief toSring de la livraison
      * @return le string du produit avec le quantité
      */
     const std::string toSring();
+
+
 
     private:
 

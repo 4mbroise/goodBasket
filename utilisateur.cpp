@@ -12,6 +12,8 @@ Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,
     this->adresse=QString(adresse.c_str());
     this->phone = phone;
     this->email =QString(email.c_str());
+    estResponsable=false;
+    estConsommateur=false;
     cout << "Utilisateur est créé" << endl;
 }
 

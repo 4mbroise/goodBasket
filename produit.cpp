@@ -10,6 +10,7 @@ Produit::Produit(int id, int q, double prix, std::string nom, std::string imageP
     this->quantite = q;
 }
 
+
 const int& Produit::getId()
 {
     return this->id;
@@ -35,16 +36,6 @@ const QImage& Produit::getImage()
     return this->image;
 }
 
-const std::string Produit::toString()
-{
-    std::string returned = "Produit [ID-"+std::to_string(this->getId())+"] : ";
-    returned = returned.append(this->getNom().toStdString()+", ");
-    returned = returned.append(std::to_string(this->getPrix())+"€ ");
-    returned = returned.append("("+ std::to_string(this->getQuantite()) +"kg) ");
-
-    return returned;
-}
-
 void Produit::operator=(const Produit& pd){
     this->id=pd.id;
     this->nom=pd.nom;
@@ -58,7 +49,26 @@ void Produit::setPrix(double prix)
     this->prix = prix;
 }
 
-Produit::~Produit()
-{
-
+bool Produit::operator==(const Produit &p){
+    return this->id==p.id;
 }
+
+void Produit::baisserQuantite(int q){
+    this->quantite=quantite-q;
+}
+
+void Produit::augmenterQuantite(int q){
+    this->quantite=quantite+q;
+}
+const std::string Produit::toString()
+{
+    std::string returned = "Produit [ID-"+std::to_string(this->getId())+"] : ";
+    returned = returned.append(this->getNom().toStdString()+", ");
+    returned = returned.append(std::to_string(this->getPrix())+"€ ");
+    returned = returned.append("("+ std::to_string(this->getQuantite()) +"kg) ");
+
+    return returned;
+}
+
+
+
