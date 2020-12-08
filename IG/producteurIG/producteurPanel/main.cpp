@@ -1,4 +1,4 @@
-#include "widget.h"
+#include "producteurpanel.h"
 
 #include <QApplication>
 
@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     Producteur pr1 = Producteur(dp);
 
     QApplication a(argc, argv);
-    Widget* w = new Widget(nullptr, dp.getProducteurById(1));
+    producteurPanel* w = new producteurPanel(nullptr, dp.getProducteurById(1));
     w->show();
     return a.exec();
 }

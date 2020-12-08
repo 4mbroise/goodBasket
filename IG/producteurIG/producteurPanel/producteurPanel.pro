@@ -9,22 +9,26 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../ajouterProduitIG/widget.cpp \
     ../../../produit.cpp \
     ../../../producteur.cpp \
     ../../../Outils/idGenerator.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
-    widget.cpp
+    producteurpanel.cpp
 
 HEADERS += \
+    ../ajouterProduitIG/widget.h \
     ../../../produit.h \
     ../../../producteur.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
-    widget.h
+    ../ajouterProduitIG/widget.cpp \
+    producteurpanel.h
 
 FORMS += \
-    widget.ui
+    ../ajouterProduitIG/widget.ui \
+    producteurpanel.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

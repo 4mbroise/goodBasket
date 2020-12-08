@@ -75,6 +75,12 @@ public:
      */
     void notifierProducteurPayment(int idProducteur,int montant);
 
+    /**
+     * @brief getter de producteur par Id avec vérification
+     * @param producteurId Id du producteur
+     * @return un pointeur vers le producteur trouvé si il existe, sinon renvoie nullptr
+     */
+    Producteur* getProducteurById(int producteurId);
 
     /**
      * @brief Fonction qui retourne le nombre de producteur dans goodBasket

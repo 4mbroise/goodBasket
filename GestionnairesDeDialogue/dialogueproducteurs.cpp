@@ -89,6 +89,12 @@ void DialogueProducteurs::notifierProducteurPayment(int producteurid,int montant
 
 }
 
+Producteur* DialogueProducteurs::getProducteurById(int producteurId)
+{
+
+    return (producteurExiste(producteurId)) ? retrouverProducteur(producteurId) : nullptr;
+}
+
 const std::string DialogueProducteurs::toString()
 {
     std::string returned = "Gestionnaire de Dialogue PRODUCTEUR (Nb producteur = ";
