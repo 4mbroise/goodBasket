@@ -6,11 +6,9 @@ producteurPanel::producteurPanel(QWidget *parent , Producteur *p)
     , ui(new Ui::producteurPanel)
 {
     ui->setupUi(this);
-    ui->widget = new Widget(this, p);
-    //ui->widget = new Widget(this, p);
 
-    //ui->tableWidget = new QTableWidget(3,3,this);
-    //ui->tableWidget.set
+    this->layout()->addWidget(new Widget(this, p));
+
 }
 
 producteurPanel::~producteurPanel()
