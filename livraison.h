@@ -28,7 +28,7 @@ class Livraison{
     /**
      * @brief Destructeur de la classe livraison
      */
-    ~Livraison();
+   // ~Livraison();
 
     /**
      * @brief getProduit:obtenir le produit

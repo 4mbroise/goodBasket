@@ -12,6 +12,7 @@ SOURCES += \
     ../ajouterProduitIG/widget.cpp \
     ../../../produit.cpp \
     ../../../producteur.cpp \
+    ../../../livraison.cpp \
     ../../../Outils/idGenerator.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     ../ajouterProduitIG/widget.h \
     ../../../produit.h \
     ../../../producteur.h \
+    ../../../livraison.cpp \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
     ../ajouterProduitIG/widget.cpp \

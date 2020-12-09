@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     ../../../produit.cpp \
     ../../../producteur.cpp \
+    ../../../livraison.cpp \
     ../../../Outils/idGenerator.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     ../../../produit.h \
     ../../../producteur.h \
+    ../../../livraison.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
     widget.h

@@ -10,11 +10,11 @@ Livraison::Livraison(Produit p,int commande):produit(p){
     this->produit=p;
     qDebug() << "Livraison est créé" << endl;
 }
-
+/*
 Livraison::~Livraison(){
     qDebug() << "Livraison est enlevé" << endl;
 }
-
+*/
 const Produit& Livraison::getProduit(){
     return this->produit;
 }
