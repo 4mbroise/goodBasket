@@ -84,14 +84,12 @@ void DialogueConsommateurs::extraAjouter(Produit p,int extra,int idConsommateur)
 
 
 
-void DialogueConsommateurs::notifierConsommateurPayment(int Consommateurid,int montant)
+void DialogueConsommateurs::notifierConsommateur(int idConcommateur,std::string s)
 {
-    std::string s = "vous avez reçu le montant de remboursement ";
-    s = s + to_string(montant);
-    /*
-    consommateurs.value(Consommateurid)->setMessage(s);
-    à compléter plus tard
-    */
+    /*std::string s = "vous avez reçu le montant de remboursement ";
+    s = s + to_string(montant);*/
+
+    this->consommateurs.value(idConcommateur)->setMessage(s);
     cout << s <<endl;
 }
 

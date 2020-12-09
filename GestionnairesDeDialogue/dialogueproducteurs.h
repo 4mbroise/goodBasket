@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <QHash>
+#include "../livraison.h"
 
 class Producteur;
 class Gestionnaire;
@@ -74,6 +75,14 @@ public:
      * @param montant de payment
      */
     void notifierProducteurPayment(int idProducteur,int montant);
+
+    /**
+     * @brief supprimerLivraison :permet l'suppression du livraison de producteur
+     * il va revenir au idproducteur à exécuter la même fonction
+     * @param  Livraison:livraison
+     * @param  idproducteur:Id de producteur
+     */
+    void supprimerLivraison(Livraison livraison,int idproducteur);
 
     /**
      * @brief getter de producteur par Id avec vérification

@@ -89,9 +89,19 @@ void DialogueProducteurs::notifierProducteurPayment(int producteurid,int montant
 
 }
 
+void DialogueProducteurs::supprimerLivraison(Livraison livraison,int idproducteur)
+{
+    /*
+     * partie de sql
+    */
+    this->getProducteurById(idproducteur)->supprimerLivraison(livraison);
+    /*
+     * notifier le reponsable
+    */
+}
+
 Producteur* DialogueProducteurs::getProducteurById(int producteurId)
 {
-
     return (producteurExiste(producteurId)) ? retrouverProducteur(producteurId) : nullptr;
 }
 

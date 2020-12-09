@@ -97,9 +97,9 @@ public:
     /**
      * @brief Fonction qui notifier remboursement à consommateur
      * @param consomateurId Id du consommateur
-     * @param montant de payment
+     * @param message
      */
-    void notifierConsommateurPayment(int idConcommateur,int montant);
+    void notifierConsommateur(int idConcommateur,std::string);
 
 
 

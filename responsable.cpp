@@ -13,8 +13,8 @@ Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,
     this->adresse=adresse;
     this->phone=phone;
     this->email=email;
-    estResponsable=true;
-    estConsommateur=false;
+  //  this->estResponsable=true;
+  //  this->estConsommateur=false;
     this->confirmer=false;
     this->gestionnaire.AjouteResponsable(this);
 }
@@ -24,8 +24,7 @@ Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,
 void Responsable::PayerProducteurs(int producteurid)
 {
     this->gestionnaire.CalculerMontantPayement(this->id, producteurid);
-    /*
-     * procedure que gestionnaire retourner montant confirmer ou non*/
+    /* procedure que gestionnaire retourner montant confirmer ou non*/
     if(this->confirmer){
         this->gestionnaire.Payer(this->id, producteurid);
     }
@@ -49,11 +48,23 @@ void Responsable::RecevoirMessage(std::string mess)
 
 void Responsable::ConsulterReports()
 {
-  //  this->message=this->gestionnaire.
+    this->gestionnaire.NotifierErreur(this->id);
 }
 
 const int& Responsable::getId()
 {
     return this->id;
+}
+
+void Responsable::DemanderRembourser(int consommateurId)
+{
+    if(this->gestionnaire.VerifeirRemboursement(consommateurId,this->id))
+    {
+         qDebug()<<"attente confirmer"<<endl;
+    }
+    if(this->confirmer)
+    {
+        this->gestionnaire.Rembourser(consommateurId,this->id);
+    }
 }
 

@@ -3,7 +3,7 @@
 
 #include <QtCore/QHash>
 #include "produit.h"
-
+#include "livraison.h"
 #include "Outils/idgenerator.h"
 #include "GestionnairesDeDialogue/dialogueproducteurs.h"
 
@@ -53,6 +53,21 @@ class Producteur
          * @param idProduit id du produit de la boutique du producteur à retirer de la boutique
          */
         void demanderRetirerProduit(int idProduit);
+
+        /**
+         * @brief Envoie une requête de supression de livraison préalablement mis en attente au gestionnaire de dialogue associé,
+         * le producteur doit livraison qu'il souhaite supprimer de sa boutique pour parvenir à un succès
+         * parvenir à un succès
+         *quantité de stock augemente
+         * @param livraison livaison que le producteur demande de supprimer
+         */
+        void demanderAnnulerLivraison(Livraison livraison);
+
+        /**
+         * @brief procedure supprimer livaison
+         * @param livraison livaison que le producteur demande de supprimer
+         */
+        void supprimerLivraison(Livraison livraison);
 
         /**
          * @brief Fonction permettant de vérifier l'existance d'un produit dans la boutique du producteur via son ID
@@ -145,6 +160,11 @@ class Producteur
          * elle représente la boutique du producteur.
          */
         QHash<int,Produit> boutique;
+
+        /**
+         * @brief une liste de tous les livraisons de producteur
+         */
+        QList<Livraison> LivraisonProducteur;
 
         /**
          * @brief Notification reçu par Dialogue

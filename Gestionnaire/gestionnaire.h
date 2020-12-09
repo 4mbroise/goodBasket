@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "../GestionnairesDeDialogue/dialogueproducteurs.h"
+#include "../GestionnairesDeDialogue/dialogueconsommateurs.h"
 #include "../responsable.h"
 #include "../erreur.h"
 
@@ -24,8 +25,10 @@ public:
     /**
      * @brief gestion qui appartient à responsable
      * @param dp gestionnaire de dialogue associé au producteur
+     * @param e associé au erreur
+     * @param dc gestionnaire de dialogue associé au consommtauer
      */
-    Gestionnaire(DialogueProducteurs &dp, Erreur &e);
+    Gestionnaire(DialogueProducteurs &dp, Erreur &e, DialogueConsommateurs &dc);
 
 
     /**
@@ -63,8 +66,10 @@ public:
 
     /**
      * @brief Permet de notifier le payment reçu à responsable
+     * @param responsableID id de responsable
+     * @param s message envoi
      */
-    void NotifierResponsable(int responsableID);
+    void NotifierResponsable(int responsableID,std::string s);
 
     /**
      * @brief Permet de vérifeir s'il y erreur dans gestion
@@ -84,15 +89,17 @@ public:
      * @return true le montant d'euro à remboursement > 0
      * @return false le montant d'euro à remboursement =0 0
      * @param consommateurID id de consommateur
+     * @param responsbaleID id de responsable
      */
-    bool VerifeirRemboursement(int consommateurID);
+    bool VerifeirRemboursement(int consommateurID,int ResponsableId);
 
     /**
      * @brief Permet de rembourser le concommateur
      *
      * @param consommateurID id de consommateur
+     * @param responsableID id de ressponsbale
      */
-    void Rembourser(int consommateurID);
+    void Rembourser(int consommateurId,int reponsableId);
 
 
 
@@ -114,6 +121,12 @@ private:
      *
      */
     DialogueProducteurs &gestionnaireDialogueProducteur;
+
+    /**
+     * @brief GestionnaireDeDialogueConsommtauer qui fait le lien entre les requêtes du gestionnaire et les actions réellement effectuées
+     *
+     */
+    DialogueConsommateurs &gestionnaireDialogueConsommateur;
 
     /**
      * @brief erreur qui fait le lien entre les erreurs reportés et le responsable

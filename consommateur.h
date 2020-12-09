@@ -126,6 +126,19 @@ class Consommateur: public Utilisateur
       */
      int nbLivraisonPrevues();
 
+     /**
+      * @brief Getter de message par dialogue
+      *
+      * @return le message
+      */
+     const std::string  getMessage();
+
+     /**
+      * @brief Setter du message
+      *
+      * @param mess message envoyé par dialogue
+      */
+     void setMessage(std::string message);
 
      /**
       * @brief consulterCatalogue:consutter les catalogues du Goodbasket
@@ -199,6 +212,11 @@ class Consommateur: public Utilisateur
           * @brief gestionnaire:DialogueGestionnaireDeDialogue qui fait le lien entre les requêtes du consommateur et les actions réellement effectuées
           */
          DialogueConsommateurs &gestionnaireDialogue;
+
+         /**
+          * @brief message recu par dialogue
+          */
+         std::string message;
 };
 
 #endif // CONSOMMATEUR_H

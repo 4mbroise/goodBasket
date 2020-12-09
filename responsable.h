@@ -20,7 +20,7 @@ class Utilisateur;
 
 //:public Utilisateur (supprimer pour instant)
 
-class Responsable: public Utilisateur
+class Responsable
 {
     public:
      /**
@@ -72,6 +72,11 @@ class Responsable: public Utilisateur
      * @brief procedure qui consulter les erreurs
      */
     void ConsulterReports();
+
+    /**
+     * @brief responsable demande rembourser les producteurs
+     */
+    void DemanderRembourser(int consommateurId);
 
 
 

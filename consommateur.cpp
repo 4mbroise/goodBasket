@@ -84,6 +84,17 @@ void Consommateur::changeEmail(std::string email){
 }
 
 
+const std::string Consommateur::getMessage()
+{
+    return this->message;
+}
+
+void Consommateur::setMessage(std::string mess)
+{
+    this->message=mess;
+}
+
+
 void Consommateur::consulterCatalogue(){
 
 }

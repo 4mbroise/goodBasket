@@ -1,13 +1,14 @@
 #include <QtDebug>
 #include "gestionnaire.h"
 #include "../GestionnairesDeDialogue/dialogueproducteurs.h"
+#include "../GestionnairesDeDialogue/dialogueconsommateurs.h"
 #include "../responsable.h"
 
 #include <iostream>
 using namespace std;
 
 
-Gestionnaire::Gestionnaire(DialogueProducteurs &dp,Erreur &e):gestionnaireDialogueProducteur(dp), erreur(e)
+Gestionnaire::Gestionnaire(DialogueProducteurs &dp,Erreur &e, DialogueConsommateurs &dc):gestionnaireDialogueProducteur(dp), erreur(e), gestionnaireDialogueConsommateur(dc)
 {
     /*gestion fabrique tous les gestionnaireDialogue*/
     this->montantPayement=0;
@@ -17,7 +18,7 @@ Gestionnaire::Gestionnaire(DialogueProducteurs &dp,Erreur &e):gestionnaireDialog
 
 void Gestionnaire::CalculerMontantPayement(int responsableID, int producteurID)
 {
-    // à compléter maintenant on directement parameter 1000
+    // à compléter, maintenant on directement parameter 1000
     this->montantPayement=1000;
     cout << "Calculer doit payer prodcuteur ID :" << producteurID << " "<< this->montantPayement << endl;
 
@@ -39,7 +40,6 @@ void Gestionnaire::AjouteResponsable(Responsable* respons)
 bool Gestionnaire::VerifierMontant(int ProducteurID, int montant)
 {
     qDebug() << " Verfier le montant" << endl;
-
     if(this->gestionnaireDialogueProducteur.producteurExiste(ProducteurID) && montant>0)
     {
         return true;
@@ -52,11 +52,11 @@ bool Gestionnaire::VerifierMontant(int ProducteurID, int montant)
 
 void Gestionnaire::Payer(int responsableID, int producteurID)
 {
-    //à compléter
-    //sql si besoin
+    //à compléter, sql
     std::string s="Gesionnaire payer :" + to_string(producteurID) + " " + to_string(this->montantPayement);
     cout << s << endl;
     this->responsables.value(responsableID)->RecevoirMessage(s);
+    this->gestionnaireDialogueProducteur.notifierProducteurPayment(producteurID,this->montantPayement);
 }
 
 void Gestionnaire::NotifierDialogueProducteur(int producteurID)
@@ -64,12 +64,9 @@ void Gestionnaire::NotifierDialogueProducteur(int producteurID)
     this->gestionnaireDialogueProducteur.notifierProducteurPayment(producteurID, this->montantPayement);
 }
 
-void Gestionnaire::NotifierResponsable(int responsableID)
+void Gestionnaire::NotifierResponsable(int responsableID,std::string s)
 {
-  //  this->responsables.value(responsableID)->RecevoirMessage("payment reussi");
-  //  this->responsables.value(responsableID)->AffichierMessage();
-    cout << "payment reussi" << endl;
-
+    this->responsables.value(responsableID)->RecevoirMessage(s);
 }
 
 bool Gestionnaire::VerifierErreur()
@@ -81,30 +78,34 @@ bool Gestionnaire::VerifierErreur()
     }
 }
 
-bool Gestionnaire::VerifeirRemboursement(int consommateurID)
+bool Gestionnaire::VerifeirRemboursement(int consommateurID,int responsableId)
 {
     /* condition de verification directement oui maintenant*/
     if(1){
         /* le parametrer plus tard*/
         this->montantRemboursement=1000;
-        this->erreur.AjouterErreur("manque chou rouge");
+        // ecrire des manques
+        std::string s=this->erreur.toString();
+        this->responsables.value(responsableId)->RecevoirMessage(s);
+        this->gestionnaireDialogueConsommateur.notifierConsommateur(consommateurID,s);
+        this->responsables.value(responsableId)->Confirmer();
         return true;
     }
 
     return false;
 }
 
-void Rembourser()
+void Gestionnaire::Rembourser(int consommateurId,int responsableId)
 {
-    /* reste à compléter*/
-    /*NotifierResponsable();*/
+    /* reste à compléter dans sql*/
+    std::string s="payer 1000 euro";
+   NotifierResponsable(responsableId,s);
 }
 
 void Gestionnaire::NotifierErreur(int responsableID)
 {
     if(VerifierErreur()){
-   //     this->responsables.value(responsableID)->RecevoirMessage(this->erreur.toString());
-   //     this->responsables.value(responsableID)->AffichierMessage();
+        NotifierResponsable(responsableID,this->erreur.toString());
     }else{
         cout << "rien affichier" << endl;
     }
