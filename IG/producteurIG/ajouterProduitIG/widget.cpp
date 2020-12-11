@@ -1,5 +1,5 @@
-#include "widget.h"
-#include "ui_widget.h"
+#include "Widget.h"
+#include "ui_Widget.h"
 using namespace std;
 
 Widget::Widget(QWidget *parent, Producteur *p)
@@ -26,4 +26,7 @@ void Widget::on_buttonAjouterProduit_released()
     cout << "prix "<< prix << endl;
 
     this->model->demanderAjoutProduit(quantity,prix,nom,"imagePath");
+
+    cout << "Emission MAJ table boutique" << endl;
+    emit miseAjourBoutique();
 }

@@ -9,7 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ../ajouterProduitIG/widget.cpp \
+    ../ajouterProduitIG/Widget.cpp \
     ../../../produit.cpp \
     ../../../producteur.cpp \
     ../../../livraison.cpp \
@@ -19,17 +19,17 @@ SOURCES += \
     producteurpanel.cpp
 
 HEADERS += \
-    ../ajouterProduitIG/widget.h \
+    ../ajouterProduitIG/AjouterProduitIG.h \
     ../../../produit.h \
     ../../../producteur.h \
     ../../../livraison.cpp \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
-    ../ajouterProduitIG/widget.cpp \
+    ../ajouterProduitIG/Widget.h \
     producteurpanel.h
 
 FORMS += \
-    ../ajouterProduitIG/widget.ui \
+    ../ajouterProduitIG/Widget.ui \
     producteurpanel.ui
 
 # Default rules for deployment.

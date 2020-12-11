@@ -15,7 +15,7 @@ SOURCES += \
     ../../../Outils/idGenerator.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
-    widget.cpp
+    Widget.cpp
 
 HEADERS += \
     ../../../produit.h \
@@ -23,10 +23,10 @@ HEADERS += \
     ../../../livraison.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
-    widget.h
+    Widget.h
 
 FORMS += \
-    widget.ui
+    Widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

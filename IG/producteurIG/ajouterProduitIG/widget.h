@@ -21,6 +21,9 @@ public:
     Widget(Producteur *p);
     ~Widget();
 
+signals:
+    void miseAjourBoutique();
+
 private slots:
     void on_buttonAjouterProduit_released();
 
