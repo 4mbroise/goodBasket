@@ -2,6 +2,7 @@
 #define RESPONSABLE_H
 
 #include "utilisateur.h"
+#include "consommateur.h"
 #include "Gestionnaire/gestionnaire.h"
 #include <QtCore/QString>
 
@@ -18,9 +19,7 @@
  */
 class Utilisateur;
 
-//:public Utilisateur (supprimer pour instant)
-
-class Responsable: public Utilisateur
+class Responsable:public Utilisateur
 {
     public:
      /**
@@ -107,14 +106,6 @@ class Responsable: public Utilisateur
     virtual void changeEmail(std::string email);
 
 
-     void ajouterProduitAuPanier();
-
-     /**
-      * @brief fonction qui retourner id
-      * @return int id
-      */
-    virtual const int& getId();
-
      /**
       * @brief demander à gestionnaire de payer les producteurs
       */
@@ -146,7 +137,7 @@ class Responsable: public Utilisateur
      */
     void DemanderRembourser(int consommateurId);
 
-    void demanderPC(int id,std::string villes,int codePostal,int numéro,std::string nomRue);
+    void demanderPC(int id,std::string villes,int codePostal,int numero,std::string nomRue);
 
     void setPC(PC pc);
 
@@ -156,9 +147,9 @@ class Responsable: public Utilisateur
 
     QHash<int,std::string>& consulterDemande();
 
-    bool reponseRecrutement(int idResponsable,int id Producteur,std::string demande);
+    bool reponseRecrutement(int idProducteur,std::string demande);
 
-    ajouterProducteur(int idProducteur,std::string demande);
+    void ajouterProducteur(int idProducteur,std::string demande);
 
     private:
 

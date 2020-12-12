@@ -106,7 +106,8 @@ public:
 
     void recruteProducteur(int idResponsable,std::string recrutement);
 
-    void recevoirDemander(int idResponsable,int idProducteur,std::string demande);
+    void recevoirDemande(int idResponsable,int idProducteur,std::string demande);
+
 
     QHash<int,std::string>& getDemande();
 

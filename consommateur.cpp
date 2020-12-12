@@ -1,21 +1,16 @@
 #include "consommateur.h"
+#include "utilisateur.h"
 #include <QDebug>
 #include <iostream>
 
 using namespace std;
 
-Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateurs &dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc)){
+Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateurs &dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc){
     this->gestionnaireDialogue.ajouterConsommateur(this);
     estConsommateur=true;
     qDebug() << "Consommateur est créé" << endl;
 }
 
-/*Consommateur::Consommateur(){
-    IdGenerator& gen = IdGenerator::Instance();
-    int newId = gen.getNewIdProducteur();
-    this->id = newId;
-    qDebug() << "Consommateur est créé" << endl;
-}*/
 
 Consommateur::~Consommateur(){
     qDebug() << "Consommateur est enlevé" << endl;

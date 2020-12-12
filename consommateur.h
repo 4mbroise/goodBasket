@@ -2,6 +2,7 @@
 #define CONSOMMATEUR_H
 
 #include "utilisateur.h"
+#include "responsable.h"
 #include "producteur.h"
 #include "livraison.h"
 #include "GestionnairesDeDialogue/dialogueconsommateurs.h"
@@ -18,9 +19,10 @@
  * @author GE Yuxuan
  * @author CAI Yunfan
  */
+
 class Utilisateur;
 
-class Consommateur: public Utilisateur
+class Consommateur:public Utilisateur
 {
     public:
      /**

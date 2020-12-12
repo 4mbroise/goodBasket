@@ -116,10 +116,10 @@ QHashIterator<int,Responsable*> Gestionnaire::iterator(){
     return it;
 }
 
-void Gestionnaire::demanderPC(int id,std::string villes, int codePostal, int numéro, std::string nomRue){
+void Gestionnaire::demanderPC(int id,std::string villes, int codePostal, int numero, std::string nomRue){
     if(responsables.value(id)!=nullptr){
         QHashIterator<int,Responsable*> it=this->iterator();
-        std::string adresse=villes+to_string(codePostal)+to_string(numéro)+nomRue;
+        std::string adresse=villes+to_string(codePostal)+to_string(numero)+nomRue;
         bool estExiste=false;
         while(it.hasNext()){
             it.next();
@@ -135,6 +135,9 @@ void Gestionnaire::demanderPC(int id,std::string villes, int codePostal, int num
     }
 }
 
+Responsable* Gestionnaire::getResponsable(int id){
+    return responsables.value(id);
+}
 
 
 DialogueConsommateurs& Gestionnaire::getDialogueConsommateurs(){

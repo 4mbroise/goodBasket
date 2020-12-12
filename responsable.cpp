@@ -8,15 +8,14 @@ using namespace std;
 
 Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,PC pc,Gestionnaire &gestionnaire):Utilisateur(nom,prenom,adresse,phone,email),gestionnaire(gestionnaire),pc(pc)
 {
-    this->nom=nom.c_str();
-    this->prenom=prenom.c_str();
-    this->adresse=adresse.c_str();
-    this->phone=phone;
-    this->email=email.c_str();
     this->estResponsable=true;
     this->estConsommateur=false;
     this->confirmer=false;
     this->gestionnaire.AjouteResponsable(this);
+}
+
+Responsable::~Responsable(){
+    qDebug() << "Responsable est enlevé" << endl;
 }
 
 const int& Responsable::getId(){
@@ -129,8 +128,8 @@ void Responsable::DemanderRembourser(int consommateurId)
 }
 
 
-void Responsable::demanderPC(int id,std::string villes, int codePostal, int numéro, std::string nomRue){
-    gestionnaire.demanderPC(id,villes,codePostal,numéro,nomRue);
+void Responsable::demanderPC(int id,std::string villes, int codePostal, int numero, std::string nomRue){
+    gestionnaire.demanderPC(id,villes,codePostal,numero,nomRue);
 }
 
 void Responsable::setPC(PC pc){
@@ -145,13 +144,13 @@ QHash<int,std::string>& Responsable::consulterDemande(){
     return  gestionnaire.getDialogueProducteurs().getDemande();
 }
 
-bool Responsable::reponseRecrutement(int idResponsable ,int idProducteur, std::string demande){
+bool Responsable::reponseRecrutement(int idProducteur,std::string demande){
     return true;
 }
 
 void Responsable::ajouterProducteur(int idProducteur,std::string demande){
     if(reponseRecrutement(id,demande)){
-        Producteur *p=gestionnaire.getDialogueProducteurs().getProducteurById(id);
+        Producteur *p=gestionnaire.getDialogueProducteurs().getProducteurById(idProducteur);
         pc.ajouterProducteur(*p);
     }
 }

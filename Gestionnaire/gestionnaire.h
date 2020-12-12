@@ -103,7 +103,7 @@ public:
      */
     void Rembourser(int consommateurId,int reponsableId);
 
-    void demanderPC(int id,std::string villes,int codePostal,int numéro,std::string nomRue);
+    void demanderPC(int id,std::string villes,int codePostal,int numero,std::string nomRue);
 
     QHashIterator<int,Responsable*> iterator();
 
@@ -112,6 +112,7 @@ public:
     DialogueProducteurs& getDialogueProducteurs();
 
     bool inscrire(double phone,std::string email);
+
 
 
 private:

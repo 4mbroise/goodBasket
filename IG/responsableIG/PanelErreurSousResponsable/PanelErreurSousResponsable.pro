@@ -17,10 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    PanelErreurSousResponsable.cpp
+    panelErreurSousResponsable.cpp
 
 HEADERS += \
-    PanelErreurSousResponsable.h
+    panelErreurSousResponsable.h
 
 FORMS += \
     PanelErreurSousResponsable.ui

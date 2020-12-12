@@ -120,6 +120,13 @@ class Producteur
          */
         QHashIterator<int,Produit> iterator();
 
+
+        /**
+         * @brief procedure supprimer livaison
+         * @param livraison livaison que le producteur demande de supprimer
+         */
+        void supprimerLivraison(Livraison livraison);
+
         /**
          * @brief operator = : redéfinition du = du producteur
          * @param p:producteur,on assigne des paramètres à cette classe
@@ -149,6 +156,11 @@ class Producteur
          * elle représente la boutique du producteur.
          */
         QHash<int,Produit> boutique;
+
+        /**
+         * @brief une liste de tous les livraisons de producteur
+         */
+        QList<Livraison> LivraisonProducteur;
 
         /**
          * @brief Notification reçu par Dialogue

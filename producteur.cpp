@@ -65,8 +65,13 @@ void Producteur::setGestionnaireDialogue(DialogueProducteurs &dp)
 
 }
 
+void Producteur::supprimerLivraison(Livraison livraison)
+{
+    this->LivraisonProducteur.removeOne(livraison);
+}
+
 void Producteur::demanderRecrutement(int idResponsable,std::string demande){
-    gestionnaireDialogue.demanderRecructement(this->id,idResponsable,demande);
+    gestionnaireDialogue.recevoirDemande(this->id,idResponsable,demande);
 }
 
 QHashIterator<int,Produit> Producteur::iterator(){

@@ -5,8 +5,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QListWidget>
-#include "PanelErreurSousResponsable.h"
-#include "PanelErreurSousResponsable.h"
+#include "../PanelErreurSousResponsable/panelErreurSousResponsable.h"
+
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)

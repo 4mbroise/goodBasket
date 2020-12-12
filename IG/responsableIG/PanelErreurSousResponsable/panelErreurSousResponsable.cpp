@@ -1,4 +1,4 @@
-#include "PanelErreurSousResponsable.h"
+#include "panelErreurSousResponsable.h"
 #include "ui_PanelErreurSousResponsable.h"
 
 Widget::Widget(QWidget *parent)

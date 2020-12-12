@@ -4,7 +4,6 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include "Outils/idgenerator.h"
-#include "Gestionnaire/gestionnaire.h"
 using namespace std;
 
 /**
@@ -12,6 +11,7 @@ using namespace std;
  * @version 1
  * @author GE Yuxuan
  */
+
 
 class Utilisateur {
 
@@ -142,8 +142,6 @@ class Utilisateur {
          */
         bool estResponsable;
 
-
-        Gestionnaire gestionnaire;
 };
 
 #endif // UTILISATEUR_H

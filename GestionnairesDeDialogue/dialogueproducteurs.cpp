@@ -113,7 +113,7 @@ void DialogueProducteurs::recruteProducteur(int idResponsable,std::string recrut
     cout<<recrutement+"(responsable id:"+std::to_string(idResponsable)+")"<<endl;
 }
 
-void DialogueProducteurs::recevoirDemander(int idResponsable,int idProducteur,std::string demande){
+void DialogueProducteurs::recevoirDemande(int idResponsable,int idProducteur,std::string demande){
     this->demande.insert(idProducteur,demande);
 }
 
