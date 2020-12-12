@@ -5,7 +5,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QListWidget>
-#include "../PanelErreurSousResponsable/panelErreurSousResponsable.h"
+#include "ErreurSousResponsable.h"
 
 
 Widget::Widget(QWidget *parent)
@@ -28,7 +28,8 @@ Widget::Widget(QWidget *parent)
     else{
         qDebug()<<"open database success!";
     }
-    //creer tableau
+
+    //creer tableau erreur
     QSqlQuery sqlQuery;
     // preparer exec
     QString createSql = QString("CREATE TABLE Erreurs (\
@@ -53,6 +54,32 @@ Widget::Widget(QWidget *parent)
         qDebug() << "Insertion!";
     }
 
+    //creer tableau producteur
+    // preparer exec
+    QString createSqlProducteur = QString("CREATE TABLE Producteurs (\
+                              id INT PRIMARY KEY NOT NULL,\
+                              boutiqueId INT NOT NULL, \
+                              LivraisonsId INT NOT NULL, \
+                              payment FLOAT NOT NULL)");
+    sqlQuery.prepare(createSqlProducteur);
+    // creer tableau
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {     qDebug() << "Tableau créé!";  }
+
+    //inserer
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1,1,1000)"))
+    {
+        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "Insertion!";
+    }
+
 }
 
 Widget::~Widget()
@@ -64,7 +91,6 @@ Widget::~Widget()
 void Widget::on_ConsulterReports_clicked()
 {
     QSqlQuery query;
-    QListWidgetItem *aItem;
 
     query.exec("select * from Erreurs");
     while(query.next())
@@ -73,9 +99,15 @@ void Widget::on_ConsulterReports_clicked()
         QString  apercu= query.value(1).toString();
         qDebug()<<id<<apercu;
 
-        aItem=new QListWidgetItem();
-        aItem->setText(apercu);
-        ui->SousList->addItem(aItem);
+     //   aItem=new QListWidgetItem();
+     //   aItem->setText(apercu);
+     //   ui->SousList->addItem(aItem);
+        ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
+        pItemWidget->setData(apercu);
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240, 120));
+        ui->SousList->addItem(pItem);
+        ui->SousList->setItemWidget(pItem,pItemWidget);
 
     }
 }

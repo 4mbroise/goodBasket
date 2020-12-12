@@ -17,13 +17,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    erreursousig.cpp \
     main.cpp \
+    producteursousig.cpp \
     widget.cpp
 
 HEADERS += \
+    erreursousig.h \
+    producteursousig.h \
     widget.h
 
 FORMS += \
+    ../../communeUi/erreur.ui \
+    #../../communeUi/producteur.ui \
+    erreursousig.ui \
+    producteursousig.ui \
     widget.ui
 
 # Default rules for deployment.
