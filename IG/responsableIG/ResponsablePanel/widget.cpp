@@ -21,7 +21,9 @@ Widget::Widget(QWidget *parent)
                   db.setHostName("127.0.0.1");                    //Host
                   db.setPort(3306);                               //Porte
                   db.setUserName("root");                         //login
-                  db.setPassword("root");                         //mot de passe
+                  db.setPassword("root");                       //mot de passe
+    db.setDatabaseName("../../../db.sqlite");
+
     if (! db.open()) {
         qDebug()<<"open database error!";
         return;
@@ -52,7 +54,7 @@ Widget::Widget(QWidget *parent)
     }
     else
     {
-        qDebug() << "Insertion!";
+        qDebug() << "InsertionErreur!";
     }
 
     //creer tableau producteur
@@ -73,6 +75,34 @@ Widget::Widget(QWidget *parent)
 
     //inserer
     if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1, 1, 1000)"))
+    {
+        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "InsertionProducteur!";
+    }
+
+    //creer tableau ProducteursLivaison
+    // preparer exec
+    QString createSqllivraison = QString("CREATE TABLE ProducteursLivaison (\
+                              id INT PRIMARY KEY NOT NULL,\
+                              nom TEXT NOT NULL, \
+                              quantite INT NOT NULL, \
+                              addresse TEXT NOT NULL, \
+                              Date TEXT NOT NULL, \
+                              producteurId INT NOT NULL)");
+    sqlQuery.prepare(createSqllivraison);
+    // creer tableau
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {     qDebug() << "Tableau créé!";  }
+
+    //inserer
+    if(!sqlQuery.exec("INSERT INTO ProducteursLivaison VALUES(1, \"tomate\", 5 , \" UL\",  \" 10/10/2010\",0 )"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -127,11 +157,11 @@ void Widget::on_PayerProducteur_clicked()
     while(query.next())
     {
         QString  livraisonsId= query.value(0).toString();
-        QString  payment= query.value(1).toString();
+        QString  payment= query.value(3).toString();
         qDebug()<<livraisonsId<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
-        pItemWidget->setData(payment,livraisonsId);
+        pItemWidget->setData(payment,QString(ui->NumProducteur->text()));
         QListWidgetItem* pItem = new QListWidgetItem();
         pItem->setSizeHint(QSize(240,640 ));
         ui->SousList2->addItem(pItem);

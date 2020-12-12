@@ -14,13 +14,14 @@ ProduitSousResponsable::~ProduitSousResponsable()
 }
 
 
-void ProduitSousResponsable::setData(const QString& a,const QString& id)
+void ProduitSousResponsable::setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur)
 {
- //   ui->total->setText("Total : "+a+" euro");
-
+    ui->NomProduit->setText(nom);
+    ui->Quantite->setText(quantite);
+    ui->Adresse->setText(adresse);
+    ui->Date->setText(date);
+    ui->NomProducteur->setText(nomProducteur);
 }
 
-void ProduitSousResponsable::on_Confirmer_clicked()
-{
 
-}
+

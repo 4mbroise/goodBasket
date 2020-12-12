@@ -14,11 +14,9 @@ class ProduitSousResponsable : public QWidget
 public:
     ProduitSousResponsable(QWidget *parent = nullptr);
     ~ProduitSousResponsable();
-    void setData(const QString& a,const QString& id);
+    void setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur);
 
 
-private slots:
-    void on_Confirmer_clicked();
 
 private:
     Ui::ProduitSousResponsable *ui;
