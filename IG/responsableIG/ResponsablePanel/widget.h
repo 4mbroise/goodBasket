@@ -18,6 +18,8 @@ public:
 private slots:
     void on_ConsulterReports_clicked();
 
+    void on_PayerProducteur_clicked();
+
 private:
     Ui::Widget *ui;
 };

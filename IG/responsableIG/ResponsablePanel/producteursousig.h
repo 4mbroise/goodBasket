@@ -14,8 +14,11 @@ class ProducteurSousResponsable : public QWidget
 public:
     ProducteurSousResponsable(QWidget *parent = nullptr);
     ~ProducteurSousResponsable();
-    void setData(const QString& a);
+    void setData(const QString& a,const QString& id);
 
+
+private slots:
+    void on_Confirmer_clicked();
 
 private:
     Ui::ProducteurSousResponsable *ui;

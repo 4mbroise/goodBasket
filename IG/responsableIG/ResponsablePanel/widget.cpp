@@ -5,7 +5,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QListWidget>
-#include "ErreurSousResponsable.h"
+#include "erreursousig.h"
+#include "producteursousig.h"
 
 
 Widget::Widget(QWidget *parent)
@@ -71,7 +72,7 @@ Widget::Widget(QWidget *parent)
     {     qDebug() << "Tableau créé!";  }
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1,1,1000)"))
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1, 1, 1000)"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -99,9 +100,6 @@ void Widget::on_ConsulterReports_clicked()
         QString  apercu= query.value(1).toString();
         qDebug()<<id<<apercu;
 
-     //   aItem=new QListWidgetItem();
-     //   aItem->setText(apercu);
-     //   ui->SousList->addItem(aItem);
         ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
         pItemWidget->setData(apercu);
         QListWidgetItem* pItem = new QListWidgetItem();
@@ -112,3 +110,32 @@ void Widget::on_ConsulterReports_clicked()
     }
 }
 
+
+void Widget::on_PayerProducteur_clicked()
+{
+    QSqlQuery query;
+
+    //verifier id de producteur
+    if(query.exec("select * from Producteurs where id=\""+ui->NumProducteur->text()+"\""))
+    {
+        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Trouvé!";
+    }
+    while(query.next())
+    {
+        QString  livraisonsId= query.value(0).toString();
+        QString  payment= query.value(1).toString();
+        qDebug()<<livraisonsId<<payment;
+
+        ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
+        pItemWidget->setData(payment,livraisonsId);
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240,640 ));
+        ui->SousList2->addItem(pItem);
+        ui->SousList2->setItemWidget(pItem,pItemWidget);
+
+    }
+}

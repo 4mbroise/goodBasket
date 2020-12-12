@@ -94,16 +94,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLineEdit" name="NumProducteur">
-   <property name="geometry">
-    <rect>
-     <x>970</x>
-     <y>120</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="Numlivraison">
    <property name="geometry">
     <rect>
@@ -121,6 +111,16 @@
      <y>400</y>
      <width>113</width>
      <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="NumProducteur">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>120</y>
+     <width>42</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

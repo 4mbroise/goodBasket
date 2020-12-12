@@ -20,11 +20,13 @@ SOURCES += \
     erreursousig.cpp \
     main.cpp \
     producteursousig.cpp \
+    produitsousig.cpp \
     widget.cpp
 
 HEADERS += \
     erreursousig.h \
     producteursousig.h \
+    produitsousig.h \
     widget.h
 
 FORMS += \
@@ -32,6 +34,7 @@ FORMS += \
     #../../communeUi/producteur.ui \
     erreursousig.ui \
     producteursousig.ui \
+    produitsousig.ui \
     widget.ui
 
 # Default rules for deployment.
