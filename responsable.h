@@ -20,7 +20,7 @@ class Utilisateur;
 
 //:public Utilisateur (supprimer pour instant)
 
-class Responsable
+class Responsable: public Utilisateur
 {
     public:
      /**
@@ -31,12 +31,80 @@ class Responsable
        * @param phone:A
        * @param Gestionnaire: gestionnaire
        */
-     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,Gestionnaire &gestionnaire);
+     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,PC pc,Gestionnaire &gestionnaire);
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
       */
-    // ~Responsable(); (supprimer pour instant)
+
+     ~Responsable();
+
+     /**
+      * @brief getId:retourner identifié
+      * @return Id unique associé à un Responsable
+      */
+
+     virtual const int& getId();
+
+     /**
+      * @brief getNom
+      * @return nom d'un Responsable
+      */
+     virtual const QString& getNom();
+
+     /**
+      * @brief getPrenom
+      * @return prénom d'un Responsable
+      */
+     virtual const QString& getPrenom();
+
+     /**
+      * @brief getAdresse
+      * @return adresse d'un Responsable
+      */
+     virtual const QString& getAdresse();
+
+     /**
+      * @brief getPhone
+      * @return numéro de téléphone d'un Responsable
+      */
+     virtual const double& getPhone();
+
+     /**
+      * @brief getEmail
+      * @return email d'un Responsable
+      */
+     virtual const QString& getEmail();
+
+     /**
+      * @brief changeNom:modifier ou ajouter le nom d'un Responsable
+      * @param nom:nouveau nom
+      */
+     virtual void changeNom(std::string nom);
+
+     /**
+      * @brief changePrenom:changeNom:modifier ou ajouter le prénom d'un Responsable
+      * @param prenom:noveau prénom
+      */
+     virtual void changePrenom(std::string prenom);
+
+     /**
+      * @brief changeAdresse:modifier ou ajouter l'adresse d'un Responsable
+      * @param adresse:nouveau adresse
+      */
+     virtual void changeAdresse(std::string adresse);
+
+     /**
+      * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un Responsable
+      * @param phone:nouveau nom
+      */
+     virtual void changePhone(double phone);
+
+     /**
+      * @brief changeEmail:modifier ou ajouter l'email d'un Responsable
+      * @param email:noveau email
+      */
+    virtual void changeEmail(std::string email);
 
 
      void ajouterProduitAuPanier();
@@ -78,9 +146,19 @@ class Responsable
      */
     void DemanderRembourser(int consommateurId);
 
+    void demanderPC(int id,std::string villes,int codePostal,int numéro,std::string nomRue);
 
+    void setPC(PC pc);
 
+    PC& getPC();
 
+    void recruterProducteur(std::string recrutement);
+
+    QHash<int,std::string>& consulterDemande();
+
+    bool reponseRecrutement(int idResponsable,int id Producteur,std::string demande);
+
+    ajouterProducteur(int idProducteur,std::string demande);
 
     private:
 
@@ -97,17 +175,17 @@ class Responsable
         /**
          * @brief nom
          */
-        std::string nom;
+        QString nom;
 
         /**
          * @brief prenom
          */
-        std::string prenom;
+        QString prenom;
 
         /**
          * @brief adresse
          */
-        std::string adresse;
+        QString adresse;
 
         /**
          * @brief numero de telephone
@@ -117,7 +195,7 @@ class Responsable
         /**
          * @brief adresse mail
          */
-        std::string email;
+        QString email;
 
         /**
          * @brief GestionnaireDeDialogue qui fait le lien entre les requêtes du producteur et les actions réellement effectuées
@@ -130,6 +208,10 @@ class Responsable
          *
          */
         bool confirmer;
+
+        PC pc;
+
+        QList<Producteur> demande;
 
 };
 

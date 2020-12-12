@@ -25,10 +25,6 @@ class Livraison{
      */
     Livraison(Produit p,int commande);
 
-    /**
-     * @brief Destructeur de la classe livraison
-     */
-   // ~Livraison();
 
     /**
      * @brief getProduit:obtenir le produit

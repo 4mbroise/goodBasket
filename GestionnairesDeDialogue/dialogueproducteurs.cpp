@@ -105,6 +105,19 @@ Producteur* DialogueProducteurs::getProducteurById(int producteurId)
     return (producteurExiste(producteurId)) ? retrouverProducteur(producteurId) : nullptr;
 }
 
+QHash<int,std::string>& DialogueProducteurs::getDemande(){
+    return  this->demande;
+}
+
+void DialogueProducteurs::recruteProducteur(int idResponsable,std::string recrutement){
+    cout<<recrutement+"(responsable id:"+std::to_string(idResponsable)+")"<<endl;
+}
+
+void DialogueProducteurs::recevoirDemander(int idResponsable,int idProducteur,std::string demande){
+    this->demande.insert(idProducteur,demande);
+}
+
+
 const std::string DialogueProducteurs::toString()
 {
     std::string returned = "Gestionnaire de Dialogue PRODUCTEUR (Nb producteur = ";

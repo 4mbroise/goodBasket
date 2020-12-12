@@ -4,7 +4,7 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include "Outils/idgenerator.h"
-
+#include "Gestionnaire/gestionnaire.h"
 using namespace std;
 
 /**
@@ -25,10 +25,6 @@ class Utilisateur {
          */
          Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
 
-         /**
-          * @brief Utilisateur:constructure sans paramètre
-          */
-         Utilisateur();
 
          /**
           * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
@@ -102,6 +98,7 @@ class Utilisateur {
         virtual void changeEmail(std::string email);
 
 
+
     protected:
         /**
          * @brief Id unique associé au Utilisateur
@@ -146,6 +143,7 @@ class Utilisateur {
         bool estResponsable;
 
 
+        Gestionnaire gestionnaire;
 };
 
 #endif // UTILISATEUR_H

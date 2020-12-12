@@ -39,16 +39,6 @@ void Producteur::demanderRetirerProduit(int idProduit)
     this->gestionnaireDialogue.retirerProduit(idProduit, this->id);
 }
 
-void Producteur::demanderAnnulerLivraison(Livraison livraison)
-{
-    this->gestionnaireDialogue.supprimerLivraison(livraison,this->id);
-}
-
-void Producteur::supprimerLivraison(Livraison livraison)
-{
-    this->LivraisonProducteur.removeOne(livraison);
-}
-
 const int& Producteur::getId()
 {
     return this->id;
@@ -69,9 +59,14 @@ void Producteur::retirerProduit(int idProduit)
     this->boutique.remove(idProduit);
 }
 
-void Producteur::setGestionnaireDialogue(DialogueProducteurs dp)
+void Producteur::setGestionnaireDialogue(DialogueProducteurs &dp)
 {
     this->gestionnaireDialogue = dp;
+
+}
+
+void Producteur::demanderRecrutement(int idResponsable,std::string demande){
+    gestionnaireDialogue.demanderRecructement(this->id,idResponsable,demande);
 }
 
 QHashIterator<int,Produit> Producteur::iterator(){

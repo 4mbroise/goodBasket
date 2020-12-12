@@ -3,7 +3,7 @@
 
 #include <QtCore/QHash>
 #include "produit.h"
-#include "livraison.h"
+
 #include "Outils/idgenerator.h"
 #include "GestionnairesDeDialogue/dialogueproducteurs.h"
 
@@ -55,21 +55,6 @@ class Producteur
         void demanderRetirerProduit(int idProduit);
 
         /**
-         * @brief Envoie une requête de supression de livraison préalablement mis en attente au gestionnaire de dialogue associé,
-         * le producteur doit livraison qu'il souhaite supprimer de sa boutique pour parvenir à un succès
-         * parvenir à un succès
-         *quantité de stock augemente
-         * @param livraison livaison que le producteur demande de supprimer
-         */
-        void demanderAnnulerLivraison(Livraison livraison);
-
-        /**
-         * @brief procedure supprimer livaison
-         * @param livraison livaison que le producteur demande de supprimer
-         */
-        void supprimerLivraison(Livraison livraison);
-
-        /**
          * @brief Fonction permettant de vérifier l'existance d'un produit dans la boutique du producteur via son ID
          * 
          * @param idProduit id du produit dont on veut vérifier l'existence dans la boutique
@@ -88,6 +73,7 @@ class Producteur
          * @param imagePath chemin d'accès à l'image associée au nouveau produit
          */
         void ajouterProduit(int quantite, double prix, std::string nom, std::string imagePath);
+
 
         /**
          * @brief fonction appelée par le gestionnaire de dialogue associé au producteur qui 
@@ -123,7 +109,10 @@ class Producteur
          * 
          * @param dp le gestionnaire de dialogue qu'on associera à ce producteur
          */
-        void setGestionnaireDialogue(DialogueProducteurs dp);
+        void setGestionnaireDialogue(DialogueProducteurs& dp);
+
+
+        void demanderRecrutement(int idResponsable,std::string demande);
 
         /**
          * @brief iterator de tous les produits du producteur
@@ -160,11 +149,6 @@ class Producteur
          * elle représente la boutique du producteur.
          */
         QHash<int,Produit> boutique;
-
-        /**
-         * @brief une liste de tous les livraisons de producteur
-         */
-        QList<Livraison> LivraisonProducteur;
 
         /**
          * @brief Notification reçu par Dialogue

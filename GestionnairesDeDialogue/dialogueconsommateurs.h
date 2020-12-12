@@ -102,6 +102,8 @@ public:
     void notifierConsommateur(int idConcommateur,std::string);
 
 
+    QHashIterator<int,Consommateur*> iterator();
+
 
    /**
     * @brief Fonction qui retourne le nombre de consommateur dans goodBasket

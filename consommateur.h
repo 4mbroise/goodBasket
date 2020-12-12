@@ -30,12 +30,11 @@ class Consommateur: public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:numéro de téléphone
        */
-     Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,DialogueConsommateurs& dc);
+    Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,DialogueConsommateurs &dc);
 
      /**
       * @brief Consommateur:constructure de la classe consommateur sans paramètre
       */
-     Consommateur();
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
@@ -207,6 +206,7 @@ class Consommateur: public Utilisateur
           * @brief une liste de tous les livraisons(produits) acheté avant
           */
          QList<Livraison> LivraisonPrevues;
+
 
          /**
           * @brief gestionnaire:DialogueGestionnaireDeDialogue qui fait le lien entre les requêtes du consommateur et les actions réellement effectuées

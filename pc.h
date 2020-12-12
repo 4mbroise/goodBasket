@@ -25,10 +25,8 @@ class PC{
      */
     PC(std::string adressePC);
 
-    /**
-     * @brief Destructeur de la classe pc
-     */
-    ~PC();
+    PC();
+
 
     /**
      * @brief getAdressePC:obtenir l'adresse du PC
@@ -89,6 +87,8 @@ class PC{
      */
     void setCatalogue();
 
+
+
     /**
      * @brief toString du pc
      * @return un string de pc qui présente l'adresse du PC et le string de catalogue
@@ -108,12 +108,15 @@ class PC{
      */
     bool etat;
 
+
+
     /**
      * @brief producteurs:Tous les producteurs stockés dans une table de hachage, la clé est l'id du producteur
      */
     QHash<int,Producteur> producteurs;
 
     QHash<int,Produit> catalogue;
+
 
 };
 

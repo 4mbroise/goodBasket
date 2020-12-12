@@ -32,6 +32,7 @@ HEADERS += \
     consommateur.h \
     cycle.h \
     erreur.h \
+    goodbasket.h \
     livraison.h \
     main.h \
     mainwindow.h \

@@ -25,7 +25,7 @@ bool DialogueConsommateurs::estDepasse(Produit p,int commande){
 }
 
 Consommateur* DialogueConsommateurs::getConsommateur(int idConsommateur){
-    return consommateurs.value(idConsommateur);
+    return consommateurs.isEmpty()?consommateurs.value(idConsommateur):nullptr;
 }
 
 
@@ -93,6 +93,12 @@ void DialogueConsommateurs::notifierConsommateur(int idConcommateur,std::string 
     cout << s <<endl;
 }
 
+QHashIterator<int,Consommateur*> DialogueConsommateurs::iterator(){
+    QHashIterator<int,Consommateur*> it (this->consommateurs);
+    return it;
+
+}
+
 const string DialogueConsommateurs::toSring(){
     std::string returned = "Gestionnaire de Dialogue Consommateur(Nb consommateur = ";
 
@@ -108,3 +114,5 @@ const string DialogueConsommateurs::toSring(){
 
     return returned;
 }
+
+

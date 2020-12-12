@@ -11,9 +11,6 @@ PC::PC(std::string adressePC){
 
 }
 
-PC::~PC(){
-    qDebug()<<"PC est enlevé"<<endl;
-}
 
 
 const QString& PC::getAdressePC(){

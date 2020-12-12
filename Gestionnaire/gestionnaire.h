@@ -7,7 +7,7 @@
 #include "../GestionnairesDeDialogue/dialogueconsommateurs.h"
 #include "../responsable.h"
 #include "../erreur.h"
-
+#include "../consommateur.h"
 
 class Responsable;
 
@@ -59,6 +59,8 @@ public:
      */
     void AjouteResponsable(Responsable* responsable);
 
+    Responsable* getResponsable(int idResponsable);
+
     /**
      * @brief Permet de notifier le payment reçu à dialogueproducteur
      */
@@ -101,7 +103,15 @@ public:
      */
     void Rembourser(int consommateurId,int reponsableId);
 
+    void demanderPC(int id,std::string villes,int codePostal,int numéro,std::string nomRue);
 
+    QHashIterator<int,Responsable*> iterator();
+
+    DialogueConsommateurs& getDialogueConsommateurs();
+
+    DialogueProducteurs& getDialogueProducteurs();
+
+    bool inscrire(double phone,std::string email);
 
 
 private:
@@ -139,6 +149,7 @@ private:
     * elle représente la liste des responsables dans goodBasket
     */
     QHash <int,Responsable*> responsables;
+
 
 
 };

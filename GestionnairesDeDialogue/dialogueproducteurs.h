@@ -62,6 +62,9 @@ public:
      */
     void retirerProduit(int idProduit, int idProducteur);
 
+   // void demanderPC(std::string villes,int codePostal,int numéro,std::string nomRue);
+
+
     /**
      * @brief Fonction qui retourne le nombre de producteur dans goodbasket
      * 
@@ -84,6 +87,8 @@ public:
      */
     void supprimerLivraison(Livraison livraison,int idproducteur);
 
+
+
     /**
      * @brief getter de producteur par Id avec vérification
      * @param producteurId Id du producteur
@@ -98,6 +103,12 @@ public:
      * la description de tout les producteurs contenu dans celui ci
      */
     const std::string toString();
+
+    void recruteProducteur(int idResponsable,std::string recrutement);
+
+    void recevoirDemander(int idResponsable,int idProducteur,std::string demande);
+
+    QHash<int,std::string>& getDemande();
 
 
 private:
@@ -141,6 +152,9 @@ private:
     bool produitExiste(int idProduit, int producteurId);
 
 
+    QHash<int,std::string> demande;
+
+    QHash<int, QHash<int,std::string>> demandeByIdResposable;
 };
 
 #endif // DIALOGUEPRODUCTEURS_H

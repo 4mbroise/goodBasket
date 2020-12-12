@@ -111,3 +111,54 @@ void Gestionnaire::NotifierErreur(int responsableID)
     }
 }
 
+QHashIterator<int,Responsable*> Gestionnaire::iterator(){
+    QHashIterator<int,Responsable*> it(this->responsables);
+    return it;
+}
+
+void Gestionnaire::demanderPC(int id,std::string villes, int codePostal, int numéro, std::string nomRue){
+    if(responsables.value(id)!=nullptr){
+        QHashIterator<int,Responsable*> it=this->iterator();
+        std::string adresse=villes+to_string(codePostal)+to_string(numéro)+nomRue;
+        bool estExiste=false;
+        while(it.hasNext()){
+            it.next();
+            if(it.value()->getPC().getAdressePC()==adresse.c_str()){
+                estExiste=true;
+               break;
+            }
+        }
+        if(!estExiste){
+            PC pc(adresse);
+            getResponsable(id)->setPC(pc);
+        }
+    }
+}
+
+
+
+DialogueConsommateurs& Gestionnaire::getDialogueConsommateurs(){
+    return this->gestionnaireDialogueConsommateur;
+}
+
+DialogueProducteurs& Gestionnaire::getDialogueProducteurs(){
+    return  this->gestionnaireDialogueProducteur;
+}
+
+bool Gestionnaire::inscrire(double phone,std::string email){
+    QHashIterator<int,Responsable*> it=this->iterator();
+    while(it.hasNext()){
+        it.next();
+        if(it.value()->getEmail()==email.c_str()||it.value()->getPhone()==phone){
+            return false;
+        }
+    }
+    QHashIterator<int,Consommateur*> iter=gestionnaireDialogueConsommateur.iterator();
+    while(iter.hasNext()){
+        iter.next();
+           if(iter.value()->getEmail()==email.c_str()||iter.value()->getPhone()==phone){
+            return false;
+        }
+    }
+    return true;
+}

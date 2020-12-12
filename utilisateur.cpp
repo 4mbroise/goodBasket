@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <iostream>
 
-Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email)
+Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,Gestionnaire &gestionnaire):gestionnaire(gestionnaire)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdProducteur();
@@ -14,15 +14,10 @@ Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,
     this->email =QString(email.c_str());
     estResponsable=false;
     estConsommateur=false;
+    gestionnaire.AjouteUtilisateur(this);
     cout << "Utilisateur est créé" << endl;
 }
 
-Utilisateur::Utilisateur(){
-    IdGenerator& gen = IdGenerator::Instance();
-    int newId = gen.getNewIdProducteur();
-    this->id = newId;
-    cout << "Utilisateur est créé" << endl;
-}
 
 Utilisateur::~Utilisateur(){
     cout << "Utilisateur est enlevé" << endl;
@@ -75,5 +70,12 @@ void Utilisateur::changePhone(double phone){
 
 void Utilisateur::changeEmail(std::string email){
     this->email=QString(email.c_str());
+}
+
+
+
+Responsable Utilisateur::devenirResponsable(std::string nom, std::string prenom, std::string adresse, double phone, std::string email, PC pc, Gestionnaire &gestionnaire){
+     Responsable r(nom,prenom,adresse,phone,email,pc,gestionnaire);
+     return r;
 }
 
