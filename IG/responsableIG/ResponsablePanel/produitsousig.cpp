@@ -16,11 +16,11 @@ ProduitSousResponsable::~ProduitSousResponsable()
 
 void ProduitSousResponsable::setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur)
 {
-    ui->NomProduit->setText(nom);
-    ui->Quantite->setText(quantite);
-    ui->Adresse->setText(adresse);
-    ui->Date->setText(date);
-    ui->NomProducteur->setText(nomProducteur);
+    ui->NomProduit->setText("Nom : "+nom);
+    ui->Quantite->setText("Quantite : "+quantite);
+    ui->Adresse->setText("Adresse : "+adresse);
+    ui->Date->setText("Date : "+date);
+    ui->NomProducteur->setText("IdProducteur : "+nomProducteur);
 }
 
 

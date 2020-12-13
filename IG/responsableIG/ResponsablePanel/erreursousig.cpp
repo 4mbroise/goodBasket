@@ -15,7 +15,7 @@ ErreurSousResponsable::~ErreurSousResponsable()
 
 void ErreurSousResponsable::on_Confirmer_clicked()
 {
-
+    this->deleteLater();
 }
 
 void ErreurSousResponsable::setData(const QString& a)
