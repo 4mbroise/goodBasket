@@ -2,6 +2,7 @@
 #define PRODUCTEURSOUSIG_H
 
 #include <QWidget>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ProducteurSousResponsable; }

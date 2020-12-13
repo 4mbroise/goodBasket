@@ -56,12 +56,11 @@ void ProducteurSousResponsable::setData(const QString& a,const QString& id)
         pItem->setSizeHint(QSize(240,640 ));
         ui->listWidget->addItem(pItem);
         ui->listWidget->setItemWidget(pItem,pItemWidget);
-
     }
 
 }
 
 void ProducteurSousResponsable::on_Confirmer_clicked()
 {
-
+    this->deleteLater();
 }

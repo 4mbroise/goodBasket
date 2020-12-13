@@ -41,6 +41,8 @@ private slots:
      */
     void on_PayerProducteur_clicked();
 
+    void on_confirmer_clicked();
+
 private:
     /**
      * @brief ui de interface responsable

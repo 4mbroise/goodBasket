@@ -93,6 +93,8 @@ void Widget::on_ConsulterReports_clicked()
 {
     QSqlQuery query;
 
+    ui->SousList->clear();
+
     //verifier id de Erreur
     if(!query.exec("select * from Erreurs"))
     {
@@ -123,6 +125,10 @@ void Widget::on_PayerProducteur_clicked()
 {
     QSqlQuery query;
 
+
+    ui->SousList2->clear();
+
+
     //verifier id de producteur
     if(!query.exec("select * from Producteurs where id=\""+ui->NumProducteur->text()+"\""))
     {
@@ -136,6 +142,7 @@ void Widget::on_PayerProducteur_clicked()
     {
         QString  livraisonsId= query.value(0).toString();
         QString  payment= query.value(1).toString();
+        int count=0;
         qDebug()<<livraisonsId<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
@@ -143,7 +150,12 @@ void Widget::on_PayerProducteur_clicked()
         QListWidgetItem* pItem = new QListWidgetItem();
         pItem->setSizeHint(QSize(240,640 ));
         ui->SousList2->addItem(pItem);
+        count++;
         ui->SousList2->setItemWidget(pItem,pItemWidget);
 
     }
+}
+
+void Widget::on_confirmer_clicked()
+{
 }
