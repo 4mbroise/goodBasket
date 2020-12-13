@@ -17,8 +17,8 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr, Producteur *p = nullptr);
-    Widget(Producteur *p);
+    Widget(QWidget *parent = nullptr, Producteur p = Producteur(-1));
+    Widget(Producteur p);
     ~Widget();
 
 signals:
@@ -28,7 +28,8 @@ private slots:
     void on_buttonAjouterProduit_released();
 
 private:
-    Producteur *model;
+    bool isFormulaireOK();
+    Producteur model;
     Ui::Widget *ui;
 };
 #endif // WIDGET_H

@@ -24,7 +24,6 @@ Widget::Widget(QWidget *parent)
                   db.setPassword("root");                       //mot de passe
     db.setDatabaseName("../../../db.sqlite");
 
-
     if (! db.open()) {
         qDebug()<<"open database error!";
         return;
@@ -33,9 +32,20 @@ Widget::Widget(QWidget *parent)
         qDebug()<<"open database success!";
     }
 
-
+    //creer tableau erreur
     QSqlQuery sqlQuery;
-
+    // preparer exec
+    QString createSql = QString("CREATE TABLE Erreurs (\
+                              id INT PRIMARY KEY NOT NULL,\
+                              apercu TEXT NOT NULL)");
+    sqlQuery.prepare(createSql);
+    // creer tableau
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {     qDebug() << "Tableau créé!";  }
 
     //inserer
     if(!sqlQuery.exec("INSERT INTO Erreurs VALUES(0, \" manque responsable \")"))
@@ -47,10 +57,24 @@ Widget::Widget(QWidget *parent)
         qDebug() << "InsertionErreur!";
     }
 
-
+    //creer tableau producteur
+    // preparer exec
+    QString createSqlProducteur = QString("CREATE TABLE Producteurs (\
+                              id INT PRIMARY KEY NOT NULL,\
+                              boutiqueId INT NOT NULL, \
+                              LivraisonsId INT NOT NULL, \
+                              payment FLOAT NOT NULL)");
+    sqlQuery.prepare(createSqlProducteur);
+    // creer tableau
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {     qDebug() << "Tableau créé!";  }
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1000)"))
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1, 1, 1000)"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -59,9 +83,26 @@ Widget::Widget(QWidget *parent)
         qDebug() << "InsertionProducteur!";
     }
 
+    //creer tableau ProducteursLivaison
+    // preparer exec
+    QString createSqllivraison = QString("CREATE TABLE ProducteursLivaison (\
+                              id INT PRIMARY KEY NOT NULL,\
+                              nom TEXT NOT NULL, \
+                              quantite INT NOT NULL, \
+                              addresse TEXT NOT NULL, \
+                              Date TEXT NOT NULL, \
+                              producteurId INT NOT NULL)");
+    sqlQuery.prepare(createSqllivraison);
+    // creer tableau
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {     qDebug() << "Tableau créé!";  }
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(0, \"tomate\",0 ,0 ,0 , 2004-05-23, \" UL\")"))
+    if(!sqlQuery.exec("INSERT INTO ProducteursLivaison VALUES(1, \"tomate\", 5 , \" UL\",  \" 10/10/2010\",0 )"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -69,17 +110,6 @@ Widget::Widget(QWidget *parent)
     {
         qDebug() << "Insertion!";
     }
-
-    //inserer
-    if(!sqlQuery.exec("INSERT INTO Produit VALUES(0, 10.0 ,\"tomate\",5 , 0)"))
-    {
-        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
-    }
-    else
-    {
-        qDebug() << "Insertion!";
-    }
-
 
 }
 
@@ -93,17 +123,7 @@ void Widget::on_ConsulterReports_clicked()
 {
     QSqlQuery query;
 
-    ui->SousList->clear();
-
-    //verifier id de Erreur
-    if(!query.exec("select * from Erreurs"))
-    {
-        qDebug() << "Erreur: recherche ce Erreur. " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Trouvé!";
-    }
+    query.exec("select * from Erreurs");
     while(query.next())
     {
         QString  id= query.value(0).toString();
@@ -125,12 +145,8 @@ void Widget::on_PayerProducteur_clicked()
 {
     QSqlQuery query;
 
-
-    ui->SousList2->clear();
-
-
     //verifier id de producteur
-    if(!query.exec("select * from Producteurs where id=\""+ui->NumProducteur->text()+"\""))
+    if(query.exec("select * from Producteurs where id=\""+ui->NumProducteur->text()+"\""))
     {
         qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
     }
@@ -141,8 +157,7 @@ void Widget::on_PayerProducteur_clicked()
     while(query.next())
     {
         QString  livraisonsId= query.value(0).toString();
-        QString  payment= query.value(1).toString();
-        int count=0;
+        QString  payment= query.value(3).toString();
         qDebug()<<livraisonsId<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
@@ -150,12 +165,7 @@ void Widget::on_PayerProducteur_clicked()
         QListWidgetItem* pItem = new QListWidgetItem();
         pItem->setSizeHint(QSize(240,640 ));
         ui->SousList2->addItem(pItem);
-        count++;
         ui->SousList2->setItemWidget(pItem,pItemWidget);
 
     }
-}
-
-void Widget::on_confirmer_clicked()
-{
 }

@@ -1,8 +1,10 @@
 #include "producteur.h"
 #include <QDebug>
+#include <QString>
 #include <iostream>
 using namespace std;
 
+/*
 Producteur::Producteur(DialogueProducteurs &dp):gestionnaireDialogue(dp)
 {
     IdGenerator& gen = IdGenerator::Instance();
@@ -12,13 +14,32 @@ Producteur::Producteur(DialogueProducteurs &dp):gestionnaireDialogue(dp)
     gestionnaireDialogue.ajouterProducteur(this);
 };
 
+Producteur::Producteur(int idUtilisateur, DialogueProducteurs &dp):gestionnaireDialogue(dp)
+{
+    this->id = idUtilisateur;
+    gestionnaireDialogue = dp;
+    gestionnaireDialogue.ajouterProducteur(this);
 
+}
+*/
 
+Producteur::Producteur(int idUtilisateur)
+{
+    this->id = idUtilisateur;
+}
+
+Producteur::Producteur()
+{
+    this->id = -1;
+}
+
+/*
 void Producteur::demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath)
 {
     qDebug() << "DemanderAjoutProduit" << endl;
     gestionnaireDialogue.ajouterProduit(prix, quantite, nom, imagePath, this->id);
 }
+*/
 
 void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std::string imagePath)
 {
@@ -29,15 +50,57 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
     boutique.insert(idProduit,produitAjoute);
 }
 
+void Producteur::ajouterProduitBDD(int quantite, double prix, std::string nom)
+{
+    //On cherche l'idProduit max dans la table
+    QSqlQuery sqlQuery;
+    // preparer exec
+    QString createSql = QString("CREATE TABLE test");
+    sqlQuery.prepare(createSql);
+    if(!sqlQuery.exec("SELECT max(idProduit) FROM Produit"))
+    {
+        qDebug() << "ERREUR requete SQL" << sqlQuery.lastError();
+    }
+    else
+    {
+        //On insere le nouveau produit avec comme id l'idProduitMax qu'on a trouvé +1
+        sqlQuery.next();
+        int actualMaxId = sqlQuery.value(0).toInt();
+
+        QSqlQuery requeteInsertion;
+        requeteInsertion.prepare("INSERT INTO Produit (idProduit, prix, nom, quantite, idProducteur)"
+                                "VALUES(:idProduit, :prix, :nom, :quantite, :idProducteur)");
+
+
+
+        requeteInsertion.bindValue(":idProduit", actualMaxId+1);
+        requeteInsertion.bindValue(":prix", prix);
+        requeteInsertion.bindValue(":nom", QString::fromStdString(nom));
+        requeteInsertion.bindValue(":quantite", quantite);
+        requeteInsertion.bindValue(":idProducteur", this->id);
+
+        if(!requeteInsertion.exec())
+        {
+            qDebug() << "ERREUR insertion nouveau Produit" << sqlQuery.lastError();
+        }
+        else
+        {
+             qDebug() << "insertion réussies" << endl;
+        }
+    }
+
+}
+
 bool Producteur::produitExiste(int idProduit)
 {
     return this->boutique.contains(idProduit);
 }
 
+/*
 void Producteur::demanderRetirerProduit(int idProduit)
 {
     this->gestionnaireDialogue.retirerProduit(idProduit, this->id);
-}
+}*/
 
 const int& Producteur::getId()
 {
@@ -56,23 +119,42 @@ void Producteur::setMessage(std::string mess)
 
 void Producteur::retirerProduit(int idProduit)
 {
-    this->boutique.remove(idProduit);
+    QSqlQuery sqlQuery;
+
+    QString query= QString("DELETE FROM Produit WHERE idProduit = ");
+    query.append(QString::number(idProduit));
+    query.append(QString::fromStdString(" AND idProducteur = "));
+    query.append(QString::number(this->id));
+    sqlQuery.prepare(query);
+
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "ERREUR DELETE Produit SQL" << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "SUCCES DELETE Produit SQL";
+    }
 }
 
+/*
 void Producteur::setGestionnaireDialogue(DialogueProducteurs &dp)
 {
     this->gestionnaireDialogue = dp;
 
 }
+*/
 
 void Producteur::supprimerLivraison(Livraison livraison)
 {
     this->LivraisonProducteur.removeOne(livraison);
 }
 
+/*
 void Producteur::demanderRecrutement(int idResponsable,std::string demande){
     gestionnaireDialogue.recevoirDemande(this->id,idResponsable,demande);
 }
+*/
 
 QHashIterator<int,Produit> Producteur::iterator(){
     QHashIterator<int,Produit> i(this->boutique);
@@ -83,7 +165,7 @@ void Producteur::operator=(const Producteur& p ){
     this->id=p.id;
     this->boutique=p.boutique;
     this->message=p.message;
-    this->gestionnaireDialogue=p.gestionnaireDialogue;
+    //this->gestionnaireDialogue=p.gestionnaireDialogue;
 
 }
 

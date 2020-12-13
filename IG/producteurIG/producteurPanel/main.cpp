@@ -3,14 +3,22 @@
 
 int main(int argc, char *argv[])
 {
-    DialogueProducteurs dp = DialogueProducteurs();
-    Producteur pr1 = Producteur(dp);
-    pr1.demanderAjoutProduit(10,5.5,"courgettes","courgettes.jpg");
-    pr1.demanderAjoutProduit(25,2.285,"tomates","tomates.jpg");
+    if(!sqlTool::openConnexion())
+    {
+        cout << "Erreur Connexion BDD dans IG producteurPanel" <<endl;
+        return EXIT_FAILURE;
+    }
+    else
+    {
 
-    QApplication a(argc, argv);
-    producteurPanel* w = new producteurPanel(nullptr, dp.getProducteurById(1));
-    w->show();
-    return a.exec();
+        //DialogueProducteurs dp = DialogueProducteurs();
+        Producteur pr1 = Producteur(0);
+
+        QApplication a(argc, argv);
+        producteurPanel* w = new producteurPanel(nullptr, pr1);
+        w->show();
+        return a.exec();
+        sqlTool::closeConnexion();
+    }
 
 }

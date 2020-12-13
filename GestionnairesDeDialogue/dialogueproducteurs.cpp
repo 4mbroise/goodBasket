@@ -41,9 +41,33 @@ void DialogueProducteurs::ajouterProduit(double prix, int quantite, std::string 
     }
 }
 
+void DialogueProducteurs::ajouterProduitBDD(double prix, int quantite, std::string nom,int producteurId)
+{
+    qDebug() << "AjoutProduit" << endl;
+
+    if(formulaireOkBDD(prix, quantite, nom,producteurId))
+    {
+        qDebug() << "Formulaire OK" << endl;
+        Producteur* pr = retrouverProducteur(producteurId);
+        pr->ajouterProduitBDD(quantite, prix, nom);
+    }
+}
+
 bool DialogueProducteurs::formulaireOk(double prix, int quantite, std::string nom, std::string imagePath, int producteurId)
 {
     if(producteurExiste(producteurId) && prix>=0 && quantite >0 && !nom.empty() && !imagePath.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool DialogueProducteurs::formulaireOkBDD(double prix, int quantite, std::string nom, int producteurId)
+{
+    if(producteurExiste(producteurId) && prix>=0 && quantite >0 && !nom.empty())
     {
         return true;
     }

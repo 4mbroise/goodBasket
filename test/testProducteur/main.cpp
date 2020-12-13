@@ -6,7 +6,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout << "test" <<endl;
+    DialogueProducteurs dp = DialogueProducteurs();
+    Producteur pr1 = Producteur(0,dp);
+
+    pr1.ajouterProduitBDD(48,5.26,"patate douce");
 
     return 0;
 }

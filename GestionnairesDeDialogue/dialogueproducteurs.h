@@ -54,6 +54,17 @@ public:
     void ajouterProduit(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
 
     /**
+     * @brief Fonction qui appelle la fonction ajouterProduitBDD de la classe @ref producteur
+     * après avoir vérifié la validité de chacun des paramètres fourni
+     * @param quantite quantite mise en vente du nouveau produit
+     * @param prix prix de vente du nouveau produit
+     * @param nom nom du nouveau produit
+     * @param producteurId Id du producteur emetteur de la requête d'ajout de produit
+     */
+    void ajouterProduitBDD(double prix, int quantite, std::string nom, int producteurId);
+
+
+    /**
      * @brief Fonction qui appelle la fonction retirerProduit de la classe @ref producteur 
      * après avoir vérifié la validité de chacun des paramètres fourni
      * 
@@ -140,6 +151,18 @@ private:
      * @return false sinon
      */
     bool formulaireOk(double prix, int quantite, std::string nom, std::string imagePath, int producteurId);
+
+    /**
+     * @brief Fonction vérifiant la validité des paramètres fournis dans la fonction @ref ajouterProduitBDD
+     *
+     * @param prix prix à vérifier >= 0
+     * @param quantite quantité à vérifié >0
+     * @param nom nom, non null
+     * @param producteurId Id du producteur qui effectue la requête
+     * @return true si tous les paramètres sont satisfaisant
+     * @return false sinon
+     */
+    bool formulaireOkBDD(double prix, int quantite, std::string nom, int producteurId);
 
     /**
      * @brief Fonction vérifiant si le producteur associée à l'idProducteur existe

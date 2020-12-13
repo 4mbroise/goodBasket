@@ -1,9 +1,15 @@
 #ifndef PRODUCTEUR_H
 #define PRODUCTEUR_H
 
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+
+
 #include <QtCore/QHash>
 #include "produit.h"
 
+#include "Outils/sqltool.h"
 #include "Outils/idgenerator.h"
 #include "GestionnairesDeDialogue/dialogueproducteurs.h"
 
@@ -24,14 +30,33 @@ using namespace std;
 class Producteur
 {
     public:
+/*
         /**
         * @brief Constructeur de la classe Producteur,
         * seul un gestionnaire DialogueProducteur est requis pour créer un nouveau producteur
         * 
         * @param dp gestionnaire de dialogue associé au producteur
-        */
+        *
         Producteur(DialogueProducteurs &dp);
 
+        /**
+        * @brief Constructeur de la classe Producteur via BDD
+        *
+        * @param dp gestionnaire de dialogue associé au producteur
+        *
+        Producteur(int idUtilisateur, DialogueProducteurs &dp);
+*/
+        /**
+         * @brief Producteur Constructeur de la classe Producteur
+         * @param idUtilisateur
+         */
+        Producteur(int idUtilisateur);
+
+        /**
+         * @brief Producteur Constructeur par défaut
+         * @param idUtilisateur
+         */
+        Producteur();
 
         /**
          * @brief Envoie une requête d'ajout de produit au gestionnaire de dialogue associé,
@@ -74,6 +99,15 @@ class Producteur
          */
         void ajouterProduit(int quantite, double prix, std::string nom, std::string imagePath);
 
+        /**
+         * @brief fonction appelée dans l'ig pour insert un nouveau produit dans la table produit
+         *
+         * @param quantite quantite mise en vente du nouveau produit
+         * @param prix prix de vente du nouveau produit
+         * @param nom nom du nouveau produit
+         * @param imagePath chemin d'accès à l'image associée au nouveau produit
+         */
+        void ajouterProduitBDD(int quantite, double prix, std::string nom);
 
         /**
          * @brief fonction appelée par le gestionnaire de dialogue associé au producteur qui 
@@ -150,7 +184,7 @@ class Producteur
          * @brief GestionnaireDeDialogue qui fait le lien entre les requêtes du producteur et les actions réellement effectuées
          * 
          */
-        DialogueProducteurs &gestionnaireDialogue;
+        //DialogueProducteurs &gestionnaireDialogue;
         /**
          * @brief HashTable dont la clé est un IdProduit et la valeur est un le Produit associé à cet Id, 
          * elle représente la boutique du producteur.

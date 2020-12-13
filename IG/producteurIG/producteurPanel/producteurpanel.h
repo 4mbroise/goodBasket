@@ -3,9 +3,11 @@
 
 #include <string>
 #include <QPushButton>
+#include <QSqlQueryModel>
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include <QWidget>
+
 #include "../../../produit.h"
 #include "../../../producteur.h"
 #include "../../../Outils/idgenerator.h"
@@ -21,19 +23,18 @@ class producteurPanel : public QWidget
     Q_OBJECT
 
 public:
-    producteurPanel(QWidget *parent = nullptr, Producteur *p = nullptr);
+    producteurPanel(QWidget *parent = nullptr, Producteur p = Producteur(-1));
     producteurPanel(Producteur *p);
     ~producteurPanel();
 
 private slots:
     void mettreAJourTable();
-
     void on_pushButton_clicked();
 
 private:
     Widget *formulaire;
-    Producteur *prod;
-    QStandardItemModel *model;
+    Producteur prod;
+    QSqlQueryModel *model;
     Ui::producteurPanel *ui;
 };
 #endif // PRODUCTEURPANEL_H

@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,6 +13,7 @@ SOURCES += \
     ../../../produit.cpp \
     ../../../producteur.cpp \
     ../../../livraison.cpp \
+    ../../../Outils/sqltool.cpp \
     ../../../Outils/idGenerator.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     ../../../produit.h \
     ../../../producteur.h \
     ../../../livraison.cpp \
+    ../../../Outils/sqltool.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
     ../ajouterProduitIG/Widget.h \

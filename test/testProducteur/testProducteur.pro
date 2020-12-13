@@ -1,4 +1,4 @@
-QT += core
+QT += core sql
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -10,10 +10,16 @@ CONFIG -= app_bundle
 SOURCES += \
         main.cpp \
         ../../Producteur.cpp \
+        ../../Outils/idGenerator.cpp \
+        ../../livraison.cpp \
+        ../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
         ../../Produit.cpp
 
 HEADERS += \
         ../../Producteur.h \
+        ../../Outils/idGenerator.h \
+        ../../livraison.h \
+        ../../GestionnairesDeDialogue/dialogueProducteurs.h \
         ../../Produit.h
 
 # Default rules for deployment.

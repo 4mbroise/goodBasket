@@ -2,7 +2,7 @@
 #include "ui_Widget.h"
 using namespace std;
 
-Widget::Widget(QWidget *parent, Producteur *p)
+Widget::Widget(QWidget *parent, Producteur p)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
@@ -21,12 +21,27 @@ void Widget::on_buttonAjouterProduit_released()
     double prix = ui->spinPrix->value();
     int quantity = ui->spinQuantity->value();
     std::string nom = ui->lineEditNom->text().toStdString();
-    cout << "nom "<< nom << endl;
-    cout << "quantite "<< quantity << endl;
-    cout << "prix "<< prix << endl;
 
-    this->model->demanderAjoutProduit(quantity,prix,nom,"imagePath");
+    if(isFormulaireOK())
+    {
+        this->model.ajouterProduitBDD(quantity,prix,nom);
+    }
+    else
+    {
+        cout << "forumlaire pas ok " << endl;
+    }
 
-    cout << "Emission MAJ table boutique" << endl;
     emit miseAjourBoutique();
 }
+
+
+
+bool Widget::isFormulaireOK()
+{
+    double prix = ui->spinPrix->value();
+    int quantity = ui->spinQuantity->value();
+    std::string nom = ui->lineEditNom->text().toStdString();
+
+    return (prix>=0 && quantity >0 && !nom.empty());
+}
+
