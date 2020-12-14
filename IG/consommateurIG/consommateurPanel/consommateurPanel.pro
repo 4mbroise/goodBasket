@@ -1,5 +1,4 @@
 QT       += core gui
-QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,28 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    erreursousig.cpp \
-    main.cpp \
-    producteursousig.cpp \
+    cataloguesousig.cpp \
     livraisonsousig.cpp \
-    consommateursousig.cpp \
-    produitsousig.cpp \
+    main.cpp \
     widget.cpp
 
 HEADERS += \
-    erreursousig.h \
-    producteursousig.h \
+    cataloguesousig.h \
     livraisonsousig.h \
-    consommateursousig.h \
-    produitsousig.h \
     widget.h
 
 FORMS += \
+    cataloguesousig.ui \
     livraisonsousig.ui \
-    consommateursousig.ui \
-    erreursousig.ui \
-    producteursousig.ui \
-    produitsousig.ui \
     widget.ui
 
 # Default rules for deployment.

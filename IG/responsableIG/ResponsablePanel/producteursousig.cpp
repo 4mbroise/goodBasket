@@ -43,8 +43,8 @@ void ProducteurSousResponsable::setData(const QString& a,const QString& id)
         QString  livraisonsId= query.value(0).toString();
         QString  nom= query.value(1).toString();
         QString  quantite= query.value(4).toString();
-        QString  adreese= query.value(6).toString();
-        QString  date= query.value(5).toString();
+        QString  adreese= query.value(8).toString();
+        QString  date= query.value(6).toString();
 
         qDebug()<<livraisonsId<<nom<<quantite<<adreese<<date<<a<<id;
 
