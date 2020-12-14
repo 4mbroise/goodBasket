@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LivraisonSousConsommateur</class>
+ <widget class="QWidget" name="LivraisonSousConsommateur">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1073</width>
+    <height>66</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QLabel" name="id">
+     <property name="text">
+      <string>id:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="nom">
+     <property name="text">
+      <string>nom:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="idProduit">
+     <property name="text">
+      <string>idPorduit:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="quantite">
+     <property name="text">
+      <string>quantite:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="dateAchat">
+     <property name="text">
+      <string>dateAchat:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="dateLivraison">
+     <property name="text">
+      <string>dateLivraison:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="adressePC">
+     <property name="text">
+      <string>adressePC:</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
