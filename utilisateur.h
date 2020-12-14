@@ -1,6 +1,11 @@
 #ifndef UTILISATEUR_H
 #define UTILISATEUR_H
 
+
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include "Outils/idgenerator.h"
@@ -10,6 +15,7 @@ using namespace std;
  * @brief Utilisateur peut devenir le responsable ou le consommateur
  * @version 1
  * @author GE Yuxuan
+ * @author FAUGIER Elliot
  */
 
 
@@ -23,8 +29,18 @@ class Utilisateur {
          * @param adresse:Adresse du utlisateur
          * @param phone:numéro du téléphone
          */
-         Utilisateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
+         Utilisateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email);
 
+         /**
+          * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
+          * @param id du responsable
+          */
+         Utilisateur(int id);
+
+         /**
+          * @brief Constructeur par défaut
+          */
+         Utilisateur();
 
          /**
           * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
@@ -59,7 +75,7 @@ class Utilisateur {
           * @brief getPhone
           * @return numéro de téléphone d'un utilisateur
           */
-         virtual const double& getPhone();
+         virtual const QString& getPhone();
 
          /**
           * @brief getEmail
@@ -89,7 +105,7 @@ class Utilisateur {
           * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un utilisateur
           * @param phone:nouveau nom
           */
-         virtual void changePhone(double phone);
+         virtual void changePhone(std::string phone);
 
          /**
           * @brief changeEmail:modifier ou ajouter l'email d'un utilisateur
@@ -124,7 +140,7 @@ class Utilisateur {
         /**
          * @brief numéro de téléphone du utlisateur
          */
-        double phone;
+        QString phone;
 
         /**
          * @brief l'adresse email du utlisateur
@@ -141,6 +157,11 @@ class Utilisateur {
          * @brief vérifier si Utilisateur est un Responsable retourner vrai , faux sinon
          */
         bool estResponsable;
+
+        /**
+         * @brief vérifie si l'utilisateur est un Producteur
+         */
+        bool estProducteur;
 
 };
 

@@ -51,6 +51,8 @@ void producteurPanel::mettreAJourTable()
 producteurPanel::~producteurPanel()
 {
     delete ui;
+    delete formulaire;
+    delete model;
 }
 
 void producteurPanel::on_pushButton_clicked()
