@@ -216,3 +216,13 @@ void Widget::on_Rembourser_clicked()
 
     }
 }
+
+void Widget::on_PayerProducteur_2_clicked()
+{
+
+}
+
+void Widget::on_PayerProducteur_3_clicked()
+{
+
+}

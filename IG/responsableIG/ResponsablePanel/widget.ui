@@ -104,6 +104,32 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="RecruterProducteur">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>260</y>
+     <width>200</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>RecruterProducteurs</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ValiderPC">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>530</y>
+     <width>200</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ValiderCreationPC</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
