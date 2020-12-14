@@ -7,6 +7,7 @@
 #include <QListWidget>
 #include "erreursousig.h"
 #include "producteursousig.h"
+#include "consommateursousig.h"
 
 
 Widget::Widget(QWidget *parent)
@@ -50,7 +51,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1000)"))
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1000, \"UL\")"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -61,7 +62,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(0, \"tomate\",0 ,0 ,0 , 2004-05-23, \" UL\")"))
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(3, \"pomme de terre\",1 ,0 ,20 ,1, \" 2005-03-29\" , \" UL\", \" 2005-03-27\" , 0,1)"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -69,6 +70,17 @@ Widget::Widget(QWidget *parent)
     {
         qDebug() << "Insertion!";
     }
+
+    //inserer
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(1, \"pomme\",1 ,0 ,10, 1,\" 2010-10-23\", \" UL\", \"2010-10-21\", 1,0 )"))
+    {
+        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "Insertion!";
+    }
+
 
     //inserer
     if(!sqlQuery.exec("INSERT INTO Produit VALUES(0, 10.0 ,\"tomate\",5 , 0)"))
@@ -80,6 +92,25 @@ Widget::Widget(QWidget *parent)
         qDebug() << "Insertion!";
     }
 
+    //inserer
+    if(!sqlQuery.exec("INSERT INTO Consommateur VALUES(0)"))
+    {
+        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "Insertion!";
+    }
+
+    //inserer
+    if(!sqlQuery.exec("INSERT INTO Consommateur VALUES(1)"))
+    {
+        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "Insertion!";
+    }
 
 }
 
@@ -140,22 +171,48 @@ void Widget::on_PayerProducteur_clicked()
     }
     while(query.next())
     {
-        QString  livraisonsId= query.value(0).toString();
         QString  payment= query.value(1).toString();
-        int count=0;
-        qDebug()<<livraisonsId<<payment;
+
+        qDebug()<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
         pItemWidget->setData(payment,QString(ui->NumProducteur->text()));
         QListWidgetItem* pItem = new QListWidgetItem();
         pItem->setSizeHint(QSize(240,640 ));
         ui->SousList2->addItem(pItem);
-        count++;
         ui->SousList2->setItemWidget(pItem,pItemWidget);
 
     }
 }
 
-void Widget::on_confirmer_clicked()
+
+void Widget::on_Rembourser_clicked()
 {
+    QSqlQuery query;
+
+
+    ui->SousList2->clear();
+
+
+    //verifier id de producteur
+    if(!query.exec("select * from Consommateur where id=\""+ui->NumConsommateur->text()+"\""))
+    {
+        qDebug() << "Erreur: recherche ce consommateur. " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Trouvé!";
+    }
+    while(query.next())
+    {
+
+        ConsommateurSousResponsable* pItemWidget = new ConsommateurSousResponsable(this);
+        pItemWidget->setData(QString(ui->NumConsommateur->text()));
+        qDebug() << "Trouvé!";
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240,640 ));
+        ui->SousList2->addItem(pItem);
+        ui->SousList2->setItemWidget(pItem,pItemWidget);
+
+    }
 }

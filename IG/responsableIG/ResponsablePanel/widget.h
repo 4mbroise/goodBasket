@@ -41,7 +41,10 @@ private slots:
      */
     void on_PayerProducteur_clicked();
 
-    void on_confirmer_clicked();
+    /**
+     * @brief button de rebourser
+     */
+    void on_Rembourser_clicked();
 
 private:
     /**

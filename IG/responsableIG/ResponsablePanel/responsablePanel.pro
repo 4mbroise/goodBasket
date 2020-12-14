@@ -20,18 +20,22 @@ SOURCES += \
     erreursousig.cpp \
     main.cpp \
     producteursousig.cpp \
+    livraisonsousig.cpp \
+    consommateursousig.cpp \
     produitsousig.cpp \
     widget.cpp
 
 HEADERS += \
     erreursousig.h \
     producteursousig.h \
+    livraisonsousig.h \
+    consommateursousig.h \
     produitsousig.h \
     widget.h
 
 FORMS += \
-    ../../communeUi/erreur.ui \
-    #../../communeUi/producteur.ui \
+    livraisonsousig.ui \
+    consommateursousig.ui \
     erreursousig.ui \
     producteursousig.ui \
     produitsousig.ui \
