@@ -2,7 +2,7 @@
 #define CATALOGUESOUSIG_H
 
 #include <QWidget>
-#
+#include <produitsousig.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CatalogueSousConsommateur; }
@@ -13,12 +13,14 @@ class CatalogueSousConsommateur : public QWidget
     Q_OBJECT
 
 public:
-    CatalogueSousConsommateur(QWidget *parent = nullptr);
+    explicit CatalogueSousConsommateur(QWidget *parent = nullptr);
     ~CatalogueSousConsommateur();
-    void setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur);
-
+    void setData(const QString& adressePC,const QString& idConsommateur);
+    Ui::CatalogueSousConsommateur& getUI();
 private slots:
-    void on_Confirmer_clicked();
+    void on_Retourner_clicked();
+signals:
+    void sendsignal();
 
 private:
     Ui::CatalogueSousConsommateur *ui;

@@ -19,15 +19,17 @@ CatalogueSousConsommateur::~CatalogueSousConsommateur()
     delete ui;
 }
 
+void CatalogueSousConsommateur::setData(const QString& adressePC,const QString &idConsommateur){
+    ui->PC->setText("PC:"+adressePC);
+    ui->IdConsommateur->setText("IdConsommatuer:"+idConsommateur);
+}
 
-void CatalogueSousConsommateur::setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur)
-{
-   /* ui->id->setText("id:"+id);
-    ui->nom->setText("nom:"+nom);
-    ui->idProduit->setText("idProduit:"+idProduit);
-    ui->quantite->setText("quantite:"+quantite);
-    ui->adressePC->setText("adressePC:"+adressePC);
-    ui->dateLivraison->setText("dateLivraison:"+dateLivraison);
-    ui->dateAchat->setText("dateAchat:"+dateAchat);*/
+Ui::CatalogueSousConsommateur& CatalogueSousConsommateur::getUI(){
+    return *this->ui;
+}
 
+
+void CatalogueSousConsommateur::on_Retourner_clicked(){
+    emit sendsignal();
+    this->close();
 }

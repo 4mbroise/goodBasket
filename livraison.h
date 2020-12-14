@@ -50,6 +50,7 @@ class Livraison{
      */
     const time_t& getDateLivraison();
 
+    const int& getID();
     /**
      * @brief setLivraison:fixer la livraison
      * @param p:produit
@@ -91,7 +92,10 @@ class Livraison{
 
 
     private:
-
+    /**
+     * @brief id:id unique associé à la livraison
+     */
+    int id;
     /**
      * @brief produit:produit qui en livraison
      */

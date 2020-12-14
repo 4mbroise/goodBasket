@@ -31,10 +31,16 @@ int IdGenerator::getNewIdProduit()
     return idAReturn;
 }
 
-int IdGenerator::getNewIdResponsable()
+int IdGenerator::getNewIdUtilisateur()
 {
-    int idAReturn = this-> lastIdProduit;       //Sauvegarde de l'id à retourner avant incrémentation
-    this -> lastIdProduit ++;                   //Incrémentation
+    int idAReturn = this-> lastIdUtilisateur;       //Sauvegarde de l'id à retourner avant incrémentation
+    this -> lastIdUtilisateur++;               //Incrémentation
+    return idAReturn;
+}
+
+int IdGenerator::getNewIdLivraison(){
+    int idAReturn = this-> lastIdLivraison;       //Sauvegarde de l'id à retourner avant incrémentation
+    this -> lastIdLivraison ++;                   //Incrémentation
     return idAReturn;
 }
 

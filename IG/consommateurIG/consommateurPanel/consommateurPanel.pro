@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,20 +17,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../../Outils/idgenerator.cpp \
     cataloguesousig.cpp \
+    consommateurig.cpp \
     livraisonsousig.cpp \
     main.cpp \
-    widget.cpp
+    pcsousig.cpp \
+    produitsousig.cpp
 
 HEADERS += \
+    ../../../Outils/idgenerator.h \
     cataloguesousig.h \
+    consommateurig.h \
     livraisonsousig.h \
-    widget.h
+    pcsousig.h \
+    produitsousig.h
 
 FORMS += \
     cataloguesousig.ui \
+    consommateurig.ui \
     livraisonsousig.ui \
-    widget.ui
+    pcsousig.ui \
+    produitsousig.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

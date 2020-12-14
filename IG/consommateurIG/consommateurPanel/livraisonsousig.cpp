@@ -4,8 +4,6 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlQuery>
 #include <QDebug>
-#include <QListWidget>
-
 
 LivraisonSousConsommateur::LivraisonSousConsommateur(QWidget *parent)
     : QWidget(parent), ui(new Ui::LivraisonSousConsommateur)
@@ -29,5 +27,8 @@ void LivraisonSousConsommateur::setData(const QString& id,const QString& nom,con
     ui->adressePC->setText("adressePC:"+adressePC);
     ui->dateLivraison->setText("dateLivraison:"+dateLivraison);
     ui->dateAchat->setText("dateAchat:"+dateAchat);
+}
+
+void LivraisonSousConsommateur::on_Supprimer_clicked(){
 
 }

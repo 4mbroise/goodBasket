@@ -1,4 +1,5 @@
 #include "livraison.h"
+#include "Outils/idgenerator.h"
 #include <QDebug>
 #include <iostream>
 
@@ -6,6 +7,9 @@ using namespace std;
 
 
 Livraison::Livraison(Produit p,int commande):produit(p){
+    IdGenerator& gen = IdGenerator::Instance();
+    int newId = gen.getNewIdUtilisateur();
+    this->id = newId;
     this->commande=commande;
     this->produit=p;
     qDebug() << "Livraison est créé" << endl;
@@ -29,6 +33,10 @@ const time_t& Livraison::getDateAchat(){
 
 const time_t& Livraison::getDateLivraison(){
     return  this->dateLivraison;
+}
+
+const int& Livraison::getID(){
+    return this->id;
 }
 
 void Livraison::setLivraison(Produit p,int commande){
