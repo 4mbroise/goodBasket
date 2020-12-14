@@ -11,6 +11,34 @@ PC::PC(std::string adressePC){
 
 }
 
+PC::PC(int idResponsable)
+{
+    QString query = QString::fromStdString("SELECT adresse,venteOuverte FROM PointDeCollecte WHERE idResponsablePC =  ");
+    query.append(QString::number(idResponsable));
+
+    QSqlQuery sqlQuery;
+
+    sqlQuery.prepare(query);
+
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "ERREUR SELECT Point de Collecte SQL" << sqlQuery.lastError();
+    }
+    else
+    {
+        sqlQuery.next();
+        this->adresse = sqlQuery.value(0).toString();
+        this->etat =  sqlQuery.value(1).toBool();
+
+        qDebug() << "SUCCESS SELECT Point de Collecte SQL";
+    }
+    cout << "PC est créé" << endl;
+}
+
+PC::PC()
+{
+
+}
 
 
 const QString& PC::getAdressePC(){
@@ -47,6 +75,8 @@ QHashIterator<int,Producteur> PC::iterator(){
 
 
 void PC::setCatalogue(){
+    //------ATTENTION-----------
+    /*
     QHashIterator<int,Producteur> i=this->iterator();
     while(i.hasNext())
     {
@@ -58,17 +88,22 @@ void PC::setCatalogue(){
            catalogue.insert(produit.getId(),produit);
        }
     }
+    */
 }
 
 
 
 void PC::ajouterProducteur(Producteur pdct){
-   this->producteurs.insert(pdct.getId(),pdct);
+   //------ATTENTION-----------
+   //this->producteurs.insert(pdct.getId(),pdct);
 }
 
 
 const std::string PC::toString(){
+    //------ATTENTION-----------
+
     string resultat="PC [adress:"+this->adresse.toStdString()+"]\n";
+    /*
     resultat.append("catalogue:\n");
     QHashIterator<int,Produit>i (this->catalogue);
     int num=0;
@@ -78,5 +113,6 @@ const std::string PC::toString(){
         num++;
         resultat.append("No."+to_string(num)+":\n"+pd.toString()+"\n[Producteur<ID-"+to_string(pd.getId())+">]\n");
     }
+    */
     return resultat;
 }

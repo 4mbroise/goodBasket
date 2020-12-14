@@ -5,13 +5,24 @@
 #include <iostream>
 using namespace std;
 
-
-Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,PC pc,Gestionnaire &gestionnaire):Utilisateur(nom,prenom,adresse,phone,email),gestionnaire(gestionnaire),pc(pc)
+//--------------ATTENTION
+/*
+Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email):Utilisateur(nom,prenom,adresse,phone,email)
 {
     this->estResponsable=true;
     this->estConsommateur=false;
     this->confirmer=false;
-    this->gestionnaire.AjouteResponsable(this);
+}
+*/
+
+Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
+{
+    this->id = id;
+}
+
+Responsable::Responsable():Utilisateur(),pc(PC())
+{
+    this->id = -1;
 }
 
 Responsable::~Responsable(){
@@ -40,7 +51,7 @@ const QString& Responsable::getAdresse(){
     qDebug()<<"get adresse du Responsable"<<endl;
 }
 
-const double& Responsable::getPhone(){
+const QString& Responsable::getPhone(){
     return this->phone;
     qDebug()<<"get numéro de téléphon du Responsable"<<endl;
 }
@@ -68,8 +79,8 @@ void Responsable::changeAdresse(std::string adresse){
     qDebug()<<"changer ou setter adresse du Responsable"<<endl;
 }
 
-void Responsable::changePhone(double phone){
-    this->phone=phone;
+void Responsable::changePhone(std::string phone){
+    this->phone=QString(phone.c_str());
     qDebug()<<"changer ou setter numéro de téléphone du Responsable"<<endl;
 }
 
@@ -82,10 +93,13 @@ void Responsable::changeEmail(std::string email){
 
 void Responsable::PayerProducteurs(int producteurid)
 {
-    this->gestionnaire.CalculerMontantPayement(this->id, producteurid);
+    //------ATTENTION-----------this->gestionnaire.CalculerMontantPayement(this->id, producteurid);
+
     /* procedure que gestionnaire retourner montant confirmer ou non*/
     if(this->confirmer){
-        this->gestionnaire.Payer(this->id, producteurid);
+
+        //------ATTENTION-----------this->gestionnaire.Payer(this->id, producteurid);
+
     }
     this->confirmer=false;  // reinitialiser
 }
@@ -107,7 +121,7 @@ void Responsable::RecevoirMessage(std::string mess)
 
 void Responsable::ConsulterReports()
 {
-    this->gestionnaire.NotifierErreur(this->id);
+    //------ATTENTION-----------this->gestionnaire.NotifierErreur(this->id);
 }
 
 
@@ -117,7 +131,9 @@ PC& Responsable::getPC(){
 
 void Responsable::DemanderRembourser(int consommateurId)
 {
-    if(this->gestionnaire.VerifeirRemboursement(consommateurId,this->id))
+    //------ATTENTION-----------
+
+    /*    if(this->gestionnaire.VerifeirRemboursement(consommateurId,this->id))
     {
          qDebug()<<"attente confirmer"<<endl;
     }
@@ -125,11 +141,12 @@ void Responsable::DemanderRembourser(int consommateurId)
     {
         this->gestionnaire.Rembourser(consommateurId,this->id);
     }
+    */
 }
 
 
 void Responsable::demanderPC(int id,std::string villes, int codePostal, int numero, std::string nomRue){
-    gestionnaire.demanderPC(id,villes,codePostal,numero,nomRue);
+    //------ATTENTION-----------gestionnaire.demanderPC(id,villes,codePostal,numero,nomRue);
 }
 
 void Responsable::setPC(PC pc){
@@ -137,20 +154,143 @@ void Responsable::setPC(PC pc){
 }
 
 void Responsable::recruterProducteur(std::string recrutement){
-   gestionnaire.getDialogueProducteurs().recruteProducteur(this->id,recrutement);
+   //------ATTENTION-----------gestionnaire.getDialogueProducteurs().recruteProducteur(this->id,recrutement);
 }
 
+//------ATTENTION-----------
+/*
 QHash<int,std::string>& Responsable::consulterDemande(){
     return  gestionnaire.getDialogueProducteurs().getDemande();
 }
+*/
 
 bool Responsable::reponseRecrutement(int idProducteur,std::string demande){
     return true;
 }
 
+/*
 void Responsable::ajouterProducteur(int idProducteur,std::string demande){
     if(reponseRecrutement(id,demande)){
         Producteur *p=gestionnaire.getDialogueProducteurs().getProducteurById(idProducteur);
         pc.ajouterProducteur(*p);
     }
+}
+*/
+
+bool Responsable::isCycleValide(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison)
+{
+    return (dateDebutCycle < dateVente && dateVente < dateFinVente && dateFinVente < dateLivraison);
+}
+
+void Responsable::ajouterCycle(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison)
+{
+    QSqlQuery sqlQuery;
+
+    //Recherche de l'idPC
+    QString requeteRechercheIdPc = QString::fromStdString("SELECT idPointDeCollecte FROM PointDeCollecte WHERE idResponsablePC = ");
+    requeteRechercheIdPc.append(QString::number(this->id));
+
+    if(!sqlQuery.exec(requeteRechercheIdPc))
+    {
+        qDebug() << "ERREUR recherche Id PC " << sqlQuery.lastError();
+    }
+    else
+    {
+        sqlQuery.next();
+        int idPC = sqlQuery.value(0).toInt();
+
+        //Insertion du cycle dans la table Cycle de la BDD
+        QSqlQuery requeteInsertion;
+        requeteInsertion.prepare("INSERT INTO Cycle (dateDebut,dateVente,dateFinVente,dateLivraison,idPC)"
+                                 " VALUES(:dateDebut,:dateVente,:dateFinVente,:dateLivraison,:idPC);");
+
+        requeteInsertion.bindValue(":dateDebut", dateDebutCycle.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateVente", dateVente.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateFinVente", dateFinVente.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateLivraison", dateLivraison.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":idPC", idPC);
+
+        if(!requeteInsertion.exec())
+        {
+            qDebug() << "ERREUR insertion Cycle" << requeteInsertion.lastError();
+        }
+        else
+        {
+             qDebug() << "insertion Cycle réussies" << endl;
+        }
+    }
+}
+
+void Responsable::retirerCycle(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison)
+{
+    QSqlQuery sqlQuery;
+
+    //Recherche de l'idPC
+    QString requeteRechercheIdPc = QString::fromStdString("SELECT idPointDeCollecte FROM PointDeCollecte WHERE idResponsablePC = ");
+    requeteRechercheIdPc.append(QString::number(this->id));
+
+    if(!sqlQuery.exec(requeteRechercheIdPc))
+    {
+        qDebug() << "ERREUR recherche Id PC " << sqlQuery.lastError();
+    }
+    else
+    {
+        sqlQuery.next();
+        int idPC = sqlQuery.value(0).toInt();
+
+        //Insertion du cycle dans la table Cycle de la BDD
+        QSqlQuery requeteInsertion;
+        requeteInsertion.prepare("DELETE FROM Cycle WHERE dateDebut = :dateDebut AND dateVente = :dateVente "
+                                 "AND dateFinVente = :dateFinVente AND dateLivraison = :dateLivraison AND idPC = :idPC");
+
+        requeteInsertion.bindValue(":dateDebut", dateDebutCycle.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateVente", dateVente.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateFinVente", dateFinVente.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":dateLivraison", dateLivraison.toString(Qt::ISODate));
+        requeteInsertion.bindValue(":idPC", idPC);
+
+        if(!requeteInsertion.exec())
+        {
+            qDebug() << "ERREUR insertion Cycle" << requeteInsertion.lastError();
+        }
+        else
+        {
+             qDebug() << "insertion Cycle réussies" << endl;
+        }
+    }
+}
+
+void Responsable::fermerPointDeCollecte()
+{
+    QSqlQuery sqlQuery;
+
+    //Recherche de l'idPC
+    QString requeteRechercheIdPc = QString::fromStdString("SELECT idPointDeCollecte FROM PointDeCollecte WHERE idResponsablePC = ");
+    requeteRechercheIdPc.append(QString::number(this->id));
+
+    if(!sqlQuery.exec(requeteRechercheIdPc))
+    {
+        qDebug() << "ERREUR recherche Id PC " << sqlQuery.lastError();
+    }
+    else
+    {
+        sqlQuery.next();
+        int idPC = sqlQuery.value(0).toInt();
+
+        //Insertion du cycle dans la table Cycle de la BDD
+        QSqlQuery requeteInsertion;
+        requeteInsertion.prepare("DELETE FROM Cycle WHERE idPC = :id");
+
+        requeteInsertion.bindValue(":id", idPC);
+
+        if(!requeteInsertion.exec())
+        {
+            qDebug() << "ERREUR insertion Cycle" << requeteInsertion.lastError();
+        }
+        else
+        {
+             qDebug() << "insertion Cycle réussies" << endl;
+        }
+    }
+
 }

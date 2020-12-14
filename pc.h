@@ -25,7 +25,19 @@ class PC{
      */
     PC(std::string adressePC);
 
+    /**
+     * @brief PC:constructeur du Constructeur par défaut
+     */
     PC();
+
+    /**
+     * @brief constructeur se servant d'une base de donnée, on retourve les infos du PC via l'id de son sresponsable
+     * @param idResponsable
+     */
+    PC(int idResponsable);
+
+    //----------------ATTENTION
+    //PC();
 
 
     /**

@@ -54,9 +54,6 @@ void Producteur::ajouterProduitBDD(int quantite, double prix, std::string nom)
 {
     //On cherche l'idProduit max dans la table
     QSqlQuery sqlQuery;
-    // preparer exec
-    QString createSql = QString("CREATE TABLE test");
-    sqlQuery.prepare(createSql);
     if(!sqlQuery.exec("SELECT max(idProduit) FROM Produit"))
     {
         qDebug() << "ERREUR requete SQL" << sqlQuery.lastError();

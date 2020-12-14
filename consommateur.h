@@ -71,7 +71,7 @@ class Consommateur:public Utilisateur
       * @brief getPhone:obtenir le numéro de téléphone du consommateur
       * @return numéro de téléphone du consommateur
       */
-     virtual const double& getPhone();
+     virtual const QString& getPhone();
 
      /**
       * @brief getEmail:obtenir l'email du consommateur
@@ -101,7 +101,7 @@ class Consommateur:public Utilisateur
       * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un consommateur
       * @param phone:nouveau nom
       */
-     virtual void changePhone(double phone);
+     virtual void changePhone(std::string phone);
 
      /**
       * @brief changeEmail:modifier ou ajouter l'email d'un consommateur

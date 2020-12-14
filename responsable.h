@@ -2,9 +2,11 @@
 #define RESPONSABLE_H
 
 #include "utilisateur.h"
+#include "pc.h"
 #include "consommateur.h"
 #include "Gestionnaire/gestionnaire.h"
 #include <QtCore/QString>
+#include <Qdate>
 
 /**
  * @brief Responsable
@@ -16,6 +18,7 @@
  * @version 2
  * @author GE Yuxuan
  * @author CAI Yunfan
+ * @author FAUGIER Elliot
  */
 class Utilisateur;
 
@@ -28,13 +31,23 @@ class Responsable:public Utilisateur
        * @param prenom: Prénom du utlisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:A
-       * @param Gestionnaire: gestionnaire
        */
-     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,PC pc,Gestionnaire &gestionnaire);
+     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
       */
+
+     /**
+      * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
+      * @param id du responsable
+      */
+     Responsable(int id);
+
+     /**
+      * @brief Responsable, constructeur par défaut
+      */
+     Responsable();
 
      ~Responsable();
 
@@ -67,7 +80,7 @@ class Responsable:public Utilisateur
       * @brief getPhone
       * @return numéro de téléphone d'un Responsable
       */
-     virtual const double& getPhone();
+     virtual const QString& getPhone();
 
      /**
       * @brief getEmail
@@ -97,7 +110,7 @@ class Responsable:public Utilisateur
       * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un Responsable
       * @param phone:nouveau nom
       */
-     virtual void changePhone(double phone);
+     virtual void changePhone(std::string phone);
 
      /**
       * @brief changeEmail:modifier ou ajouter l'email d'un Responsable
@@ -151,6 +164,40 @@ class Responsable:public Utilisateur
 
     void ajouterProducteur(int idProducteur,std::string demande);
 
+    /**
+     * @brief isCycleValide retourne vrai si c'est un cycle valide (dateDebutCycle < dateVente < dateFinVente < dateLivraison )
+     * fonction appelée avant l'ajout d'un nouveau cycle
+     * @param dateDebutCycle
+     * @param dateVente
+     * @param dateFinVente
+     * @param dateLivraison
+     * @return
+     */
+    bool isCycleValide(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison);
+
+    /**
+     * @brief ajouterCycle, ajoute un cycle au pc lié au responsable dans la table cycle de la BDD
+     * @param dateDebutCycle
+     * @param dateVente
+     * @param dateFinVente
+     * @param dateLivraison
+     */
+    void ajouterCycle(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison);
+
+    /**
+     * @brief retirerCycle on retire le ou les cycles définis par les dates en paramètres
+     * @param dateDebutCycle
+     * @param dateVente
+     * @param dateFinVente
+     * @param dateLivraison
+     */
+    void retirerCycle(QDate dateDebutCycle, QDate dateVente, QDate dateFinVente, QDate dateLivraison);
+
+    /**
+     * @brief fermerPointDeCollecte, revient à supprimer tous les cycles de vente du point de collecte
+     */
+    void fermerPointDeCollecte();
+
     private:
 
         /**
@@ -181,19 +228,19 @@ class Responsable:public Utilisateur
         /**
          * @brief numero de telephone
          */
-        double phone;
+        QString phone;
 
         /**
          * @brief adresse mail
          */
         QString email;
-
+/*
         /**
          * @brief GestionnaireDeDialogue qui fait le lien entre les requêtes du producteur et les actions réellement effectuées
          *
-         */
-        Gestionnaire &gestionnaire;
 
+        Gestionnaire &gestionnaire;
+*/
         /**
          * @brief Pour chaque renvoi on choisi oui ou non
          *
