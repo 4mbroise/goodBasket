@@ -43,6 +43,8 @@ void GestionOuverturePCPanel::mettreAJourTable()
 
 GestionOuverturePCPanel::~GestionOuverturePCPanel()
 {
+    delete model;
+    delete formulaire;
     delete ui;
 }
 

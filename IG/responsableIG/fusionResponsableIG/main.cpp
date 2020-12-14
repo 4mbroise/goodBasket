@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     {
         Responsable resp = Responsable(7);
         QApplication a(argc, argv);
-        fusionResponsableIg w;
-        w.show();
+        fusionResponsableIg *w = new fusionResponsableIg(nullptr, resp);
+        w->show();
         return a.exec();
         sqlTool::closeConnexion();
     }

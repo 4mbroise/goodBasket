@@ -21,6 +21,8 @@ fusionResponsableIg::fusionResponsableIg(QWidget *parent, Responsable r)
 
 fusionResponsableIg::~fusionResponsableIg()
 {
+    delete responsablePanel;
+    delete gestionOuvertureWidget;
     delete ui;
-}
 
+}
