@@ -2,6 +2,7 @@
 #define LIVRAISONSOUSIG_H
 
 #include <QWidget>
+#
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LivraisonSousConsommateur; }
@@ -14,7 +15,7 @@ class LivraisonSousConsommateur : public QWidget
 public:
     LivraisonSousConsommateur(QWidget *parent = nullptr);
     ~LivraisonSousConsommateur();
-    void ajouterProduit(const QString& idProduit,const QString &idProducteur,const QString& quantite);
+    void setData(const QString& id,const QString& nom,const QString& idProduit,const QString& quantite,const QString& adressePC,const QString& dateLivraison,const QString& dateAchat);
 
 private slots:
     void on_Confirmer_clicked();

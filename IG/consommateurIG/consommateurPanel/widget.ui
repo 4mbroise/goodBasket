@@ -6,20 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1303</width>
+    <height>655</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QListView" name="listView">
+  <widget class="QListWidget" name="Livraison">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>80</y>
-     <width>256</width>
-     <height>321</height>
+     <x>10</x>
+     <y>10</y>
+     <width>281</width>
+     <height>641</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="LivraisonPrevue">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>10</y>
+     <width>291</width>
+     <height>641</height>
     </rect>
    </property>
   </widget>

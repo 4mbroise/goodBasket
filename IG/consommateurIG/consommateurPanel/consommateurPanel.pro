@@ -16,15 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cataloguesousig.cpp \
     livraisonsousig.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
+    cataloguesousig.h \
     livraisonsousig.h \
     widget.h
 
 FORMS += \
+    cataloguesousig.ui \
     livraisonsousig.ui \
     widget.ui
 

@@ -14,6 +14,8 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void setLivraison(const QString & idConsommateur);
+    void setLivraisonPrevue(const QString &idConsommateur);
 
 private slots:
     void on_ajouter_panier_clicked();

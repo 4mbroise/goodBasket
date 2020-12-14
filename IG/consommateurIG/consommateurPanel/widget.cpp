@@ -1,5 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include "livraisonsousig.h"
+#include "ui_livraisonsousig.h"
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlDatabase>
@@ -33,14 +35,6 @@ Widget::Widget(QWidget *parent)
     QSqlQuery sqlQuery;
 
     //creer tableau Livraison
-    // preparer exec
-    QString createSqlLivraison = QString("CREATE TABLE Livraison (\
-                              id INT PRIMARY KEY NOT NULL,\
-                              produitId INT NOT NULL,\
-                              quantite INT NOT NULL, \
-                              dateLivraison DATE NOT NULL,\
-                              dateAchat DATE NOT NULL)");
-    sqlQuery.prepare(createSqlLivraison);
     // creer tableau
     if(!sqlQuery.exec())
     {
@@ -59,65 +53,106 @@ Widget::Widget(QWidget *parent)
         qDebug() << "InsertionLivraison!";
     }
 
-    //creer tableau ProducteursLivaison
-    // preparer exec
-    QString createSqlLivraisonPrevue = QString("CREATE TABLE LivraisonPrevue (\
-                                               id INT PRIMARY KEY NOT NULL,\
-                                               produitId INT NOT NULL,\
-                                               quantite INT NOT NULL, \
-                                               dateLivraison TEXT NOT NULL,\
-                                               dateAchat TEXT NOT NULL)");
-    sqlQuery.prepare(createSqlLivraisonPrevue);
-    // creer tableau
-    if(!sqlQuery.exec())
-    {
-        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
-    }
-    else
-    {     qDebug() << "Tableau créé!";  }
 
-    //inserer
-    if(!sqlQuery.exec("INSERT INTO LivraisonPrevue VALUES(1, 1, 1, '2020-12-12','2020-12-30')"))
+
+}
+
+void Widget::setLivraison(const QString& idConsommateur){
+    QSqlQuery query;
+
+    qDebug() << "erreur---------------------" << idConsommateur;
+
+    if(query.exec("select * from Livraison where idConsommateur=\""+idConsommateur+"\",and prevue=false"))
     {
-        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
     }
     else
     {
-        qDebug() << "Insertion!";
+        qDebug() << "Trouvé!";
+    }
+    while(query.next())
+    {
+
+        QString  livraisonId= query.value(0).toString();
+        QString  nom=query.value(1).toString();
+        QString  produitId= query.value(3).toString();
+        QString  quantite= query.value(4).toString();
+        QString  dateLivraison= query.value(5).toString();
+        QString  adressePC= query.value(6).toString();
+        QString  dateAchat= query.value(7).toString();
+
+        LivraisonSousConsommateur* pItemWidget = new LivraisonSousConsommateur(this);
+        pItemWidget->setData(livraisonId,nom,produitId,quantite,dateLivraison,adressePC,dateAchat);
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240,640 ));
+        ui->Livraison->addItem(pItem);
+        ui->Livraison->setItemWidget(pItem,pItemWidget);
+
     }
 
-    //creer tableau ProducteursLivaison
-    // preparer exec
-    QString createSqlProduit = QString("CREATE TABLE Produits (\
-                                               id INT PRIMARY KEY NOT NULL,\
-                                               produitId INT NOT NULL,\
-                                               quantite INT NOT NULL, \
-                                               dateLivraison TEXT NOT NULL,\
-                                               dateAchat TEXT NOT NULL)");
-    sqlQuery.prepare(createSqlLivraisonPrevue);
-    // creer tableau
-    if(!sqlQuery.exec())
-    {
-        qDebug() << "Défaut de création d’une table. " << sqlQuery.lastError();
-    }
-    else
-    {     qDebug() << "Tableau créé!";  }
+}
 
-    //inserer
-    if(!sqlQuery.exec("INSERT INTO LivraisonPrevue VALUES(1, 1, 1, '2020-12-12','2020-12-30')"))
+void setLivraisonPrevue(const QString &idConsommateur){
+    QSqlQuery query;
+
+    qDebug() << "erreur---------------------" << idConsommateur;
+
+    if(query.exec("select * from Livraison where idConsommateur=\""+idConsommateur+"\",and prevue=true"))
     {
-        qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
+        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
     }
     else
     {
-        qDebug() << "Insertion!";
+        qDebug() << "Trouvé!";
+    }
+    while(query.next())
+    {
+
+        QString  livraisonId= query.value(0).toString();
+        QString  nom=query.value(1).toString();
+        QString  produitId= query.value(3).toString();
+        QString  quantite= query.value(4).toString();
+        QString  dateLivraison= query.value(5).toString();
+        QString  adressePC= query.value(6).toString();
+        QString  dateAchat= query.value(7).toString();
+
+        LivraisonSousConsommateur* pItemWidget = new LivraisonSousConsommateur(this);
+        pItemWidget->setData(livraisonId,nom,produitId,quantite,dateLivraison,adressePC,dateAchat);
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240,640 ));
+        ui->Livraison->addItem(pItem);
+        ui->Livraison->setItemWidget(pItem,pItemWidget);
+
     }
 }
 
-void Widget::on_ajouter_panier_clicked()
-{
+void Widget::on_consulter_catalogue_clicked(){{
     QSqlQuery query;
 
+    ui->SousList->clear();
+
+    if(!query.exec("select * from Produit where"))
+    {
+        qDebug() << "Erreur: recherche ce Erreur. " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Trouvé!";
+    }
+    while(query.next())
+    {
+        QString  id= query.value(0).toString();
+        QString  apercu= query.value(1).toString();
+        qDebug()<<id<<apercu;
+
+        ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
+        pItemWidget->setData(apercu);
+        QListWidgetItem* pItem = new QListWidgetItem();
+        pItem->setSizeHint(QSize(240, 120));
+        ui->SousList->addItem(pItem);
+        ui->SousList->setItemWidget(pItem,pItemWidget);
+
+    }
 
 }
 
