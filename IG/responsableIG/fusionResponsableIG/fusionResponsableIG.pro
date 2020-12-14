@@ -12,6 +12,8 @@ SOURCES += \
     main.cpp \
     ../gestionOuverturePCIG/gestionouverturepcpanel.cpp \
     ../ResponsablePanel/erreursousig.cpp \
+    ../ResponsablePanel/consommateursousig.cpp \
+        ../ResponsablePanel/livraisonsousig.cpp \
     ../ResponsablePanel/producteursousig.cpp \
     ../ResponsablePanel/produitsousig.cpp \
     ../../../pc.cpp \
@@ -26,6 +28,8 @@ HEADERS += \
     ../../../pc.h \
     ../gestionOuverturePCIG/gestionouverturepcpanel.h \
     ../ResponsablePanel/erreursousig.h \
+    ../ResponsablePanel/consommateursousig.h \
+        ../ResponsablePanel/livraisonsousig.h \
     ../ResponsablePanel/producteursousig.h \
     ../ResponsablePanel/produitsousig.h \
     ../../../utilisateur.h \
@@ -37,6 +41,8 @@ HEADERS += \
 
 FORMS += \
     ../formulaireCycle/formulairecycle.ui \
+    ../ResponsablePanel/consommateursousig.ui \
+    ../ResponsablePanel/livraisonsousig.ui \
     ../gestionOuverturePCIG/gestionouverturepcpanel.ui \
     ../ResponsablePanel/widget.ui \
     ../ResponsablePanel/producteursousig.ui \
