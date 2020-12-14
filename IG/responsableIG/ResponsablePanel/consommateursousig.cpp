@@ -43,7 +43,7 @@ void ConsommateurSousResponsable::setData(const QString& consommateurid)
         QString  nom= query.value(1).toString();
         QString  quantite= query.value(4).toString();
         QString  prix = query.value(5).toString();
-        QString  adreese= query.value(7).toString();
+        QString  adreese= query.value(8).toString();
         QString  erreur= "producteur annule\ncette livraison";
 
         qDebug()<<livraisonsId<<nom<<quantite<<adreese<<consommateurid;
