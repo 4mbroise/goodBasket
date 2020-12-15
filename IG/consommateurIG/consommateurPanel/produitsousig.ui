@@ -53,7 +53,7 @@
     <widget class="QSpinBox" name="Nombre"/>
    </item>
    <item>
-    <widget class="QPushButton" name="AajouterAuPanier">
+    <widget class="QPushButton" name="AjouterAuPanier">
      <property name="text">
       <string>Ajouter au panier</string>
      </property>

@@ -41,7 +41,7 @@ void producteurPanel::mettreAJourTable()
     model->setHeaderData(3, Qt::Horizontal ,tr("ID"));
 
 
-    ui->tableView->setModel(model);
+    ui->tableView->setModel(model)
 
 }
 

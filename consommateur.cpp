@@ -5,8 +5,8 @@
 
 using namespace std;
 
-Consommateur::Consommateur(string nom,string prenom,string adresse,double phone,string email,DialogueConsommateurs &dc):Utilisateur(nom,prenom,adresse,phone,email),gestionnaireDialogue(dc){
-    this->gestionnaireDialogue.ajouterConsommateur(this);
+Consommateur::Consommateur(string nom,string prenom,string adresse,std::string phone,string email):Utilisateur(nom,prenom,adresse,phone,email){
+    //this->gestionnaireDialogue.ajouterConsommateur(this);
     estConsommateur=true;
     qDebug() << "Consommateur est créé" << endl;
 }
@@ -38,7 +38,7 @@ const QString& Consommateur::getAdresse(){
     qDebug()<<"get adresse du Consommateur"<<endl;
 }
 
-const double& Consommateur::getPhone(){
+const QString& Consommateur::getPhone(){
     return this->phone;
     qDebug()<<"get numéro de téléphon du Consommateur"<<endl;
 }
@@ -66,8 +66,8 @@ void Consommateur::changeAdresse(std::string adresse){
     qDebug()<<"changer ou setter adresse du Consommateur"<<endl;
 }
 
-void Consommateur::changePhone(double phone){
-    this->phone=phone;
+void Consommateur::changePhone(std::string phone){
+    this->phone=QString(phone.c_str());;
     qDebug()<<"changer ou setter numéro de téléphone du Consommateur"<<endl;
 }
 
@@ -93,7 +93,7 @@ void Consommateur::consulterCatalogue(){
 
 }
 
-void Consommateur::demanderAjouter(Produit p,int commande){
+/*void Consommateur::demanderAjouter(Produit p,int commande){
     this->gestionnaireDialogue.ajouterPanier(p,commande,this->id);
 }
 
@@ -122,7 +122,7 @@ void Consommateur::demanderSupprimerProduit(){
 
 void Consommateur::supprimerProduit(Livraison l){
     this->Panier.removeOne(l);
-}
+}*/
 
 QList<Livraison> Consommateur::getPanier(){
     return Panier;
@@ -136,7 +136,7 @@ int Consommateur::nbLivraisonPrevues(){
     return LivraisonPrevues.count();
 }
 
-const std::string Consommateur::toString(){
+/*const std::string Consommateur::toString(){
     string resultat="Consommateur [ID-"+std::to_string(this->getId())+"]\n";
     resultat.append("Panier:\n");
     resultat.append("livraisons totales:"+to_string(nbLivraison()));
@@ -151,4 +151,4 @@ const std::string Consommateur::toString(){
         resultat.append("No.:"+to_string(i)+lp.toSring());
     }
     return resultat;
-}
+}*/

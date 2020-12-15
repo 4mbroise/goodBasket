@@ -21,8 +21,19 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QListWidget" name="LivraisonPrevue"/>
+   <item row="1" column="1">
+    <widget class="QScrollBar" name="horizontalScrollBar">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="Confirmer">
+     <property name="text">
+      <string>Confirmer</string>
+     </property>
+    </widget>
    </item>
    <item row="4" column="1">
     <widget class="QLabel" name="LivraisonLabel">
@@ -39,43 +50,19 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QListWidget" name="Livraison"/>
+    <widget class="QListWidget" name="LivraisonPrevue"/>
+   </item>
+   <item row="6" column="1">
+    <widget class="QScrollBar" name="horizontalScrollBar_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
    <item row="7" column="1">
     <widget class="QLabel" name="LivraisonPrevueLabel">
      <property name="text">
       <string>LivraisonPrevue   Total:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1">
-    <widget class="QPushButton" name="ConsulterCatalogue">
-     <property name="text">
-      <string>Consulter Catalogue</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QListWidget" name="PCListe"/>
-   </item>
-   <item row="12" column="1">
-    <widget class="QPushButton" name="EspacePersionnel">
-     <property name="text">
-      <string>Espace Personnel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="ID">
-     <property name="text">
-      <string>ID:100</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="QLabel" name="PC">
-     <property name="text">
-      <string>PC(pour consulter Catalogue)</string>
      </property>
     </widget>
    </item>
@@ -86,12 +73,8 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
+   <item row="8" column="1">
+    <widget class="QListWidget" name="PCListe"/>
    </item>
    <item row="9" column="1">
     <widget class="QScrollBar" name="horizontalScrollBar_3">
@@ -100,19 +83,36 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="Confirmer">
+   <item row="10" column="1">
+    <widget class="QLabel" name="PC">
      <property name="text">
-      <string>Confirmer</string>
+      <string>PC(pour consulter Catalogue)</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="11" column="1">
+    <widget class="QPushButton" name="ConsulterCatalogue">
+     <property name="text">
+      <string>Consulter Catalogue</string>
      </property>
     </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="ID">
+     <property name="text">
+      <string>ID:100</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="1">
+    <widget class="QPushButton" name="EspacePersionnel">
+     <property name="text">
+      <string>Espace Personnel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QListWidget" name="Livraison"/>
    </item>
   </layout>
  </widget>

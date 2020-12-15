@@ -148,18 +148,18 @@ DialogueProducteurs& Gestionnaire::getDialogueProducteurs(){
     return  this->gestionnaireDialogueProducteur;
 }
 
-bool Gestionnaire::inscrire(double phone,std::string email){
+bool Gestionnaire::inscrire(std::string phone,std::string email){
     QHashIterator<int,Responsable*> it=this->iterator();
     while(it.hasNext()){
         it.next();
-        if(it.value()->getEmail()==email.c_str()||it.value()->getPhone()==phone){
+        if(it.value()->getEmail()==email.c_str()||it.value()->getPhone()==phone.c_str()){
             return false;
         }
     }
     QHashIterator<int,Consommateur*> iter=gestionnaireDialogueConsommateur.iterator();
     while(iter.hasNext()){
         iter.next();
-           if(iter.value()->getEmail()==email.c_str()||iter.value()->getPhone()==phone){
+           if(iter.value()->getEmail()==email.c_str()||iter.value()->getPhone()==phone.c_str()){
             return false;
         }
     }
