@@ -70,10 +70,12 @@ void ProducteurSousResponsable::on_Confirmer_clicked()
 void ProducteurSousResponsable::setProducteurItem(const QString& idPc)
 {
     QSqlQuery query;
+    QSqlQuery query2;
 
     qDebug() << "erreur---------------------" << idPc;
 
-    if(!query.exec("select * from Utilisateurs where UtilisateurID= \
+
+    if(!query.exec("select * from Utilisateurs where UtilisateurID IN \
                     (select id from Producteurs) "))
     {
         qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
@@ -85,16 +87,29 @@ void ProducteurSousResponsable::setProducteurItem(const QString& idPc)
     while(query.next())
     {
         QString  nom= query.value(1).toString();
-        QString  tele= query.value(3).toString();
-        QString  adreese= query.value(4).toString();
-        QString  id= query.value(0).toString();
-        QString  accord = query.value(0).toString();
-        qDebug()<<nom<<tele<<adreese<<id<<accord;
+        QString  tele= query.value(4).toString();
+        QString  adreese= query.value(3).toString();
+        QString  idproducteur= query.value(0).toString();
+        QString  accord = QString("pas encore");
+
+        if(!query2.exec("select * from AppartenanceProducteur where idPC = "+idPc+" and idProducteur = "+idproducteur+"  "))
+        {
+            qDebug() << "Erreur: recherche ce appartenance. " <<query2.lastError();
+        }
+        else
+        {
+            qDebug() << "Trouvé!";
+        }
+        while(query2.next())
+        {
+            accord=QString(query2.value(2).toString());
+        }
+        qDebug()<<nom<<tele<<adreese<<idproducteur<<accord;
 
         ProducteurItemSousResponsable* pItemWidget = new ProducteurItemSousResponsable(this);
-        pItemWidget->setData(id,nom,tele,adreese,accord);
+        pItemWidget->setData(idproducteur,nom,tele,adreese,accord,idPc);
         QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(240,640 ));
+        pItem->setSizeHint(QSize(240,120 ));
         ui->listWidget->addItem(pItem);
         ui->listWidget->setItemWidget(pItem,pItemWidget);
     }
