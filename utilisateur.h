@@ -29,7 +29,7 @@ class Utilisateur {
          * @param adresse:Adresse du utlisateur
          * @param phone:numéro du téléphone
          */
-         Utilisateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email);
+         Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email);
 
          /**
           * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )

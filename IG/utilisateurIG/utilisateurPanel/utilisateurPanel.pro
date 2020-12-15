@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,14 +16,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    connecterig.cpp \
+    demanderpcig.cpp \
     inscriptionig.cpp \
-    main.cpp
+    main.cpp \
+    selectionig.cpp
 
 HEADERS += \
-    inscriptionig.h
+    connecterig.h \
+    demanderpcig.h \
+    inscriptionig.h \
+    selectionig.h
 
 FORMS += \
-    inscriptionig.ui
+    connecterig.ui \
+    demanderpcig.ui \
+    inscriptionig.ui \
+    selectionig.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -3,17 +3,17 @@
 #include "Gestionnaire/gestionnaire.h"
 #include <QDebug>
 #include <iostream>
+#include <QDate>
 using namespace std;
 
-//--------------ATTENTION
-/*
-Responsable::Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email):Utilisateur(nom,prenom,adresse,phone,email)
+
+Responsable::Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email):Utilisateur(nom,prenom,adresse,phone,email)
 {
     this->estResponsable=true;
     this->estConsommateur=false;
     this->confirmer=false;
 }
-*/
+
 
 Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
 {

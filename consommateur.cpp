@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Consommateur::Consommateur(string nom,string prenom,string adresse,std::string phone,string email):Utilisateur(nom,prenom,adresse,phone,email){
+Consommateur::Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email):Utilisateur(nom,prenom,adresse,phone,email){
     //this->gestionnaireDialogue.ajouterConsommateur(this);
     estConsommateur=true;
     qDebug() << "Consommateur est créé" << endl;

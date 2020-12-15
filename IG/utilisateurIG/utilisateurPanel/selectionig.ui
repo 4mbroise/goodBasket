@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Selectionig</class>
+ <widget class="QWidget" name="Selectionig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>682</width>
+    <height>379</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="title">
+     <property name="text">
+      <string>Veuillez choisir qui vous voulez être:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="ConsommateurLabel">
+     <property name="text">
+      <string>Consommateurs: vous pouvez choisir un Point de collcte pour choisir les produits à acheter dans goodbasket</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Consommatuer">
+     <property name="text">
+      <string>Consommateur</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="ReponsableLabel">
+     <property name="text">
+      <string>Rresponsable: vous pouvez faire une demande de Point de collcte pour venir le gérer et recruter les producteurs</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Responsable">
+     <property name="text">
+      <string>Responsable</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="ProducteurLabel">
+     <property name="text">
+      <string>Producteur: Fournir des Produits, peut  servir pour plusieurs Point de collecte</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Producteur">
+     <property name="text">
+      <string>Producteur</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

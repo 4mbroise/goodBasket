@@ -32,7 +32,7 @@ class Consommateur:public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:numéro de téléphone
        */
-    Consommateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email);
+    Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email);
 
      /**
       * @brief Consommateur:constructure de la classe consommateur sans paramètre

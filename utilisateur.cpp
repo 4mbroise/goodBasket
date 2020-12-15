@@ -2,16 +2,16 @@
 #include <QDebug>
 #include <iostream>
 
-Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email)
+Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdUtilisateur();
     this->id = newId;
-    this->nom = QString(nom.c_str());
-    this->prenom =QString(prenom.c_str());
-    this->adresse=QString(adresse.c_str());
-    this->phone = QString(phone.c_str());
-    this->email =QString(email.c_str());
+    this->nom = nom;
+    this->prenom =prenom;
+    this->adresse=adresse;
+    this->phone = phone;
+    this->email =email;
     estResponsable=false;
     estConsommateur=false;
     cout << "Utilisateur est créé" << endl;

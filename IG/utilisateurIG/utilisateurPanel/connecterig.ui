@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Connecterig</class>
+ <widget class="QWidget" name="Connecterig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>782</width>
+    <height>596</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="EmailLabel">
+     <property name="text">
+      <string>Email:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="Email"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="PassLabel">
+     <property name="text">
+      <string>mot de passe:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="Pass"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="Inscrire">
+     <property name="text">
+      <string>Inscrire</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="Login">
+     <property name="text">
+      <string>Log in</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

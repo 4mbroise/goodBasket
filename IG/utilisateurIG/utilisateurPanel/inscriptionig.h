@@ -14,8 +14,12 @@ class Inscriptionig : public QWidget
 public:
     Inscriptionig(QWidget *parent = nullptr);
     ~Inscriptionig();
-
+    bool verifier();
+private slots:
+    void on_Inscrire_clicked();
+    void on_Login_clicked();
 private:
     Ui::Inscriptionig *ui;
+
 };
 #endif // INCRIPTIONIG_H

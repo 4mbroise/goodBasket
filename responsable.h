@@ -6,7 +6,6 @@
 #include "consommateur.h"
 #include "Gestionnaire/gestionnaire.h"
 #include <QtCore/QString>
-#include <Qdate>
 
 /**
  * @brief Responsable
@@ -32,7 +31,7 @@ class Responsable:public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:A
        */
-     Responsable(std::string nom,std::string prenom,std::string adresse,double phone,std::string email);
+     Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email);
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
