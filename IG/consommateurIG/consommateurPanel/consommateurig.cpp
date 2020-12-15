@@ -109,7 +109,7 @@ void Consommateurig::setPC(){
 
     qDebug() << "erreur---------------------" << endl;
 
-    if(query.exec("select * from PointDeCollecte"))
+    if(query.exec("select distinct idPointDeCollecte, idResponsablePC, adresse, venteOuverte from PointDeCollecte join Cycle where date('now')>dateVente and date('now')<dateFinVente and idPC = idPointDeCollecte "))
     {
         qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
     }
