@@ -31,10 +31,18 @@ public:
 
     /**
      * @brief Mise a jour le contenu dans interface Producteur
+     * tous les produits
      * @param QString contenu de String
      * @param QString id de producteur
      */
-    void setData(const QString& a,const QString& id);
+    void setData(const QString& Payment,const QString& id);
+
+    /**
+     * @brief Mise a jour le contenu dans interface Producteur
+     * tous les producteurs
+     * @param QString id de PC
+     */
+    void setProducteurItem(const QString& idPc);
 
 
 private slots:
