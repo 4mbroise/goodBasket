@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LivraisonSousResponsable</class>
- <widget class="QWidget" name="LivraisonSousResponsable">
+ <class>ProducteurItemSousResponsable</class>
+ <widget class="QWidget" name="ProducteurItemSousResponsable">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -26,13 +26,13 @@
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="NomProduit">
+  <widget class="QLabel" name="NomProducteur">
    <property name="geometry">
     <rect>
      <x>100</x>
      <y>10</y>
-     <width>120</width>
-     <height>15</height>
+     <width>151</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -43,39 +43,26 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>55</y>
-     <width>120</width>
-     <height>15</height>
+     <y>30</y>
+     <width>141</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="Quantite">
+  <widget class="QLabel" name="Tele">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>25</y>
-     <width>120</width>
-     <height>15</height>
+     <y>50</y>
+     <width>151</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Erreur">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>70</y>
-     <width>150</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="Line" name="line">
@@ -85,6 +72,19 @@
      <y>5</y>
      <width>250</width>
      <height>10</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>8</x>
+     <y>110</y>
+     <width>250</width>
+     <height>5</height>
     </rect>
    </property>
    <property name="orientation">
@@ -104,19 +104,6 @@
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>8</x>
-     <y>105</y>
-     <width>250</width>
-     <height>5</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
@@ -130,13 +117,13 @@
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="Prix">
+  <widget class="QLabel" name="Etat">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>40</y>
-     <width>120</width>
-     <height>15</height>
+     <y>70</y>
+     <width>60</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="text">

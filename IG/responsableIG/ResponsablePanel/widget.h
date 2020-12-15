@@ -46,9 +46,10 @@ private slots:
      */
     void on_Rembourser_clicked();
 
-    void on_PayerProducteur_2_clicked();
-
-    void on_PayerProducteur_3_clicked();
+    /**
+     * @brief button de recruterProducteur
+     */
+    void on_RecruterProducteur_clicked();
 
 private:
     /**

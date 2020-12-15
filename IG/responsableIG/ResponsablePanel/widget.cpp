@@ -217,12 +217,21 @@ void Widget::on_Rembourser_clicked()
     }
 }
 
-void Widget::on_PayerProducteur_2_clicked()
-{
 
-}
-
-void Widget::on_PayerProducteur_3_clicked()
+void Widget::on_RecruterProducteur_clicked()
 {
+    QSqlQuery query;
+
+
+    ui->SousList2->clear();
+
+
+
+    ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
+    pItemWidget->setProducteurItem(QString(ui->NumPC->text()));
+    QListWidgetItem* pItem = new QListWidgetItem();
+    pItem->setSizeHint(QSize(240,640 ));
+    ui->SousList2->addItem(pItem);
+    ui->SousList2->setItemWidget(pItem,pItemWidget);
 
 }

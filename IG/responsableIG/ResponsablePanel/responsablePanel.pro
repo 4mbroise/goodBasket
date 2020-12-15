@@ -23,6 +23,7 @@ SOURCES += \
     livraisonsousig.cpp \
     consommateursousig.cpp \
     produitsousig.cpp \
+    producteuritemsousig.cpp \
     widget.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     livraisonsousig.h \
     consommateursousig.h \
     produitsousig.h \
+    producteuritemsousig.h \
     widget.h
 
 FORMS += \
@@ -39,6 +41,7 @@ FORMS += \
     erreursousig.ui \
     producteursousig.ui \
     produitsousig.ui \
+    producteuritemsousig.ui \
     widget.ui
 
 # Default rules for deployment.

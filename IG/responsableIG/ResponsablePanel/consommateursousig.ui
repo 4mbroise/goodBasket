@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>256</width>
+    <width>300</width>
     <height>640</height>
    </rect>
   </property>
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="Confirmer">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>600</y>
+     <x>150</x>
+     <y>610</y>
      <width>90</width>
      <height>23</height>
     </rect>
@@ -31,7 +31,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>256</width>
+     <width>300</width>
      <height>591</height>
     </rect>
    </property>
