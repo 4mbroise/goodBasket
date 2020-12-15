@@ -32,7 +32,7 @@ class Consommateur:public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:numéro de téléphone
        */
-    Consommateur(std::string nom,std::string prenom,std::string adresse,double phone,std::string email,DialogueConsommateurs &dc);
+    Consommateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email);
 
      /**
       * @brief Consommateur:constructure de la classe consommateur sans paramètre
@@ -213,7 +213,7 @@ class Consommateur:public Utilisateur
          /**
           * @brief gestionnaire:DialogueGestionnaireDeDialogue qui fait le lien entre les requêtes du consommateur et les actions réellement effectuées
           */
-         DialogueConsommateurs &gestionnaireDialogue;
+          //DialogueConsommateurs &gestionnaireDialogue;
 
          /**
           * @brief message recu par dialogue

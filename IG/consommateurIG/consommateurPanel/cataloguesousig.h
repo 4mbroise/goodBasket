@@ -13,10 +13,11 @@ class CatalogueSousConsommateur : public QWidget
     Q_OBJECT
 
 public:
-    explicit CatalogueSousConsommateur(QWidget *parent = nullptr);
+    explicit CatalogueSousConsommateur(QWidget *parent = nullptr,QString adressPC="null",int idConsommateur=-1);
     ~CatalogueSousConsommateur();
-    void setData(const QString& adressePC,const QString& idConsommateur);
+    void setData();
     Ui::CatalogueSousConsommateur& getUI();
+    void mettreAJour();
 private slots:
     void on_Retourner_clicked();
 signals:
@@ -24,6 +25,8 @@ signals:
 
 private:
     Ui::CatalogueSousConsommateur *ui;
+    QString adressePC;
+    int idConsommateur;
 };
 
 #endif // CATALOGUESOUSIG_H

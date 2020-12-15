@@ -4,9 +4,9 @@
 
 Utilisateur::Utilisateur(std::string nom,std::string prenom,std::string adresse,std::string phone,std::string email)
 {
-    //------ATTENTION-----------IdGenerator& gen = IdGenerator::Instance();
-    //------ATTENTION-----------int newId = gen.getNewIdProducteur();
-    //------ATTENTION-----------this->id = newId;
+    IdGenerator& gen = IdGenerator::Instance();
+    int newId = gen.getNewIdUtilisateur();
+    this->id = newId;
     this->nom = QString(nom.c_str());
     this->prenom =QString(prenom.c_str());
     this->adresse=QString(adresse.c_str());
@@ -100,7 +100,7 @@ void Utilisateur::changeAdresse(std::string adresse){
 }
 
 void Utilisateur::changePhone(std::string phone){
-    this->phone==QString(phone.c_str());
+    this->phone=QString(phone.c_str());
 }
 
 

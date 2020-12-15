@@ -111,7 +111,7 @@ public:
 
     DialogueProducteurs& getDialogueProducteurs();
 
-    bool inscrire(double phone,std::string email);
+    bool inscrire(std::string phone,std::string email);
 
 
 

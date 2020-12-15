@@ -18,26 +18,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ../../../Outils/idgenerator.cpp \
+    ../../../consommateur.cpp \
+    ../../../utilisateur.cpp \
     cataloguesousig.cpp \
     consommateurig.cpp \
     livraisonsousig.cpp \
     main.cpp \
-    pcsousig.cpp \
     produitsousig.cpp
 
 HEADERS += \
     ../../../Outils/idgenerator.h \
+    ../../../consommateur.h \
+    ../../../utilisateur.h \
     cataloguesousig.h \
     consommateurig.h \
     livraisonsousig.h \
-    pcsousig.h \
     produitsousig.h
 
 FORMS += \
     cataloguesousig.ui \
     consommateurig.ui \
     livraisonsousig.ui \
-    pcsousig.ui \
     produitsousig.ui
 
 # Default rules for deployment.

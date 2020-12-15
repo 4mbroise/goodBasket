@@ -18,17 +18,26 @@ LivraisonSousConsommateur::~LivraisonSousConsommateur()
 }
 
 
-void LivraisonSousConsommateur::setData(const QString& id,const QString& nom,const QString& idProduit,const QString& quantite,const QString& adressePC,const QString& dateLivraison,const QString& dateAchat)
+void LivraisonSousConsommateur::setData(const QString& id,const QString& nom,const QString& idProduit,const QString& quantite,const QString& adressePC,const QString& dateLivraison)
 {
-    ui->id->setText("id:"+id);
-    ui->nom->setText("nom:"+nom);
-    ui->idProduit->setText("idProduit:"+idProduit);
-    ui->quantite->setText("quantite:"+quantite);
-    ui->adressePC->setText("adressePC:"+adressePC);
-    ui->dateLivraison->setText("dateLivraison:"+dateLivraison);
-    ui->dateAchat->setText("dateAchat:"+dateAchat);
+    ui->id->setText("ID: "+id);
+    ui->nom->setText("Nom: "+nom);
+    ui->idProduit->setText("IdProduit: "+idProduit);
+    ui->quantite->setText("Quantite: "+quantite);
+    ui->adressePC->setText("AdressePC: "+adressePC);
+    ui->dateLivraison->setText("DateLivraison: "+dateLivraison);
+    ui->dateAchat->setText("DateAchat: pas encore confirmé");
 }
 
+void LivraisonSousConsommateur::setDataPrevue(const QString &id, const QString &nom, const QString &idProduit, const QString &quantite, const QString &adressePC, const QString &dateLivraison, const QString &dateAchat){
+    ui->id->setText("ID: "+id);
+    ui->nom->setText("Nom: "+nom);
+    ui->idProduit->setText("IdProduit: "+idProduit);
+    ui->quantite->setText("Quantite: "+quantite);
+    ui->adressePC->setText("AdressePC: "+adressePC);
+    ui->dateLivraison->setText("DateLivraison: "+dateLivraison);
+    ui->dateAchat->setText("DateAchat: "+dateAchat);
+}
 void LivraisonSousConsommateur::on_Supprimer_clicked(){
 
 }

@@ -1,4 +1,4 @@
-#include "incriptionig.h"
+#include "inscriptionig.h"
 
 #include <QApplication>
 

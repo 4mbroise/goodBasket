@@ -29,7 +29,7 @@ Consommateur* DialogueConsommateurs::getConsommateur(int idConsommateur){
 }
 
 
-void DialogueConsommateurs::ajouterPanier(Produit p,int commande,int idConsommateur){
+/*void DialogueConsommateurs::ajouterPanier(Produit p,int commande,int idConsommateur){
     if(!estDepasse(p,commande)){
         Consommateur *c=getConsommateur(idConsommateur);
         Livraison l=liv(p,commande);
@@ -81,7 +81,7 @@ void DialogueConsommateurs::extraAjouter(Produit p,int extra,int idConsommateur)
         }
     }
 }
-
+*/
 
 
 void DialogueConsommateurs::notifierConsommateur(int idConcommateur,std::string s)
@@ -99,7 +99,7 @@ QHashIterator<int,Consommateur*> DialogueConsommateurs::iterator(){
 
 }
 
-const string DialogueConsommateurs::toSring(){
+/*const string DialogueConsommateurs::toSring(){
     std::string returned = "Gestionnaire de Dialogue Consommateur(Nb consommateur = ";
 
     returned.append(to_string(nbConsommateur())).append(")\n");
@@ -113,6 +113,6 @@ const string DialogueConsommateurs::toSring(){
     }
 
     return returned;
-}
+}*/
 
 
