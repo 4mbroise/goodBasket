@@ -29,12 +29,6 @@ public:
      */
     ~ErreurSousResponsable();
 
-    /**
-     * @brief Mise a jour le message dans interface Erreur
-     * @param QString contenu de String
-     */
-    void setData(const QString& a);
-
 private slots:
     /**
      * @brief button de confirmation

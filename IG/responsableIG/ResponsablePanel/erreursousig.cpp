@@ -1,5 +1,11 @@
 #include "erreursousig.h"
 #include "ui_erreursousig.h"
+#include "../../../Outils/idgenerator.h"
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QDebug>
+#include <QListWidget>
 
 ErreurSousResponsable::ErreurSousResponsable(QWidget *parent)
     : QWidget(parent), ui(new Ui::ErreurSousResponsable)
@@ -15,10 +21,19 @@ ErreurSousResponsable::~ErreurSousResponsable()
 
 void ErreurSousResponsable::on_Confirmer_clicked()
 {
-    this->deleteLater();
-}
+    QSqlQuery query;
 
-void ErreurSousResponsable::setData(const QString& a)
-{
-    ui->apercu->setText(a);
+    if(ui->apercu->text()!=NULL)
+    {
+        if(!query.exec("INSERT INTO Erreurs VALUES("+QString::number(IdGenerator::Instance().getNewIdErreur())+", \""+ui->apercu->text()+"\")"))
+        {
+            qDebug() << "Erreur: Défaut de insertion d’une table. " << query.lastError();
+        }
+        else
+        {
+            qDebug() << "Insertion!";
+        }
+    }
+
+    this->deleteLater();
 }

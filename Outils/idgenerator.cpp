@@ -10,6 +10,7 @@ IdGenerator::IdGenerator()
     qDebug()<<"Creation IdProducteurGenerator"<<endl;
     lastIdProducteur = 1;
     lastIdProduit = 1;
+    lastIdErreur =1;
 }
 
 IdGenerator::~IdGenerator()
@@ -41,6 +42,12 @@ int IdGenerator::getNewIdUtilisateur()
 int IdGenerator::getNewIdLivraison(){
     int idAReturn = this-> lastIdLivraison;       //Sauvegarde de l'id à retourner avant incrémentation
     this -> lastIdLivraison ++;                   //Incrémentation
+    return idAReturn;
+}
+
+int IdGenerator::getNewIdErreur(){
+    int idAReturn = this-> lastIdErreur;       //Sauvegarde de l'id à retourner avant incrémentation
+    this -> lastIdErreur ++;                   //Incrémentation
     return idAReturn;
 }
 

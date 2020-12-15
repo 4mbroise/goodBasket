@@ -24,6 +24,7 @@ SOURCES += \
     consommateursousig.cpp \
     produitsousig.cpp \
     producteuritemsousig.cpp \
+    ../../../Outils/idgenerator.cpp \
     widget.cpp
 
 HEADERS += \
@@ -33,6 +34,7 @@ HEADERS += \
     consommateursousig.h \
     produitsousig.h \
     producteuritemsousig.h \
+    ../../../Outils/idgenerator.h \
     widget.h
 
 FORMS += \
