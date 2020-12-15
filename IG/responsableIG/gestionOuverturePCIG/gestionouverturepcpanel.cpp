@@ -1,5 +1,6 @@
 #include "gestionouverturepcpanel.h"
 #include "ui_gestionouverturepcpanel.h"
+#include "QDate"
 
 GestionOuverturePCPanel::GestionOuverturePCPanel(QWidget *parent, Responsable r)
     : QWidget(parent)
