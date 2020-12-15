@@ -36,16 +36,33 @@ public:
      * @param QString telephone de producteur
      * @param QString adresse de producteur
      * @param QString accord de producteur
+     * @param QString id de pc
      */
-    void setData(const QString& id,const QString& nom,const QString& tele,const QString& adresse,const QString& accord);
+    void setData(const QString& idProducteur,const QString& nom,const QString& tele,const QString& adresse,const QString& accord,const QString& idPc);
 
 
+
+private slots:
+    /**
+     * @brief Recruter ce producteur
+     */
+    void on_recruter_clicked();
 
 private:
     /**
      * @brief ui de interface ProducteurItem
      */
     Ui::ProducteurItemSousResponsable *ui;
+
+    /**
+     * @brief id de PC
+     */
+    int idPC;
+
+    /**
+     * @brief id de producteur
+     */
+    int idproducteur;
 };
 #endif // WIDGET_H
 
