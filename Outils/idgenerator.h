@@ -44,6 +44,13 @@ class IdGenerator
          */
         int getNewIdLivraison();
 
+        /**
+         * @brief fonction qui retourne un nouvel numero d'IdErreur
+         *
+         * @return un nouvel IdErreur
+         */
+        int getNewIdErreur();
+
 
     private:
         /**
@@ -67,6 +74,11 @@ class IdGenerator
         *
         */
         int lastIdLivraison;
+        /**
+        * @brief le dernier numero d'Id Erreur généré
+        *
+        */
+        int lastIdErreur;
 
         /**
         * @brief Constructeur par copie privé

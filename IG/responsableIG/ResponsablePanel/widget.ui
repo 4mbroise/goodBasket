@@ -62,7 +62,7 @@
     <string>Rembourser</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ConsulterReports">
+  <widget class="QPushButton" name="ReporterReports">
    <property name="geometry">
     <rect>
      <x>930</x>
@@ -72,7 +72,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Consulter reports</string>
+    <string>ReporterErreur</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

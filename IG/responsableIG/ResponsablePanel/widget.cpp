@@ -119,7 +119,7 @@ Widget::~Widget()
     delete ui;
 }
 
-
+/*
 void Widget::on_ConsulterReports_clicked()
 {
     QSqlQuery query;
@@ -150,7 +150,7 @@ void Widget::on_ConsulterReports_clicked()
 
     }
 }
-
+*/
 
 void Widget::on_PayerProducteur_clicked()
 {
@@ -234,4 +234,17 @@ void Widget::on_RecruterProducteur_clicked()
     ui->SousList2->addItem(pItem);
     ui->SousList2->setItemWidget(pItem,pItemWidget);
 
+}
+
+void Widget::on_ReporterReports_clicked()
+{
+    QSqlQuery query;
+
+    ui->SousList->clear();
+
+    ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
+    QListWidgetItem* pItem = new QListWidgetItem();
+    pItem->setSizeHint(QSize(240, 120));
+    ui->SousList->addItem(pItem);
+    ui->SousList->setItemWidget(pItem,pItemWidget);
 }
