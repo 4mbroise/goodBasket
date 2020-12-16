@@ -109,7 +109,7 @@ void Consommateurig::setPC(){
 
     qDebug() << "erreur---------------------" << endl;
 
-    if(query.exec("select * from PointDeCollecte"))
+    if(query.exec("select distinct idPointDeCollecte, idResponsablePC, adresse, venteOuverte from PointDeCollecte join Cycle where date('now')>dateVente and date('now')<dateFinVente and idPC = idPointDeCollecte "))
     {
         qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
     }
@@ -160,8 +160,8 @@ void Consommateurig::on_ConsulterCatalogue_clicked(){
         while(query.next())
         {
             QString idProduit=query.value(0).toString();
-            QString nom=query.value(1).toString();
-            QString prix=query.value(2).toString();
+            QString prix=query.value(1).toString();
+            QString nom=query.value(2).toString();
             QString quantite=query.value(3).toString();
             QString idProducteur=query.value(4).toString();
             qDebug()<<idProduit<<nom<<prix<<idProducteur<<endl;
