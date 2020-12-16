@@ -31,7 +31,6 @@ public:
 
     /**
      * @brief Mise a jour le contenu dans interface Erreur
-     * tous les produits
      * @param QString contenu de String
      */
     void setData(const QString& apercu);

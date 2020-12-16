@@ -47,6 +47,11 @@ private:
      * @brief ui de interface Consommateur
      */
     Ui::ConsommateurSousResponsable *ui;
+
+    /**
+     * @brief id de consommateur
+     */
+    int consommateurId;
 };
 #endif // WIDGET_H
 

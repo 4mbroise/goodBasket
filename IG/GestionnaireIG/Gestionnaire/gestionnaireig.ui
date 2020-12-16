@@ -45,6 +45,28 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="ValiderPC">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>120</y>
+     <width>200</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ReporterErreur</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

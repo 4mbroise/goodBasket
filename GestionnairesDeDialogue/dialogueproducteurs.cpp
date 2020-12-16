@@ -118,7 +118,7 @@ void DialogueProducteurs::supprimerLivraison(Livraison livraison,int idproducteu
     /*
      * partie de sql
     */
-    this->getProducteurById(idproducteur)->supprimerLivraison(livraison);
+    //this->getProducteurById(idproducteur)->supprimerLivraison(livraison);
     /*
      * notifier le reponsable
     */

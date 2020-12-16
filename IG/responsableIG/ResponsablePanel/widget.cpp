@@ -51,7 +51,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1000, \"UL\")"))
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0)"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -62,7 +62,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(3, \"pomme de terre\",1 ,0 ,20 ,1, \" 2005-03-29\" , \" UL\", \" 2005-03-27\" , 0,1)"))
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(3, \"pomme de terre\",1 ,0 ,20 ,1, \" 2005-03-29\" , \" UL\", \" 2005-03-27\" , \"true\",\"false\",\"false\")"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -72,7 +72,7 @@ Widget::Widget(QWidget *parent)
     }
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(1, \"pomme\",1 ,0 ,10, 1,\" 2010-10-23\", \" UL\", \"2010-10-21\", 1,0 )"))
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(1, \"pomme\",1 ,0 ,10, 1,\" 2010-10-23\", \" UL\", \"2010-10-21\",  \"false\",\"true\",\"false\")"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -119,38 +119,6 @@ Widget::~Widget()
     delete ui;
 }
 
-/*
-void Widget::on_ConsulterReports_clicked()
-{
-    QSqlQuery query;
-
-    ui->SousList->clear();
-
-    //verifier id de Erreur
-    if(!query.exec("select * from Erreurs"))
-    {
-        qDebug() << "Erreur: recherche ce Erreur. " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Trouvé!";
-    }
-    while(query.next())
-    {
-        QString  id= query.value(0).toString();
-        QString  apercu= query.value(1).toString();
-        qDebug()<<id<<apercu;
-
-        ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
-        pItemWidget->setData(apercu);
-        QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(240, 120));
-        ui->SousList->addItem(pItem);
-        ui->SousList->setItemWidget(pItem,pItemWidget);
-
-    }
-}
-*/
 
 void Widget::on_PayerProducteur_clicked()
 {
@@ -171,14 +139,11 @@ void Widget::on_PayerProducteur_clicked()
     }
     while(query.next())
     {
-        QString  payment= query.value(1).toString();
-
-        qDebug()<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
-        pItemWidget->setData(payment,QString(ui->NumProducteur->text()));
+        pItemWidget->setData(QString(ui->NumProducteur->text()));
         QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(240,640 ));
+        pItem->setSizeHint(QSize(240,640));
         ui->SousList2->addItem(pItem);
         ui->SousList2->setItemWidget(pItem,pItemWidget);
 

@@ -164,10 +164,16 @@ class Producteur:public Utilisateur
 
 
         /**
-         * @brief procedure supprimer livaison
-         * @param livraison livaison que le producteur demande de supprimer
+         * @brief procedure annuler livraison en fonction de l'id livraison
+         * @param idLivraison id de la livaison à supprimer
          */
-        void supprimerLivraison(Livraison livraison);
+        void annulerLivraisonByLivraison(int idLivraison);
+
+        /**
+         * @brief procedure annuler livraison en fonction de l'id produit (delete mutliple)
+         * @param idLivraison id de la livaison à supprimer
+         */
+        void annulerLivraisonByProduit(int idProduit);
 
         /**
          * @brief operator = : redéfinition du = du producteur

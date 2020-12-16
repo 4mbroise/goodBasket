@@ -20,15 +20,18 @@ SOURCES += \
     ../../../Outils/idgenerator.cpp \
     main.cpp \
     gestionnaireig.cpp \
+    pcsousig.cpp \
     erreursousig.cpp
 
 HEADERS += \
     ../../../Outils/idgenerator.h \
     gestionnaireig.h \
+    pcsousig.h \
     erreursousig.h
 
 FORMS += \
     gestionnaireig.ui \
+    pcsousig.ui \
     erreursousig.ui
 
 # Default rules for deployment.

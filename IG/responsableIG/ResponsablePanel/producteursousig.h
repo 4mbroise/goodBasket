@@ -32,10 +32,9 @@ public:
     /**
      * @brief Mise a jour le contenu dans interface Producteur
      * tous les produits
-     * @param QString contenu de String
      * @param QString id de producteur
      */
-    void setData(const QString& Payment,const QString& id);
+    void setData(const QString& id);
 
     /**
      * @brief Mise a jour le contenu dans interface Producteur
@@ -56,6 +55,16 @@ private:
      * @brief ui de interface Producteur
      */
     Ui::ProducteurSousResponsable *ui;
+
+    /**
+     * @brief etat de payerproducteurs
+     */
+    bool etatPayer;
+
+    /**
+     * @brief id de producteur
+     */
+    int idProducteur;
 };
 #endif // WIDGET_H
 

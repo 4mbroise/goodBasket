@@ -29,7 +29,7 @@ void ConsommateurSousResponsable::setData(const QString& consommateurid)
 
     qDebug() << "erreur---------------------" << consommateurid;
 
-    if(!query.exec("select * from Livraisons where idConsommateur= \""+consommateurid+"\" and annuler=1"))
+    if(!query.exec("select * from Livraisons where idConsommateur= \""+consommateurid+"\" and annuler=\"true\""))
     {
         qDebug() << "Erreur: recherche ce consommateur. " <<query.lastError();
     }
@@ -65,10 +65,23 @@ void ConsommateurSousResponsable::setData(const QString& consommateurid)
         ui->listWidget->addItem(pItem);
         ui->listWidget->setItemWidget(pItem,pItemWidget);
     }
-
+    consommateurId=consommateurid.toInt();
 }
 
 void ConsommateurSousResponsable::on_Confirmer_clicked()
 {
+    QSqlQuery query;
+
+    if(!query.exec("DELETE from Livraisons \
+                   WHERE  annuler = \"true\" \
+                   AND idConsommateur ="+QString::number(consommateurId)+""))
+    {
+        qDebug() << "Erreur: Défaut de Modification d’une table. " << query.lastError();
+    }
+    else
+    {
+        qDebug() << "Modification!";
+    }
+
     this->deleteLater();
 }

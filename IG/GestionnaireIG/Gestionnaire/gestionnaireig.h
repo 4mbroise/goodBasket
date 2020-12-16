@@ -34,6 +34,8 @@ private slots:
      */
     void on_ConsulterReports_clicked();
 
+    void on_ValiderPC_clicked();
+
 private:
     /**
      * @brief ui de interface Gestionnaire

@@ -22,19 +22,7 @@ ErreurSousGestionnaire::~ErreurSousGestionnaire()
 void ErreurSousGestionnaire::on_Confirmer_clicked()
 {
     QSqlQuery query;
-/*
-    if(ui->apercu->text()!=NULL)
-    {
-        if(!query.exec("INSERT INTO Erreurs VALUES("+QString::number(IdGenerator::Instance().getNewIdErreur())+", \""+ui->apercu->text()+"\")"))
-        {
-            qDebug() << "Erreur: Défaut de insertion d’une table. " << query.lastError();
-        }
-        else
-        {
-            qDebug() << "Insertion!";
-        }
-    }
-*/
+
     this->deleteLater();
 }
 
