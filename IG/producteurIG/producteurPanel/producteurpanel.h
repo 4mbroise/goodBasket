@@ -31,10 +31,13 @@ private slots:
     void mettreAJourTable();
     void on_pushButton_clicked();
 
+    void on_pushButton_2_released();
+
 private:
     Widget *formulaire;
     Producteur prod;
-    QSqlQueryModel *model;
+    QSqlQueryModel *modelProduits;
+    QSqlQueryModel *modelLivraisons;
     Ui::producteurPanel *ui;
 };
 #endif // PRODUCTEURPANEL_H
