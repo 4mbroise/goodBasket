@@ -15,6 +15,7 @@ SOURCES += \
     ../../../pc.cpp \
     ../../../responsable.cpp \
     ../formulaireCycle/formulairecycle.cpp \
+    ../../../Outils/idgenerator.cpp \
     gestionouverturepcpanel.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     ../../../pc.h \
     ../../../responsable.h \
     ../formulaireCycle/formulairecycle.h \
+    ../../../Outils/idgenerator.h \
     gestionouverturepcpanel.h
 
 FORMS += \

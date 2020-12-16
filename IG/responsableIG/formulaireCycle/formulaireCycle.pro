@@ -14,6 +14,7 @@ SOURCES += \
     ../../../utilisateur.cpp \
     ../../../pc.cpp \
     ../../../responsable.cpp \
+    ../../../Outils/idgenerator.cpp \
     formulairecycle.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     ../../../utilisateur.h \
     ../../../pc.h \
     ../../../responsable.h \
+    ../../../Outils/idgenerator.h \
     formulairecycle.h
 
 FORMS += \

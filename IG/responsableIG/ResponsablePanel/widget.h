@@ -31,10 +31,6 @@ public:
 
 private slots:
 
-    /**
-     * @brief button de consulterReports
-     */
-    void on_ConsulterReports_clicked();
 
     /**
      * @brief button de payerProducteur
@@ -50,6 +46,11 @@ private slots:
      * @brief button de recruterProducteur
      */
     void on_RecruterProducteur_clicked();
+
+    /**
+     * @brief button de reporterErreur
+     */
+    void on_ReporterReports_clicked();
 
 private:
     /**

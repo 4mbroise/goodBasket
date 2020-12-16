@@ -1,6 +1,7 @@
 #include "demanderpcig.h"
 #include "ui_demanderpcig.h"
 #include "connecterig.h"
+#include "ui_connecterig.h"
 #include <QValidator>
 #include "../../../responsable.h"
 #include "../../../utilisateur.h"

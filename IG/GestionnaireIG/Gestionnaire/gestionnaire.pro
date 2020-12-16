@@ -17,34 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    erreursousig.cpp \
-    main.cpp \
-    producteursousig.cpp \
-    livraisonsousig.cpp \
-    consommateursousig.cpp \
-    produitsousig.cpp \
-    producteuritemsousig.cpp \
     ../../../Outils/idgenerator.cpp \
-    widget.cpp
+    main.cpp \
+    gestionnaireig.cpp \
+    erreursousig.cpp
 
 HEADERS += \
-    erreursousig.h \
-    producteursousig.h \
-    livraisonsousig.h \
-    consommateursousig.h \
-    produitsousig.h \
-    producteuritemsousig.h \
     ../../../Outils/idgenerator.h \
-    widget.h
+    gestionnaireig.h \
+    erreursousig.h
 
 FORMS += \
-    livraisonsousig.ui \
-    consommateursousig.ui \
-    erreursousig.ui \
-    producteursousig.ui \
-    produitsousig.ui \
-    producteuritemsousig.ui \
-    widget.ui
+    gestionnaireig.ui \
+    erreursousig.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

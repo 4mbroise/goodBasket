@@ -7,22 +7,22 @@
 #include <QDebug>
 #include <QListWidget>
 
-ErreurSousResponsable::ErreurSousResponsable(QWidget *parent)
-    : QWidget(parent), ui(new Ui::ErreurSousResponsable)
+ErreurSousGestionnaire::ErreurSousGestionnaire(QWidget *parent)
+    : QWidget(parent), ui(new Ui::ErreurSousGestionnaire)
 {
     ui->setupUi(this);
 }
 
-ErreurSousResponsable::~ErreurSousResponsable()
+ErreurSousGestionnaire::~ErreurSousGestionnaire()
 {
     delete ui;
 }
 
 
-void ErreurSousResponsable::on_Confirmer_clicked()
+void ErreurSousGestionnaire::on_Confirmer_clicked()
 {
     QSqlQuery query;
-
+/*
     if(ui->apercu->text()!=NULL)
     {
         if(!query.exec("INSERT INTO Erreurs VALUES("+QString::number(IdGenerator::Instance().getNewIdErreur())+", \""+ui->apercu->text()+"\")"))
@@ -34,6 +34,10 @@ void ErreurSousResponsable::on_Confirmer_clicked()
             qDebug() << "Insertion!";
         }
     }
-
+*/
     this->deleteLater();
+}
+
+void ErreurSousGestionnaire::setData(const QString& apercu){
+    ui->apercu->setText(apercu);
 }
