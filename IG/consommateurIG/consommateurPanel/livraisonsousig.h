@@ -21,6 +21,7 @@ private slots:
     void on_Supprimer_clicked();
 
 private:
+    int idLivraison;
     Ui::LivraisonSousConsommateur *ui;
 };
 
