@@ -35,12 +35,12 @@ class Utilisateur {
           * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
           * @param id du responsable
           */
-         Utilisateur(int id);
+         //Utilisateur(int id);
 
          /**
           * @brief Constructeur par défaut
           */
-         Utilisateur();
+         //Utilisateur();
 
          /**
           * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.

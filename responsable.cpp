@@ -15,7 +15,7 @@ Responsable::Responsable(QString nom,QString prenom,QString adresse,QString phon
 }
 
 
-Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
+/*Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
 {
     this->id = id;
 }
@@ -23,72 +23,12 @@ Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
 Responsable::Responsable():Utilisateur(),pc(PC())
 {
     this->id = -1;
-}
+}*/
 
-Responsable::~Responsable(){
+/*Responsable::~Responsable(){
     qDebug() << "Responsable est enlevé" << endl;
 }
-
-const int& Responsable::getId(){
-    return this->id;
-    qDebug()<<"get id du Responsable"<<endl;
-}
-
-
-const QString& Responsable::getNom(){
-    return  this->nom;
-    qDebug()<<"get nom du Responsable"<<endl;
-}
-
-
-const QString& Responsable::getPrenom(){
-    return  this->prenom;
-    qDebug()<<"get prenom du Responsable"<<endl;
-}
-
-const QString& Responsable::getAdresse(){
-    return this->adresse;
-    qDebug()<<"get adresse du Responsable"<<endl;
-}
-
-const QString& Responsable::getPhone(){
-    return this->phone;
-    qDebug()<<"get numéro de téléphon du Responsable"<<endl;
-}
-
-const QString& Responsable::getEmail(){
-    return this->email;
-    qDebug()<<"get email du Responsable"<<endl;
-}
-
-
-void Responsable::changeNom(std::string nom){
-    this->nom=QString(nom.c_str());
-    qDebug()<<"changer ou setter nom du Responsable"<<endl;
-}
-
-
-void Responsable::changePrenom(std::string prenom){
-    this->prenom=QString(prenom.c_str());
-    qDebug()<<"changer ou setter prenom du Responsable"<<endl;
-}
-
-
-void Responsable::changeAdresse(std::string adresse){
-    this->adresse=QString(adresse.c_str());
-    qDebug()<<"changer ou setter adresse du Responsable"<<endl;
-}
-
-void Responsable::changePhone(std::string phone){
-    this->phone=QString(phone.c_str());
-    qDebug()<<"changer ou setter numéro de téléphone du Responsable"<<endl;
-}
-
-
-void Responsable::changeEmail(std::string email){
-    this->email=QString(email.c_str());
-    qDebug()<<"changer ou setter email du Responsable"<<endl;
-}
+*/
 
 
 void Responsable::PayerProducteurs(int producteurid)

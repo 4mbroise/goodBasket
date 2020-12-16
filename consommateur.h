@@ -34,80 +34,7 @@ class Consommateur:public Utilisateur
        */
     Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email);
 
-     /**
-      * @brief Consommateur:constructure de la classe consommateur sans paramètre
-      */
 
-     /**
-      * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
-      */
-     ~Consommateur();
-
-     /**
-      * @brief getId:obtenir le id du consommateur
-      * @return id unique de consommateur
-      */
-     virtual const int& getId();
-
-     /**
-      * @brief getNom:obtenir le nom du consommateur
-      * @return Nom du consommateur
-      */
-     virtual const QString& getNom();
-
-     /**
-      * @brief getPrenom:obtenir le prénom du consommateur
-      * @return Nom du consommateur
-      */
-     virtual const QString& getPrenom();
-
-     /**
-      * @brief getAdresse:obtenir l'adresse du consommateur
-      * @return Prénom du consommateur
-      */
-     virtual const QString& getAdresse();
-
-     /**
-      * @brief getPhone:obtenir le numéro de téléphone du consommateur
-      * @return numéro de téléphone du consommateur
-      */
-     virtual const QString& getPhone();
-
-     /**
-      * @brief getEmail:obtenir l'email du consommateur
-      * @return email du consommateur
-      */
-     virtual const QString& getEmail();
-
-     /**
-      * @brief changeNom:modifier ou ajouter le nom d'un consommateur
-      * @param nom:nouveau nom
-      */
-     virtual void changeNom(std::string nom);
-
-     /**
-      * @brief changePrenom:changeNom:modifier ou ajouter le prénom d'un consommateur
-      * @param prenom:noveau prénom
-      */
-     virtual void changePrenom(std::string prenom);
-
-     /**
-      * @brief changeAdresse:modifier ou ajouter l'adresse d'un consommateur
-      * @param adresse:nouveau adresse
-      */
-     virtual void changeAdresse(std::string adresse);
-
-     /**
-      * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un consommateur
-      * @param phone:nouveau nom
-      */
-     virtual void changePhone(std::string phone);
-
-     /**
-      * @brief changeEmail:modifier ou ajouter l'email d'un consommateur
-      * @param email:noveau email
-      */
-     virtual void changeEmail(std::string email);
 
      /**
       * @brief getPanier:Obtener une liste d'articles dans le panier
@@ -189,6 +116,8 @@ class Consommateur:public Utilisateur
       * @param l:livraison du produit
       */
      void supprimerProduit(Livraison l);
+
+     void ajouterConsommateurBDD();
 
      /**
       * @brief toString:information du consommateur

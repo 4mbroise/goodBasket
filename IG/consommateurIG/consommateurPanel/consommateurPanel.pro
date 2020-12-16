@@ -18,10 +18,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ../../../Outils/idgenerator.cpp \
-    ../../../consommateur.cpp \
-    ../../../utilisateur.cpp \
-    ../../utilisateurIG/utilisateurPanel/demanderpcig.cpp \
-    ../../utilisateurIG/utilisateurPanel/selectionig.cpp \
     cataloguesousig.cpp \
     consommateurig.cpp \
     livraisonsousig.cpp \
@@ -32,8 +28,6 @@ HEADERS += \
     ../../../Outils/idgenerator.h \
     ../../../consommateur.h \
     ../../../utilisateur.h \
-    ../../utilisateurIG/utilisateurPanel/demanderpcig.h \
-    ../../utilisateurIG/utilisateurPanel/selectionig.h \
     cataloguesousig.h \
     consommateurig.h \
     livraisonsousig.h \

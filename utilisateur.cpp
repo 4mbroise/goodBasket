@@ -17,7 +17,7 @@ Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phon
     cout << "Utilisateur est créé" << endl;
 }
 
-Utilisateur::Utilisateur(int id)
+/*Utilisateur::Utilisateur(int id)
 {
     this->id = id;
 
@@ -48,12 +48,8 @@ Utilisateur::Utilisateur(int id)
         qDebug() << "SUCCESS SELECT utilisateur SQL";
     }
     cout << "Utilisateur est créé" << endl;
-}
+}*/
 
-Utilisateur::Utilisateur()
-{
-
-}
 
 Utilisateur::~Utilisateur(){
     cout << "Utilisateur est enlevé" << endl;

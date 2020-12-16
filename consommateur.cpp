@@ -12,71 +12,6 @@ Consommateur::Consommateur(QString nom,QString prenom,QString adresse,QString ph
 }
 
 
-Consommateur::~Consommateur(){
-    qDebug() << "Consommateur est enlevé" << endl;
-}
-
-const int& Consommateur::getId(){
-    return this->id;
-    qDebug()<<"get id du Consommateur"<<endl;
-}
-
-
-const QString& Consommateur::getNom(){
-    return  this->nom;
-    qDebug()<<"get nom du Consommateur"<<endl;
-}
-
-
-const QString& Consommateur::getPrenom(){
-    return  this->prenom;
-    qDebug()<<"get prenom du Consommateur"<<endl;
-}
-
-const QString& Consommateur::getAdresse(){
-    return this->adresse;
-    qDebug()<<"get adresse du Consommateur"<<endl;
-}
-
-const QString& Consommateur::getPhone(){
-    return this->phone;
-    qDebug()<<"get numéro de téléphon du Consommateur"<<endl;
-}
-
-const QString& Consommateur::getEmail(){
-    return this->email;
-    qDebug()<<"get email du Consommateur"<<endl;
-}
-
-
-void Consommateur::changeNom(std::string nom){
-    this->nom=QString(nom.c_str());
-    qDebug()<<"changer ou setter nom du Consommateur"<<endl;
-}
-
-
-void Consommateur::changePrenom(std::string prenom){
-    this->prenom=QString(prenom.c_str());
-    qDebug()<<"changer ou setter prenom du Consommateur"<<endl;
-}
-
-
-void Consommateur::changeAdresse(std::string adresse){
-    this->adresse=QString(adresse.c_str());
-    qDebug()<<"changer ou setter adresse du Consommateur"<<endl;
-}
-
-void Consommateur::changePhone(std::string phone){
-    this->phone=QString(phone.c_str());;
-    qDebug()<<"changer ou setter numéro de téléphone du Consommateur"<<endl;
-}
-
-
-void Consommateur::changeEmail(std::string email){
-    this->email=QString(email.c_str());
-    qDebug()<<"changer ou setter email du Consommateur"<<endl;
-}
-
 
 const std::string Consommateur::getMessage()
 {
@@ -123,6 +58,24 @@ void Consommateur::demanderSupprimerProduit(){
 void Consommateur::supprimerProduit(Livraison l){
     this->Panier.removeOne(l);
 }*/
+void Consommateur::ajouterConsommateurBDD(){
+    QSqlQuery insertion;
+    insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,true,false,false)");
+    insertion.bindValue(":id",id);
+    insertion.bindValue(":nom",nom);
+    insertion.bindValue(":prenom",prenom);
+    insertion.bindValue(":adresse",adresse);
+    insertion.bindValue(":telephone",phone);
+    insertion.bindValue(":email",email);
+    if(insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+}
 
 QList<Livraison> Consommateur::getPanier(){
     return Panier;

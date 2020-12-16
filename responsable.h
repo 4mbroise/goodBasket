@@ -41,81 +41,19 @@ class Responsable:public Utilisateur
       * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
       * @param id du responsable
       */
-     Responsable(int id);
+     //Responsable(int id);
 
      /**
       * @brief Responsable, constructeur par défaut
       */
-     Responsable();
+     //Responsable();
 
-     ~Responsable();
+     //~Responsable();
 
      /**
       * @brief getId:retourner identifié
       * @return Id unique associé à un Responsable
       */
-
-     virtual const int& getId();
-
-     /**
-      * @brief getNom
-      * @return nom d'un Responsable
-      */
-     virtual const QString& getNom();
-
-     /**
-      * @brief getPrenom
-      * @return prénom d'un Responsable
-      */
-     virtual const QString& getPrenom();
-
-     /**
-      * @brief getAdresse
-      * @return adresse d'un Responsable
-      */
-     virtual const QString& getAdresse();
-
-     /**
-      * @brief getPhone
-      * @return numéro de téléphone d'un Responsable
-      */
-     virtual const QString& getPhone();
-
-     /**
-      * @brief getEmail
-      * @return email d'un Responsable
-      */
-     virtual const QString& getEmail();
-
-     /**
-      * @brief changeNom:modifier ou ajouter le nom d'un Responsable
-      * @param nom:nouveau nom
-      */
-     virtual void changeNom(std::string nom);
-
-     /**
-      * @brief changePrenom:changeNom:modifier ou ajouter le prénom d'un Responsable
-      * @param prenom:noveau prénom
-      */
-     virtual void changePrenom(std::string prenom);
-
-     /**
-      * @brief changeAdresse:modifier ou ajouter l'adresse d'un Responsable
-      * @param adresse:nouveau adresse
-      */
-     virtual void changeAdresse(std::string adresse);
-
-     /**
-      * @brief changePhone:modifier ou ajouter le numéro de téléphone d'un Responsable
-      * @param phone:nouveau nom
-      */
-     virtual void changePhone(std::string phone);
-
-     /**
-      * @brief changeEmail:modifier ou ajouter l'email d'un Responsable
-      * @param email:noveau email
-      */
-    virtual void changeEmail(std::string email);
 
 
      /**

@@ -16,17 +16,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../../Outils/idgenerator.cpp \
+    ../../../Outils/sqltool.cpp \
+    ../../../consommateur.cpp \
+    ../../../pc.cpp \
+    ../../../responsable.cpp \
+    ../../../utilisateur.cpp \
     connecterig.cpp \
     demanderpcig.cpp \
     inscriptionig.cpp \
     main.cpp \
     selectionig.cpp
 
+
 HEADERS += \
     connecterig.h \
     demanderpcig.h \
     inscriptionig.h \
-    selectionig.h
+    selectionig.h\
+    ../../../utilisateur.h\
+    ../../../consommateur.h\
+    ../../../producteur.h\
+    ../../../Outils/idgenerator.h\
+    ../../../Outils/sqltool.h\
+    ../../../responsable.h\
+
 
 FORMS += \
     connecterig.ui \

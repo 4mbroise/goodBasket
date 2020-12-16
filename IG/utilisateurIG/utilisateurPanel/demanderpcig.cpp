@@ -3,13 +3,9 @@
 #include "connecterig.h"
 #include <QValidator>
 #include "../../../responsable.h"
-#include "../../../responsable.cpp"
 #include "../../../utilisateur.h"
-#include "../../../utilisateur.cpp"
 #include "../../../Outils/idgenerator.h"
-#include "../../../Outils/idgenerator.cpp"
 #include "../../../pc.h"
-#include "../../../pc.cpp"
 
 
 
