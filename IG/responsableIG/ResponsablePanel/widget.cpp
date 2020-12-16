@@ -119,38 +119,6 @@ Widget::~Widget()
     delete ui;
 }
 
-/*
-void Widget::on_ConsulterReports_clicked()
-{
-    QSqlQuery query;
-
-    ui->SousList->clear();
-
-    //verifier id de Erreur
-    if(!query.exec("select * from Erreurs"))
-    {
-        qDebug() << "Erreur: recherche ce Erreur. " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Trouvé!";
-    }
-    while(query.next())
-    {
-        QString  id= query.value(0).toString();
-        QString  apercu= query.value(1).toString();
-        qDebug()<<id<<apercu;
-
-        ErreurSousResponsable* pItemWidget = new ErreurSousResponsable(this);
-        pItemWidget->setData(apercu);
-        QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(240, 120));
-        ui->SousList->addItem(pItem);
-        ui->SousList->setItemWidget(pItem,pItemWidget);
-
-    }
-}
-*/
 
 void Widget::on_PayerProducteur_clicked()
 {
