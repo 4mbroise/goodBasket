@@ -34,11 +34,12 @@ public:
      * @param QString id de produit
      * @param QString nom de produit
      * @param QString quantite de produit
+     * @param QString prix de produit
      * @param QString adresse de produit
      * @param QString date de produit
      * @param QString nom de producteur de produit
      */
-    void setData(const QString& id,const QString& nom,const QString& quantite,const QString& adresse,const QString& date,const QString& nomProducteur);
+    void setData(const QString& id,const QString& nom,const QString& quantite,const QString& prix,const QString& adresse,const QString& date,const QString& nomProducteur);
 
 
 

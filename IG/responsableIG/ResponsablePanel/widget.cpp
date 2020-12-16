@@ -139,14 +139,11 @@ void Widget::on_PayerProducteur_clicked()
     }
     while(query.next())
     {
-        QString  payment= query.value(1).toString();
-
-        qDebug()<<payment;
 
         ProducteurSousResponsable* pItemWidget = new ProducteurSousResponsable(this);
-        pItemWidget->setData(payment,QString(ui->NumProducteur->text()));
+        pItemWidget->setData(QString(ui->NumProducteur->text()));
         QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(240,640 ));
+        pItem->setSizeHint(QSize(240,640));
         ui->SousList2->addItem(pItem);
         ui->SousList2->setItemWidget(pItem,pItemWidget);
 
