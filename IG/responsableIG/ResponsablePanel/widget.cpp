@@ -51,7 +51,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0, 1000, \"UL\")"))
+    if(!sqlQuery.exec("INSERT INTO Producteurs VALUES(0)"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -62,7 +62,7 @@ Widget::Widget(QWidget *parent)
 
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(3, \"pomme de terre\",1 ,0 ,20 ,1, \" 2005-03-29\" , \" UL\", \" 2005-03-27\" , 0,1)"))
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(3, \"pomme de terre\",1 ,0 ,20 ,1, \" 2005-03-29\" , \" UL\", \" 2005-03-27\" , \"true\",\"false\",\"false\")"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
@@ -72,7 +72,7 @@ Widget::Widget(QWidget *parent)
     }
 
     //inserer
-    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(1, \"pomme\",1 ,0 ,10, 1,\" 2010-10-23\", \" UL\", \"2010-10-21\", 1,0 )"))
+    if(!sqlQuery.exec("INSERT INTO Livraisons VALUES(1, \"pomme\",1 ,0 ,10, 1,\" 2010-10-23\", \" UL\", \"2010-10-21\",  \"false\",\"true\",\"false\")"))
     {
         qDebug() << "Erreur: Défaut de insertion d’une table. " << sqlQuery.lastError();
     }
