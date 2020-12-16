@@ -22,11 +22,11 @@ ProduitsousCatalogue::~ProduitsousCatalogue()
 
 void ProduitsousCatalogue::setData(const QString& id,const QString& nom,const QString& prix,const QString& quantite,const QString &idProducteur,const int&idConsommateur,const QString& adressePC)
 {
-    ui->ID->setText("ID:"+id);
-    ui->Nom->setText("Nom:"+nom);
-    ui->Prix->setText("Prix:"+prix);
-    ui->Quantite->setText("Quantite:"+quantite);
-    ui->IdProducteur->setText("IdProducteur:"+idProducteur);
+    ui->ID->setText("ID : "+id);
+    ui->Nom->setText(nom);
+    ui->Prix->setText("Prix: "+prix +" €/Kg");
+    ui->Quantite->setText("Quantite : "+quantite+" Kg");
+    ui->IdProducteur->setText("IdProducteur : "+idProducteur);
     ui->Nombre->setMaximum(quantite.toInt());
     ui->Nombre->setMinimum(0);
     this->idConsommateur=idConsommateur;
