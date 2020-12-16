@@ -12,7 +12,7 @@ class Demanderpcig : public QWidget
     Q_OBJECT
 public:
 
-    Demanderpcig(QWidget *parent = nullptr,QString nom="",QString prenom="",QString adresse="",QString phone="",QString email="");
+    Demanderpcig(QWidget *parent = nullptr,QString nom="",QString prenom="",QString adresse="",QString phone="",QString email="",QString pass="");
     ~Demanderpcig();
 private slots:
     void on_Requete_clicked();
@@ -24,6 +24,7 @@ private:
     QString adresse;
     QString phone;
     QString email;
+    QString pass;
 };
 
 #endif // DEMANDERPCIG_H

@@ -6,6 +6,9 @@
 #include "consommateur.h"
 #include "Gestionnaire/gestionnaire.h"
 #include <QtCore/QString>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 /**
  * @brief Responsable
@@ -31,7 +34,7 @@ class Responsable:public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:A
        */
-     Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email);
+     Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass);
 
      /**
       * @brief Destructeur de la classe utilisatuer,si le sous-class exécute le destructeur ,il va aussi exécuter.
@@ -41,7 +44,7 @@ class Responsable:public Utilisateur
       * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
       * @param id du responsable
       */
-     //Responsable(int id);
+     Responsable(int id);
 
      /**
       * @brief Responsable, constructeur par défaut
@@ -134,6 +137,8 @@ class Responsable:public Utilisateur
      * @brief fermerPointDeCollecte, revient à supprimer tous les cycles de vente du point de collecte
      */
     void fermerPointDeCollecte();
+
+    void ajouterResponsableBDD();
 
     private:
 

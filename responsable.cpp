@@ -7,28 +7,59 @@
 using namespace std;
 
 
-Responsable::Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email):Utilisateur(nom,prenom,adresse,phone,email)
+Responsable::Responsable(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass):Utilisateur(nom,prenom,adresse,phone,email,pass)
 {
     this->estResponsable=true;
     this->estConsommateur=false;
+    this->estProducteur=false;
     this->confirmer=false;
 }
 
 
-/*Responsable::Responsable(int id):Utilisateur(id),pc(PC(id))
+Responsable::Responsable(int id):Utilisateur(id)
 {
     this->id = id;
 }
 
-Responsable::Responsable():Utilisateur(),pc(PC())
-{
-    this->id = -1;
-}*/
+
 
 /*Responsable::~Responsable(){
     qDebug() << "Responsable est enlevé" << endl;
 }
 */
+
+void Responsable::ajouterResponsableBDD(){
+    QSqlQuery insertion;
+    insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,false,true,false)");
+    insertion.bindValue(":id",id);
+    insertion.bindValue(":nom",nom);
+    insertion.bindValue(":prenom",prenom);
+    insertion.bindValue(":adresse",adresse);
+    insertion.bindValue(":telephone",phone);
+    insertion.bindValue(":email",email);
+    insertion.bindValue(":pass",pass);
+
+    if(insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+    insertion.clear();
+    insertion.prepare("INSERT INTO Responsable VALUES(:id)");
+    insertion.bindValue(":id",id);
+    if(!insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+
+}
 
 
 void Responsable::PayerProducteurs(int producteurid)

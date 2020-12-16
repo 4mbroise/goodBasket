@@ -7,6 +7,9 @@
 #include "livraison.h"
 #include "GestionnairesDeDialogue/dialogueconsommateurs.h"
 #include <QtCore/QString>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 /**
  * @brief Consommateur
@@ -32,9 +35,10 @@ class Consommateur:public Utilisateur
        * @param adresse:Adresse du utlisateur
        * @param phone:numéro de téléphone
        */
-    Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email);
+    Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass);
 
 
+    Consommateur(int idConsommateur);
 
      /**
       * @brief getPanier:Obtener une liste d'articles dans le panier

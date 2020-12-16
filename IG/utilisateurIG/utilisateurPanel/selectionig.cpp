@@ -10,10 +10,10 @@
 
 
 
-Selectionig::Selectionig(QWidget *parent,QString nom,QString prenom,QString adresse,QString phone,QString email)
+Selectionig::Selectionig(QWidget *parent,QString nom,QString prenom,QString adresse,QString phone,QString email,QString pass)
     : QWidget(parent)
     , ui(new Ui::Selectionig)
-    , nom(nom),prenom(prenom),adresse(adresse),phone(phone),email(email)
+    , nom(nom),prenom(prenom),adresse(adresse),phone(phone),email(email),pass(pass)
 {
     ui->setupUi(this);
 
@@ -25,21 +25,22 @@ Selectionig::~Selectionig(){
 
 void Selectionig::on_Consommateur_clicked(){
     Connecterig* c=new Connecterig(nullptr);
-    Consommateur*consommateur=new Consommateur(nom,prenom,adresse,phone,email);
+    Consommateur*consommateur=new Consommateur(nom,prenom,adresse,phone,email,pass);
     consommateur->ajouterConsommateurBDD();
     c->show();
     this->close();
 }
 
 void Selectionig::on_Responsable_clicked(){
-    Demanderpcig *d=new Demanderpcig(nullptr,nom,prenom,adresse,phone,email);
+    Demanderpcig *d=new Demanderpcig(nullptr,nom,prenom,adresse,phone,email,pass);
     d->show();
     this->close();
 }
 
 void Selectionig::on_Producteur_clicked(){
     Connecterig* c=new Connecterig(nullptr);
-    Prouducteur *producteur=Producteur(nom,prenom,adresse,phone,email);
+    Producteur *producteur=new Producteur(nom,prenom,adresse,phone,email,pass);
+    producteur->ajouterProducteurBDD();
     c->show();
     this->close();
 

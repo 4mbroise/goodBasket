@@ -10,10 +10,10 @@
 
 
 
-Demanderpcig::Demanderpcig(QWidget *parent,QString nom,QString prenom,QString adresse,QString phone,QString email)
+Demanderpcig::Demanderpcig(QWidget *parent,QString nom,QString prenom,QString adresse,QString phone,QString email,QString pass)
     : QWidget(parent)
     , ui(new Ui::Demanderpcig)
-     , nom(nom),prenom(prenom),adresse(adresse),phone(phone),email(email)
+     , nom(nom),prenom(prenom),adresse(adresse),phone(phone),email(email),pass(pass)
 {
     ui->setupUi(this);
 
@@ -45,8 +45,9 @@ Demanderpcig::~Demanderpcig(){
 
 void Demanderpcig::on_Requete_clicked(){
     QString requete=ui->Ville->text()+ui->Postal->text()+ui->Numero->text()+ui->Rue->text();
-    Responsable *r=new Responsable(nom,prenom,adresse,phone,email);
+    Responsable *r=new Responsable(nom,prenom,adresse,phone,email,pass);
+    r->ajouterResponsableBDD();
     Connecterig *cig=new Connecterig(nullptr);
     cig->show();
-    delete this;
+    this->close();
 }

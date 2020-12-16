@@ -29,13 +29,13 @@ class Utilisateur {
          * @param adresse:Adresse du utlisateur
          * @param phone:numéro du téléphone
          */
-         Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email);
+         Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email,QString pass);
 
          /**
           * @brief Constructeur avec qu'un id ( les autres infos étant dans la BDD )
           * @param id du responsable
           */
-         //Utilisateur(int id);
+         Utilisateur(int id);
 
          /**
           * @brief Constructeur par défaut
@@ -146,6 +146,8 @@ class Utilisateur {
          * @brief l'adresse email du utlisateur
          */
         QString email;
+
+        QString pass;
 
 
         /**

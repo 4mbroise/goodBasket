@@ -13,7 +13,7 @@ class Selectionig : public QWidget
     Q_OBJECT
 
 public:
-    Selectionig(QWidget *parent = nullptr,QString nom="",QString prenom="",QString adresse="",QString phone="",QString email="");
+    Selectionig(QWidget *parent = nullptr,QString nom="",QString prenom="",QString adresse="",QString phone="",QString email="",QString pass="");
     ~Selectionig();
 private slots:
     void on_Consommateur_clicked();
@@ -27,6 +27,7 @@ private:
     QString adresse;
     QString phone;
     QString email;
+    QString pass;
 };
 
 #endif // SELECTIONIG_H

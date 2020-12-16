@@ -2,7 +2,6 @@
 #define CATALOGUESOUSIG_H
 
 #include <QWidget>
-#include <produitsousig.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CatalogueSousConsommateur; }

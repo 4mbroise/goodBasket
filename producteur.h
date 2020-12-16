@@ -12,8 +12,11 @@
 #include "Outils/sqltool.h"
 #include "Outils/idgenerator.h"
 #include "GestionnairesDeDialogue/dialogueproducteurs.h"
-
+#include "utilisateur.h"
 #include <iostream>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 using namespace std;
 
 
@@ -27,25 +30,29 @@ using namespace std;
  * @author CAI Yunfan
  * @author GE Yuxuan
  */
-class Producteur
+
+class Utilisateur;
+
+class Producteur:public Utilisateur
 {
     public:
-/*
-        /**
+
+       /**
         * @brief Constructeur de la classe Producteur,
         * seul un gestionnaire DialogueProducteur est requis pour créer un nouveau producteur
         * 
         * @param dp gestionnaire de dialogue associé au producteur
-        *
-        Producteur(DialogueProducteurs &dp);
+        */
+        //Producteur(DialogueProducteurs &dp);
+        Producteur(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass);
 
-        /**
+       /**
         * @brief Constructeur de la classe Producteur via BDD
         *
         * @param dp gestionnaire de dialogue associé au producteur
-        *
-        Producteur(int idUtilisateur, DialogueProducteurs &dp);
-*/
+        */
+       // Producteur(int idUtilisateur, DialogueProducteurs &dp);
+
         /**
          * @brief Producteur Constructeur de la classe Producteur
          * @param idUtilisateur
@@ -56,7 +63,7 @@ class Producteur
          * @brief Producteur Constructeur par défaut
          * @param idUtilisateur
          */
-        Producteur();
+      //  Producteur();
 
         /**
          * @brief Envoie une requête d'ajout de produit au gestionnaire de dialogue associé,
@@ -145,6 +152,7 @@ class Producteur
          */
         void setGestionnaireDialogue(DialogueProducteurs& dp);
 
+        void ajouterProducteurBDD();
 
         void demanderRecrutement(int idResponsable,std::string demande);
 

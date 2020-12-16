@@ -19,8 +19,8 @@ class Consommateurig : public QWidget
     Q_OBJECT
 
 public:
-    Consommateurig(QWidget *parent = nullptr,Consommateur c=Consommateur("null","null","null","null","null"));
-    Consommateurig(Consommateur *p);
+    Consommateurig(QWidget *parent = nullptr,Consommateur c=Consommateur(-1));
+    //Consommateurig(Consommateur *p);
     ~Consommateurig();
     void setLivraison(const QString & idConsommateur);
     void setLivraisonPrevue(const QString &idConsommateur);
@@ -35,6 +35,7 @@ private:
     Ui::Consommateurig *ui;
     int idConsommateur;
     Consommateur consommateur;
+
 
 };
 

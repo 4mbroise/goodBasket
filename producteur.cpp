@@ -23,15 +23,21 @@ Producteur::Producteur(int idUtilisateur, DialogueProducteurs &dp):gestionnaireD
 }
 */
 
-Producteur::Producteur(int idUtilisateur)
+Producteur::Producteur(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass):Utilisateur(nom,prenom,adresse,phone,email,pass){
+    this->estResponsable=true;
+    this->estConsommateur=false;
+    this->estProducteur=false;
+}
+
+Producteur::Producteur(int idUtilisateur):Utilisateur(idUtilisateur)
 {
     this->id = idUtilisateur;
 }
 
-Producteur::Producteur()
+/*Producteur::Producteur()
 {
     this->id = -1;
-}
+}*/
 
 /*
 void Producteur::demanderAjoutProduit(int quantite, double prix, std::string nom, std::string imagePath)
@@ -48,6 +54,40 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
     Produit produitAjoute = Produit(idProduit, quantite, prix, nom, imagePath);
 
     boutique.insert(idProduit,produitAjoute);
+}
+
+
+void Producteur::ajouterProducteurBDD(){
+    QSqlQuery insertion;
+    insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,false,false,true)");
+    insertion.bindValue(":id",id);
+    insertion.bindValue(":nom",nom);
+    insertion.bindValue(":prenom",prenom);
+    insertion.bindValue(":adresse",adresse);
+    insertion.bindValue(":telephone",phone);
+    insertion.bindValue(":email",email);
+    insertion.bindValue(":pass",pass);
+
+    if(!insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+    insertion.clear();
+    insertion.prepare("INSERT INTO Producteurs(id) VALUES(:id)");
+    insertion.bindValue(":id",id);
+    if(insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+
 }
 
 void Producteur::ajouterProduitBDD(int quantite, double prix, std::string nom)

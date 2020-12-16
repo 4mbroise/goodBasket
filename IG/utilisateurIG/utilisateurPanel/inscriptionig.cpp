@@ -17,8 +17,8 @@ Inscriptionig::Inscriptionig(QWidget *parent)
     //clearButton
     this->ui->Nom->setClearButtonEnabled(true);
     this->ui->Prenom->setClearButtonEnabled(true);
-    this->ui->Pass->setEchoMode(QLineEdit::Password);
     this->ui->Email->setClearButtonEnabled(true);
+    this->ui->Pass->setClearButtonEnabled(true);
     this->ui->Telephone->setClearButtonEnabled(true);
     this->ui->Ville->setClearButtonEnabled(true);
     this->ui->Numero->setClearButtonEnabled(true);
@@ -42,13 +42,12 @@ Inscriptionig::Inscriptionig(QWidget *parent)
     ui->Pass->setValidator(new QRegExpValidator(pass,this));
 
 
-    QRegExp em("[A-Za-z0-9]+[@]{1}.$");
+    QRegExp em("[A-Za-z0-9]+[@]{1}.+$");
     ui->Email->setValidator(new QRegExpValidator(em,this));
 
     ui->Ville->setPlaceholderText("que lettres");
     QRegExp vi("[A-Za-z]+");
     ui->Ville->setValidator(new QRegExpValidator(vi,this));
-
 
     QRegExp nu("[0-9]+");
     ui->Numero->setValidator(new QRegExpValidator(nu,this));
@@ -56,8 +55,7 @@ Inscriptionig::Inscriptionig(QWidget *parent)
     QRegExp po("[0-9]+");
     ui->Postal->setValidator(new QRegExpValidator(po,this));
 
-    QRegExp ru("[A-Za-z]+");
-    ui->Rue->setValidator(new QRegExpValidator(ru,this));
+
 }
 
 Inscriptionig::~Inscriptionig()
@@ -72,8 +70,8 @@ bool Inscriptionig::verifier(){
     QString pass=this->ui->Pass->text();
     QString telephone=this->ui->Telephone->text();
     QString ville=this->ui->Ville->text();
-    QString numero=this->ui->Numero->text();
     QString postal=this->ui->Postal->text();
+    QString numero=this->ui->Numero->text();
     QString rue=this->ui->Rue->text();
 
     bool returned=true;
@@ -91,6 +89,9 @@ bool Inscriptionig::verifier(){
     }
     if(pass.isEmpty()){
         ui->PassLabel->setText("Pass: il faut remplir");
+        returned=false;
+    } else if(pass.size()>12&&pass.size()<8){
+        ui->PassLabel->setText("Pass: il faut que 8-12 caractères ou chiffres");
         returned=false;
     }
     if(telephone.isEmpty()){
@@ -117,9 +118,16 @@ bool Inscriptionig::verifier(){
 
 void Inscriptionig::on_Inscrire_clicked(){
     if(verifier()){
-        this->close();
-        Selectionig* s=new Selectionig(nullptr);
+        QString nom=this->ui->Nom->text();
+        QString prenom=this->ui->Prenom->text();
+        QString email=this->ui->Email->text();
+        QString phone=this->ui->Telephone->text();
+        QString adresse=this->ui->Ville->text()+" "+ui->Postal->text()+" "+ui->Numero->text()+" "+ui->Rue->text();
+        QString pass=this->ui->Pass->text();
+        Selectionig* s=new Selectionig(nullptr,nom,prenom,adresse,phone,email,pass);
         s->show();
+        this->close();
+
     }
 }
 

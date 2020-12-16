@@ -19,9 +19,16 @@ SOURCES += \
     ../../../Outils/idgenerator.cpp \
     ../../../Outils/sqltool.cpp \
     ../../../consommateur.cpp \
+    ../../../livraison.cpp \
     ../../../pc.cpp \
+    ../../../producteur.cpp \
+    ../../../produit.cpp \
     ../../../responsable.cpp \
     ../../../utilisateur.cpp \
+    ../../consommateurIG/consommateurPanel/cataloguesousig.cpp \
+    ../../consommateurIG/consommateurPanel/consommateurig.cpp \
+    ../../consommateurIG/consommateurPanel/livraisonsousig.cpp \
+    ../../consommateurIG/consommateurPanel/produitsousig.cpp \
     connecterig.cpp \
     demanderpcig.cpp \
     inscriptionig.cpp \
@@ -30,6 +37,14 @@ SOURCES += \
 
 
 HEADERS += \
+    ../../consommateurIG/consommateurPanel/cataloguesousig.h \
+    ../../consommateurIG/consommateurPanel/consommateurig.h \
+    ../../consommateurIG/consommateurPanel/livraisonsousig.h \
+    ../../consommateurIG/consommateurPanel/produitsousig.h \
+    ../../consommateurIG/consommateurPanel/ui_cataloguesousig.h \
+    ../../consommateurIG/consommateurPanel/ui_consommateurig.h \
+    ../../consommateurIG/consommateurPanel/ui_livraisonsousig.h \
+    ../../consommateurIG/consommateurPanel/ui_produitsousig.h \
     connecterig.h \
     demanderpcig.h \
     inscriptionig.h \
@@ -43,6 +58,11 @@ HEADERS += \
 
 
 FORMS += \
+    ../../consommateurIG/consommateurPanel/cataloguesousig.ui \
+    ../../consommateurIG/consommateurPanel/consommateurig.ui \
+    ../../consommateurIG/consommateurPanel/livraisonsousig.ui \
+    ../../consommateurIG/consommateurPanel/produitsousig.ui \
+    ../../consommateurIG/consommateurPanel/widget.ui \
     connecterig.ui \
     demanderpcig.ui \
     inscriptionig.ui \
@@ -52,3 +72,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+SUBDIRS += \
+    ../../consommateurIG/consommateurPanel/consommateurPanel.pro

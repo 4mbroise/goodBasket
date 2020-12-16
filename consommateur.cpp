@@ -5,13 +5,17 @@
 
 using namespace std;
 
-Consommateur::Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email):Utilisateur(nom,prenom,adresse,phone,email){
+Consommateur::Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass):Utilisateur(nom,prenom,adresse,phone,email,pass){
     //this->gestionnaireDialogue.ajouterConsommateur(this);
     estConsommateur=true;
+    this->estResponsable=true;
+    this->estProducteur=false;
     qDebug() << "Consommateur est créé" << endl;
 }
 
-
+Consommateur::Consommateur(int idConsommateur):Utilisateur(idConsommateur){
+    this->id=idConsommateur;
+}
 
 const std::string Consommateur::getMessage()
 {
@@ -60,14 +64,38 @@ void Consommateur::supprimerProduit(Livraison l){
 }*/
 void Consommateur::ajouterConsommateurBDD(){
     QSqlQuery insertion;
-    insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,true,false,false)");
-    insertion.bindValue(":id",id);
+    if(!insertion.exec("SELECT max(UtilisateurID) FROM Utilisateurs"))
+       {
+           qDebug() << "ERREUR requete SQL" << insertion.lastError();
+       }
+       else
+       {
+            insertion.next();
+       }
+        int actualMaxId = insertion.value(0).toInt();
+
+    qDebug()<<"++++++++++++++++++"+pass<<endl;
+    insertion.clear();
+    insertion.prepare("INSERT INTO Utilisateurs(UtilisateurID,nom,prenom,adresse,telephone,email,pass,estConsommateur,estResponsable,estProducteur) VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,true,false,false)");
+    insertion.bindValue(":id",actualMaxId+1);
     insertion.bindValue(":nom",nom);
     insertion.bindValue(":prenom",prenom);
     insertion.bindValue(":adresse",adresse);
     insertion.bindValue(":telephone",phone);
     insertion.bindValue(":email",email);
-    if(insertion.exec())
+    insertion.bindValue(":pass",pass);
+    if(!insertion.exec())
+    {
+        qDebug() << "Erreur: " <<insertion.lastError();
+    }
+    else
+    {
+        qDebug() << "réussi!";
+    }
+    insertion.clear();
+    insertion.prepare("INSERT INTO Consommateur VALUES(:id)");
+    insertion.bindValue(":id",actualMaxId+1);
+    if(!insertion.exec())
     {
         qDebug() << "Erreur: " <<insertion.lastError();
     }

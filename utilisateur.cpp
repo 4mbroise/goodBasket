@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <iostream>
 
-Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email)
+Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phone,QString email,QString pass)
 {
     IdGenerator& gen = IdGenerator::Instance();
     int newId = gen.getNewIdUtilisateur();
@@ -12,43 +12,17 @@ Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phon
     this->adresse=adresse;
     this->phone = phone;
     this->email =email;
+    this->pass=pass;
     estResponsable=false;
     estConsommateur=false;
     cout << "Utilisateur est créé" << endl;
 }
 
-/*Utilisateur::Utilisateur(int id)
+Utilisateur::Utilisateur(int id)
 {
     this->id = id;
-
-
-    QString query = QString::fromStdString("SELECT nom,prenom,adresse,telephone,email,estConsommateur,estResponsable, estProducteur FROM Utilisateurs WHERE UtilisateurID = ");
-    query.append(QString::number(id));
-
-    QSqlQuery sqlQuery;
-
-    sqlQuery.prepare(query);
-
-    if(!sqlQuery.exec())
-    {
-        qDebug() << "ERREUR SELECT utilisateur SQL" << sqlQuery.lastError();
-    }
-    else
-    {
-        sqlQuery.next();
-        this->nom = sqlQuery.value(0).toString();
-        this->prenom = sqlQuery.value(1).toString();
-        this->adresse= sqlQuery.value(2).toString();
-        this->phone = sqlQuery.value(3).toString();
-        this->email = sqlQuery.value(4).toString();
-        this->estConsommateur = sqlQuery.value(5).toBool();
-        this->estResponsable = sqlQuery.value(6).toBool();
-        this->estProducteur = sqlQuery.value(7).toBool();
-
-        qDebug() << "SUCCESS SELECT utilisateur SQL";
-    }
     cout << "Utilisateur est créé" << endl;
-}*/
+}
 
 
 Utilisateur::~Utilisateur(){

@@ -20,7 +20,6 @@ Consommateurig::Consommateurig(QWidget *parent,Consommateur c)
     ,consommateur(c)
 {
     ui->setupUi(this);
-    this->idConsommateur=c.getId();
     metterAJour();
 
 }
