@@ -142,9 +142,40 @@ void Producteur::setGestionnaireDialogue(DialogueProducteurs &dp)
 }
 */
 
-void Producteur::supprimerLivraison(Livraison livraison)
+void Producteur::annulerLivraisonByLivraison(int idlivraison)
 {
-    this->LivraisonProducteur.removeOne(livraison);
+    QSqlQuery sqlQuery;
+
+    QString query= QString("UPDATE Livraisons SET prevue = 'false', annuler = 'true' WHERE id = ");
+    query.append(QString::number(idlivraison));
+    sqlQuery.prepare(query);
+
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "ERREUR UDPATE annulation par idLivraison" << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "SUCCES UDPATE annulation par idLivraison";
+    }
+}
+
+void Producteur::annulerLivraisonByProduit(int idProduit)
+{
+    QSqlQuery sqlQuery;
+
+    QString query= QString("UPDATE Livraisons SET prevue = 'false', annuler = 'true' WHERE idProduit = ");
+    query.append(QString::number(idProduit));
+    sqlQuery.prepare(query);
+
+    if(!sqlQuery.exec())
+    {
+        qDebug() << "ERREUR UDPATE annulation par idProduit" << sqlQuery.lastError();
+    }
+    else
+    {
+        qDebug() << "SUCCES UDPATE annulation par idProduit";
+    }
 }
 
 /*
