@@ -3,7 +3,7 @@
 #include "QDate"
 
 GestionOuverturePCPanel::GestionOuverturePCPanel(QWidget *parent, Responsable r)
-    : QWidget(parent)
+    : QWidget(parent), responsable(r)
     , ui(new Ui::GestionOuverturePCPanel)
 {
     ui->setupUi(this);

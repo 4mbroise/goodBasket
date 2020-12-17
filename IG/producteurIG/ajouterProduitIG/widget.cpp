@@ -1,9 +1,10 @@
 #include "Widget.h"
 #include "ui_Widget.h"
+#include "../../../producteur.h"
 using namespace std;
 
 Widget::Widget(QWidget *parent, Producteur p)
-    : QWidget(parent)
+    : QWidget(parent) ,model(p)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);

@@ -124,6 +124,11 @@ class Consommateur:public Utilisateur
      void ajouterConsommateurBDD();
 
      /**
+      * @brief commande des produit du panier du consommateur
+      */
+     void commanderPanier();
+
+     /**
       * @brief toString:information du consommateur
       * @return un string qui contient l'id du consommateur et le toString de tous les tostring et nombre du livraison dans le panier et livraisonprévue
       */
