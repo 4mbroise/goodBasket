@@ -23,7 +23,7 @@ SOURCES += \
     ../formulaireCycle/formulairecycle.cpp \
     ../../../Outils/sqltool.cpp \
     ../../../Outils/idgenerator.cpp \
-    ../ResponsablePanel/widget.cpp \
+    ../ResponsablePanel/widgetresponable.cpp \
     fusionresponsableig.cpp
 
 HEADERS += \
@@ -40,7 +40,7 @@ HEADERS += \
     ../../../Outils/sqltool.h \
     ../../../Outils/idgenerator.h \
     ../formulaireCycle/formulairecycle.h \
-    ../ResponsablePanel/widget.h \
+    ../ResponsablePanel/widgetresponable.h \
     fusionresponsableig.h
 
 FORMS += \
@@ -48,7 +48,7 @@ FORMS += \
     ../ResponsablePanel/consommateursousig.ui \
     ../ResponsablePanel/livraisonsousig.ui \
     ../gestionOuverturePCIG/gestionouverturepcpanel.ui \
-    ../ResponsablePanel/widget.ui \
+    ../ResponsablePanel/widgetresponable.ui \
     ../ResponsablePanel/producteursousig.ui \
     ../ResponsablePanel/producteuritemsousig.ui \
     ../ResponsablePanel/erreursousig.ui \

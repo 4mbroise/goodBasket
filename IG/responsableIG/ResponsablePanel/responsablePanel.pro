@@ -25,7 +25,7 @@ SOURCES += \
     produitsousig.cpp \
     producteuritemsousig.cpp \
     ../../../Outils/idgenerator.cpp \
-    widget.cpp
+    widgetresponsable.cpp
 
 HEADERS += \
     erreursousig.h \
@@ -35,7 +35,7 @@ HEADERS += \
     produitsousig.h \
     producteuritemsousig.h \
     ../../../Outils/idgenerator.h \
-    widget.h
+    widgetresponsable.h
 
 FORMS += \
     livraisonsousig.ui \
@@ -44,7 +44,7 @@ FORMS += \
     producteursousig.ui \
     produitsousig.ui \
     producteuritemsousig.ui \
-    widget.ui
+    widgetresponsable.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

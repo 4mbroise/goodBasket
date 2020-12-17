@@ -4,6 +4,7 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlQuery>
 #include <QDebug>
+#include <QString>
 
 LivraisonSousConsommateur::LivraisonSousConsommateur(QWidget *parent)
     : QWidget(parent), ui(new Ui::LivraisonSousConsommateur)
@@ -44,7 +45,7 @@ void LivraisonSousConsommateur::on_Supprimer_clicked(){
     QSqlQuery sqlQuery;
 
     QString query= QString("DELETE FROM Livraisons WHERE id = ");
-    query.append(QString::number(ui));
+    query.append(QString::number(idLivraison));
     sqlQuery.prepare(query);
 
     if(!sqlQuery.exec())
@@ -55,5 +56,6 @@ void LivraisonSousConsommateur::on_Supprimer_clicked(){
     {
         qDebug() << "SUCCES DELETE Livraisons SQL";
     }
+    delete this;
 
 }
