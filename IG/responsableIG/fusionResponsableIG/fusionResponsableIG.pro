@@ -26,6 +26,9 @@ SOURCES += \
     ../../../Outils/sqltool.cpp \
     ../../../Outils/idgenerator.cpp \
     ../ResponsablePanel/widgetresponsable.cpp \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.cpp \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.cpp \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.cpp \
     fusionresponsableig.cpp
 
 HEADERS += \
@@ -45,6 +48,9 @@ HEADERS += \
     ../../../Outils/idgenerator.h \
     ../formulaireCycle/formulairecycle.h \
     ../ResponsablePanel/widgetresponsable.h \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.h \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.h \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.h \
     fusionresponsableig.h
 
 FORMS += \
@@ -57,6 +63,9 @@ FORMS += \
     ../ResponsablePanel/producteuritemsousig.ui \
     ../ResponsablePanel/erreursousig.ui \
     ../ResponsablePanel/produitsousig.ui \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.ui \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.ui \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.ui \
     fusionresponsableig.ui
 
 # Default rules for deployment.

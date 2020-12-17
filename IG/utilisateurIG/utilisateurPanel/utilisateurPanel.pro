@@ -41,6 +41,9 @@ SOURCES += \
     ../../responsableIG/ResponsablePanel/widgetresponsable.cpp \
     ../../responsableIG/formulaireCycle/formulairecycle.cpp \
     ../../responsableIG/gestionOuverturePCIG/gestionouverturepcpanel.cpp \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.cpp \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.cpp \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.cpp \
     connecterig.cpp \
     demanderpcig.cpp \
     inscriptionig.cpp \
@@ -65,7 +68,9 @@ HEADERS += \
     ../../responsableIG/ResponsablePanel/producteuritemsousig.h \
     ../../responsableIG/ResponsablePanel/producteursousig.h \
     ../../responsableIG/ResponsablePanel/produitsousig.h \
-    ../../responsableIG/ResponsablePanel/widgetresponsable.h \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.h \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.h \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.h \
     connecterig.h \
     demanderpcig.h \
     inscriptionig.h \
@@ -89,7 +94,6 @@ FORMS += \
     ../../producteurIG/producteurPanel/producteurpanel.ui \
     ../../producteurIG/ajouterProduitIG/widgetp.ui \
     ../../responsableIG/fusionResponsableIG/fusionresponsableig.ui \
-    ../../responsableIG/ResponsablePanel/widgetresponsable.ui \
     ../../responsableIG/formulaireCycle/formulairecycle.ui \
     ../../responsableIG/gestionOuverturePCIG/gestionouverturepcpanel.ui \
     ../../responsableIG/ResponsablePanel/consommateursousig.ui \
@@ -99,6 +103,9 @@ FORMS += \
     ../../responsableIG/ResponsablePanel/producteursousig.ui \
     ../../responsableIG/ResponsablePanel/produitsousig.ui \
     ../../responsableIG/ResponsablePanel/widgetresponsable.ui \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.ui \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.ui \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.ui \
     connecterig.ui \
     demanderpcig.ui \
     inscriptionig.ui \
