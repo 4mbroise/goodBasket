@@ -16,24 +16,7 @@ Consommateur::Consommateur(int idConsommateur):Utilisateur(idConsommateur){
     this->id=idConsommateur;
 }
 
-const std::string Consommateur::getMessage()
-{
-    return this->message;
-}
-
-void Consommateur::setMessage(std::string mess)
-{
-    this->message=mess;
-}
-
-
-void Consommateur::consulterCatalogue(){
-
-}
-
-
-
-void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idProduit,int quantite,int prix,QString adressePC){
+void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idProduit,int quantite,double prix,QString adressePC){
     QSqlQuery query;
     //recherche id max
     if(!query.exec("SELECT max(id) FROM Livraisons"))
@@ -42,7 +25,7 @@ void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idP
        }
        else
        {
-             qDebug() << "réussi"<<endl;
+             qDebug() << "1réussi"<<endl;
             query.next();
        }
         int actualMaxId = query.value(0).toInt();
@@ -56,15 +39,13 @@ void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idP
        }
        else
        {
-            qDebug() << "réussi"<<endl;
+            qDebug() << "2réussi"<<endl;
             query.next();
        }
-        QDate date = query.value(0).toDate();
-         query.clear();
+        QString date = query.value(0).toString();
     //
 
-    query.prepare("INSERT INTO Livraison(id,nom,idConsommatuer,idProduit,quantite,prix,dateDeLivraison,dateAchat,adressePC,prevue,annuler,payerResponsable)"
-                  "VALUES(:id,:nom,:idConsommatuer,:idProduit,:quantite,:prix,:dateDeLivraison,:dateAchat,date('now'),false,false,false)");
+    query.prepare("INSERT INTO Livraisons(id,nom,idConsommateur,idProduit,quantite,prix,dateDeLivraison,dateAchat,adressePC,prevue,annuler,payerResponsable) VALUES(:id,:nom,:idConsommateur,:idProduit,:quantite,:prix,:dateDeLivraison,date('now'),:adressePC,FALSE,FALSE,FALSE);");
     query.bindValue(":id",actualMaxId+1);
     query.bindValue(":nom",nom);
     query.bindValue(":idConsommateur",idConsommateur);
@@ -73,62 +54,17 @@ void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idP
     query.bindValue(":prix",prix);
     query.bindValue(":dateDeLivraison",date);
     query.bindValue(":adressePC",adressePC);
+     qDebug() <<actualMaxId+1<<nom<<idConsommateur<<idProduit<<quantite<<prix<<date<<adressePC<<endl;
     if(!query.exec())
     {
         qDebug() << "Erreur: " <<query.lastError();
     }
     else
     {
-        qDebug() << "Réussi!";
-    }
-    query.clear();
-    query.prepare("select quantite from Produit where idProduit=:idP");
-    query.bindValue(":idP",idProduit);
-    if(!query.exec())
-    {
-        qDebug() << "Erreur: " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Réussi!";
-    }
-    query.next();
-    int q=query.value(0).toInt();
-    query.prepare("UPDATE Produit SET quantite=:quantite where idProduit=:idP");
-    q=q-quantite;
-    query.bindValue(":quantite",q);
-    if(!query.exec())
-    {
-        qDebug() << "Erreur: " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Réussi!";
-    }
-}
-/*
-void Consommateur::demanderExtraAjouter(Produit p,int extra){
-    this->gestionnaireDialogue.extraAjouter(p,extra,this->id);
-}
-
-void Consommateur::ajouterExtraAuPanier(int position,Livraison l){
-    this->Panier.insert(position,l);
-}
-
-void Consommateur::demanderSupprimerProduit(Produit p){
-    this->gestionnaireDialogue.supprimerProduit(p,this->id);
-}
-
-void Consommateur::demanderSupprimerProduit(){
-    for(Livraison l:this->Panier)
-    {
-        this->gestionnaireDialogue.supprimerProduit(l.getProduit(),this->id);
+        qDebug() << "3Réussi!";
     }
 }
 
-void Consommateur::supprimerProduit(Livraison l){
-    this->Panier.removeOne(l);
-}*/
 void Consommateur::ajouterConsommateurBDD(){
     QSqlQuery insertion;
     if(!insertion.exec("SELECT max(UtilisateurID) FROM Utilisateurs"))
@@ -172,17 +108,7 @@ void Consommateur::ajouterConsommateurBDD(){
     }
 }
 
-QList<Livraison> Consommateur::getPanier(){
-    return Panier;
-}
 
-int Consommateur::nbLivraison(){
-    return Panier.count();
-}
-
-int Consommateur::nbLivraisonPrevues(){
-    return LivraisonPrevues.count();
-}
 
 void Consommateur::commanderPanier()
 {
@@ -203,16 +129,23 @@ void Consommateur::commanderPanier()
     {
         while(panier.next())
         {
-            updateProduitStock.prepare( "UPDATE Produit "
-                                        "SET quantite = quantite - :quantity "
-                                        "WHERE idProduit = :idProduitAUpdtae");
+            updateProduitStock.prepare( "UPDATE Produit\
+                                        SET quantite = quantite - :quantity\
+                                        WHERE idProduit = :idProduitAUpdtae;");
 
-            updateProduitStock.bindValue(":quantity", panier.value(1).Int);
-            updateProduitStock.bindValue(":idProduit", panier.value(0).Int);
-            updateProduitStock.exec();
+            updateProduitStock.bindValue(":quantity", panier.value(1).toString());
+            updateProduitStock.bindValue(":idProduitAUpdtae", panier.value(0).toString());
+            if(!updateProduitStock.exec())
+            {
+                qDebug() << "Erreur: " <<panier.lastError();
+            }
+            else
+            {
+                 qDebug() << "Réussi:" <<endl;
+            }
         }
     }
-    requetePanierString = QString::fromStdString("UPDATE Livraisons SET prevue = 'true' WHERE idConsommateur =");
+    requetePanierString = QString::fromStdString("UPDATE Livraisons SET prevue = 1 WHERE idConsommateur =");
     requetePanierString.append(QString::number(this->id));
     if(!panier.exec(requetePanierString))
     {
@@ -221,19 +154,4 @@ void Consommateur::commanderPanier()
 
 }
 
-/*const std::string Consommateur::toString(){
-    string resultat="Consommateur [ID-"+std::to_string(this->getId())+"]\n";
-    resultat.append("Panier:\n");
-    resultat.append("livraisons totales:"+to_string(nbLivraison()));
-    for(int i=0;i<Panier.count();i++){
-        Livraison l=Panier.at(i);
-        resultat.append("No.:"+to_string(i)+l.toSring());
-    }
-    resultat.append("LivraisonPrevue:\n");
-    resultat.append("livraisonPrevues totales:"+to_string(nbLivraisonPrevues()));
-    for(int i=0;i<LivraisonPrevues.count();i++){
-        Livraison lp=LivraisonPrevues.at(i);
-        resultat.append("No.:"+to_string(i)+lp.toSring());
-    }
-    return resultat;
-}*/
+

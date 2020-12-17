@@ -87,7 +87,7 @@ bool Gestionnaire::VerifeirRemboursement(int consommateurID,int responsableId)
         // ecrire des manques
         std::string s=this->erreur.toString();
         this->responsables.value(responsableId)->RecevoirMessage(s);
-        this->gestionnaireDialogueConsommateur.notifierConsommateur(consommateurID,s);
+       // this->gestionnaireDialogueConsommateur.notifierConsommateur(consommateurID,s);
         this->responsables.value(responsableId)->Confirmer();
         return true;
     }

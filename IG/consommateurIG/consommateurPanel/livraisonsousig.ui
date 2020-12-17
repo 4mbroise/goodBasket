@@ -36,6 +36,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="Prix">
+     <property name="text">
+      <string>prix:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QLabel" name="quantite">
      <property name="text">
       <string>quantite:</string>

@@ -15,6 +15,7 @@ Utilisateur::Utilisateur(QString nom,QString prenom,QString adresse,QString phon
     this->pass=pass;
     estResponsable=false;
     estConsommateur=false;
+    estProducteur=false;
     cout << "Utilisateur est créé" << endl;
 }
 

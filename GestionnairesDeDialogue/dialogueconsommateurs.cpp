@@ -84,14 +84,14 @@ void DialogueConsommateurs::extraAjouter(Produit p,int extra,int idConsommateur)
 */
 
 
-void DialogueConsommateurs::notifierConsommateur(int idConcommateur,std::string s)
+/*void DialogueConsommateurs::notifierConsommateur(int idConcommateur,std::string s)
 {
-    /*std::string s = "vous avez reçu le montant de remboursement ";
-    s = s + to_string(montant);*/
+    std::string s = "vous avez reçu le montant de remboursement ";
+    s = s + to_string(montant);
 
     this->consommateurs.value(idConcommateur)->setMessage(s);
     cout << s <<endl;
-}
+}*/
 
 QHashIterator<int,Consommateur*> DialogueConsommateurs::iterator(){
     QHashIterator<int,Consommateur*> it (this->consommateurs);

@@ -147,6 +147,9 @@ class Utilisateur {
          */
         QString email;
 
+        /**
+         * @brief pass:mot de passe du utilisateur
+         */
         QString pass;
 
 
@@ -161,7 +164,7 @@ class Utilisateur {
         bool estResponsable;
 
         /**
-         * @brief vérifie si l'utilisateur est un Producteur
+         * @brief vérifie si l'utilisateur est un Producteur retourner vrai , faux sinon
          */
         bool estProducteur;
 
