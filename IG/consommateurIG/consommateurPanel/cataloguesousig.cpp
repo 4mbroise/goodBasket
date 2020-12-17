@@ -12,7 +12,6 @@ CatalogueSousConsommateur::CatalogueSousConsommateur(QWidget *parent,QString adr
 {
     ui->setupUi(this);
     this->idConsommateur=consommateur.getId();
-    this->setData();
 }
 
 CatalogueSousConsommateur::~CatalogueSousConsommateur()

@@ -139,11 +139,11 @@ void Consommateurig::on_ConsulterCatalogue_clicked(){
         }
        QString adresse=pc->text();
 
-        query.prepare("select distinct(Produit.idProduit, Produit.prix, Produit.nom, Produit.quantite, Produit.idProducteur)from Produit,Producteurs,PointDeCollecte,AppartenanceProducteur"
+        query.prepare("select Produit.idProduit,Produit.nom,Produit.prix,Produit.quantite,Produit.idProducteur from Produit,Producteurs,PointDeCollecte,AppartenanceProducteur"
                               "where Produit.idProducteur=Producteurs.id"
-                             "and AppartenanceProducteur.idProducteur=Producteurs.id"
+                              "and AppartenanceProducteur.idProducteur=Producteurs.id"
                               "and AppartenanceProducteur.Etat='accord'"
-                              "and AppartenanceProducteur.idPC=PointDeCollecte.idPointDeCollecte"
+                              "and AppartenanceProducteur.idPC=PointDeCollecte.idPC"
                               "and PointDeCollecte.adresse=:adresse;");
 
         query.bindValue(":adresse",adresse);
@@ -174,7 +174,7 @@ void Consommateurig::on_ConsulterCatalogue_clicked(){
             pListe->getUI().Catalogue->addItem(pItem);
             pListe->getUI().Catalogue->setItemWidget(pItem,pItemWidget);
         }
-        this->close();
+        this->hide();
         connect(pListe,SIGNAL(sendsignal()),this,SLOT(reshow()));
         pListe->show();
 }
@@ -183,15 +183,11 @@ Consommateurig::~Consommateurig(){
     delete this->ui;
 }
 void Consommateurig::reshow(){
-
-    ui->PCListe->update();
-    ui->Livraison->update();
-    ui->LivraisonPrevue->update();
     this->show();
+    metterAJour();
 }
 
 void Consommateurig::metterAJour(){
-
     setLivraison(idConsommateur);
     setLivraisonPrevue(idConsommateur);
     setPC();
