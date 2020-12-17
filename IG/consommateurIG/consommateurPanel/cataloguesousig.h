@@ -32,7 +32,10 @@ public:
       */
      CatalogueSousConsommateur(QWidget *parent = nullptr,QString adressPC="",Consommateur c =Consommateur(-1));
 
-    ~CatalogueSousConsommateur();
+     /**
+      * destructeur du consommateurig
+      */
+     ~CatalogueSousConsommateur();
 
      /**
      * @brief setData:installer le donnée du catalogue
