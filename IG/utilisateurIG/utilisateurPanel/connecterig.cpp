@@ -7,7 +7,7 @@
 #include <QDebug>
 #include "../../consommateurIG/consommateurPanel/consommateurig.h"
 #include "../../producteurIG/producteurPanel/producteurpanel.h"
-#include "../../responsableIG/fusionResponsableIG/fusionresponsableig.h"
+/*#include "../../responsableIG/fusionResponsableIG/fusionresponsableig.h"*/
 Connecterig::Connecterig(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Connecterig)

@@ -30,7 +30,17 @@ SOURCES += \
     ../../consommateurIG/consommateurPanel/livraisonsousig.cpp \
     ../../consommateurIG/consommateurPanel/produitsousig.cpp \
     ../../producteurIG/producteurPanel/producteurpanel.cpp \
+    ../../producteurIG/ajouterProduitIG/widgetp.cpp \
     ../../responsableIG/fusionResponsableIG/fusionresponsableig.cpp \
+    ../../responsableIG/ResponsablePanel/widgetresponsable.cpp \
+    ../../responsableIG/ResponsablePanel/consommateursousig.cpp \
+    ../../responsableIG/ResponsablePanel/erreursousig.cpp \
+  #  ../../responsableIG/ResponsablePanel/livraisonsousig.cpp \
+    ../../responsableIG/ResponsablePanel/producteuritemsousig.cpp \
+    ../../responsableIG/ResponsablePanel/producteursousig.cpp \
+  #  ../../responsableIG/ResponsablePanel/produitsousig.cpp \
+    ../../responsableIG/formulaireCycle/formulairecycle.cpp \
+    ../../responsableIG/gestionOuverturePCIG/gestionouverturepcpanel.cpp \
     connecterig.cpp \
     demanderpcig.cpp \
     inscriptionig.cpp \
@@ -48,7 +58,18 @@ HEADERS += \
     ../../consommateurIG/consommateurPanel/ui_livraisonsousig.h \
     ../../consommateurIG/consommateurPanel/ui_produitsousig.h \
     ../../producteurIG/producteurPanel/producteurpanel.h \
+    ../../producteurIG/ajouterProduitIG/widgetp.h \
     ../../responsableIG/fusionResponsableIG/fusionresponsableig.h \
+    ../../responsableIG/ResponsablePanel/widgetresponsable.h \
+    ../../responsableIG/formulaireCycle/formulairecycle.h \
+    ../../responsableIG/gestionOuverturePCIG/gestionouverturepcpanel.h \
+    ../../responsableIG/ResponsablePanel/widgetresponsable.h \
+    ../../responsableIG/ResponsablePanel/consommateursousig.h \
+    ../../responsableIG/ResponsablePanel/erreursousig.h \
+  #  ../../responsableIG/ResponsablePanel/livraisonsousig.h \
+    ../../responsableIG/ResponsablePanel/producteuritemsousig.h \
+    ../../responsableIG/ResponsablePanel/producteursousig.h \
+  #  ../../responsableIG/ResponsablePanel/produitsousig.h \
     connecterig.h \
     demanderpcig.h \
     inscriptionig.h \
@@ -68,7 +89,18 @@ FORMS += \
     ../../consommateurIG/consommateurPanel/produitsousig.ui \
     ../../consommateurIG/consommateurPanel/widget.ui \
     ../../producteurIG/producteurPanel/producteurpanel.ui \
+    ../../producteurIG/ajouterProduitIG/widgetp.ui \
     ../../responsableIG/fusionResponsableIG/fusionresponsableig.ui \
+    ../../responsableIG/ResponsablePanel/widgetresponsable.ui \
+    ../../responsableIG/formulaireCycle/formulairecycle.ui \
+    ../../responsableIG/gestionOuverturePCIG/gestionouverturepcpanel.ui \
+    ../../responsableIG/ResponsablePanel/widgetresponsable.ui \
+    ../../responsableIG/ResponsablePanel/consommateursousig.ui \
+    ../../responsableIG/ResponsablePanel/erreursousig.ui \
+  #  ../../responsableIG/ResponsablePanel/livraisonsousig.ui \
+    ../../responsableIG/ResponsablePanel/producteuritemsousig.ui \
+    ../../responsableIG/ResponsablePanel/producteursousig.ui \
+  #  ../../responsableIG/ResponsablePanel/produitsousig.ui \
     connecterig.ui \
     demanderpcig.ui \
     inscriptionig.ui \
