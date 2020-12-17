@@ -117,6 +117,43 @@ int Consommateur::nbLivraisonPrevues(){
     return LivraisonPrevues.count();
 }
 
+void Consommateur::commanderPanier()
+{
+    QSqlQuery panier;
+    QSqlQuery updateProduitStock;
+    QSqlQuery updateLivraison;
+
+    QString requetePanierString = QString::fromStdString("SELECT idProduit,quantite FROM Livraisons WHERE idConsommateur =");
+    QString requeteUpdateStock;
+
+    requetePanierString.append(QString::number(this->id));
+
+    if(!panier.exec(requetePanierString))
+    {
+        qDebug() << "Erreur: " <<panier.lastError();
+    }
+    else
+    {
+        while(panier.next())
+        {
+            updateProduitStock.prepare( "UPDATE Produit "
+                                        "SET quantite = quantite - :quantity "
+                                        "WHERE idProduit = :idProduitAUpdtae");
+
+            updateProduitStock.bindValue(":quantity", panier.value(1).Int);
+            updateProduitStock.bindValue(":idProduit", panier.value(0).Int);
+            updateProduitStock.exec();
+        }
+    }
+    requetePanierString = QString::fromStdString("UPDATE Livraisons SET prevue = 'true' WHERE idConsommateur =");
+    requetePanierString.append(QString::number(this->id));
+    if(!panier.exec(requetePanierString))
+    {
+        qDebug() << "Erreur: " <<panier.lastError();
+    }
+
+}
+
 /*const std::string Consommateur::toString(){
     string resultat="Consommateur [ID-"+std::to_string(this->getId())+"]\n";
     resultat.append("Panier:\n");
