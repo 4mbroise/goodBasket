@@ -20,11 +20,12 @@ SOURCES += \
     ../../../pc.cpp \
     ../../../utilisateur.cpp \
     ../../../producteur.cpp \
+    ../../../produit.cpp \
     ../../../responsable.cpp \
     ../formulaireCycle/formulairecycle.cpp \
     ../../../Outils/sqltool.cpp \
     ../../../Outils/idgenerator.cpp \
-    ../ResponsablePanel/widgetresponable.cpp \
+    ../ResponsablePanel/widgetresponsable.cpp \
     fusionresponsableig.cpp
 
 HEADERS += \
@@ -37,12 +38,13 @@ HEADERS += \
     ../ResponsablePanel/produitsousig.h \
     ../ResponsablePanel/producteuritemsousig.h \
     ../../../utilisateur.h \
-    ../../../producteur.cpp \
+    ../../../producteur.h \
+    ../../../produit.h \
     ../../../responsable.h \
     ../../../Outils/sqltool.h \
     ../../../Outils/idgenerator.h \
     ../formulaireCycle/formulairecycle.h \
-    ../ResponsablePanel/widgetresponable.h \
+    ../ResponsablePanel/widgetresponsable.h \
     fusionresponsableig.h
 
 FORMS += \
@@ -50,7 +52,7 @@ FORMS += \
     ../ResponsablePanel/consommateursousig.ui \
     ../ResponsablePanel/livraisonsousig.ui \
     ../gestionOuverturePCIG/gestionouverturepcpanel.ui \
-    ../ResponsablePanel/widgetresponable.ui \
+    ../ResponsablePanel/widgetresponsable.ui \
     ../ResponsablePanel/producteursousig.ui \
     ../ResponsablePanel/producteuritemsousig.ui \
     ../ResponsablePanel/erreursousig.ui \

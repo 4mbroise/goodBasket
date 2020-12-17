@@ -7,7 +7,7 @@
 #include <QDebug>
 #include "../../consommateurIG/consommateurPanel/consommateurig.h"
 #include "../../producteurIG/producteurPanel/producteurpanel.h"
-/*#include "../../responsableIG/fusionResponsableIG/fusionresponsableig.h"*/
+#include "../../responsableIG/fusionResponsableIG/fusionresponsableig.h"
 Connecterig::Connecterig(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Connecterig)
@@ -63,8 +63,8 @@ void Connecterig::on_Login_clicked(){
                                qDebug() << id;
 
 
-                              Consommateurig* cig=new Consommateurig(nullptr,Consommateur(id));
-                              cig->show();
+                              fusionResponsableIg* res=new fusionResponsableIg(nullptr,Responsable(id));
+                              res->show();
                               this->close();
                           }
                       }
@@ -85,8 +85,8 @@ void Connecterig::on_Login_clicked(){
                                                  int id=login.value(0).toInt();
                                                   qDebug() << id;
 
-                                                 Consommateurig* cig=new Consommateurig(nullptr,Consommateur(id));
-                                                 cig->show();
+                                                 producteurPanel* pro=new producteurPanel(nullptr,Producteur(id));
+                                                 pro->show();
                                                  this->close();
                                              }
                                          }

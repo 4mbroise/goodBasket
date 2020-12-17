@@ -1,5 +1,5 @@
-#include "erreursousig.h"
-#include "ui_erreursousig.h"
+#include "erreursousgestionnaire.h"
+#include "ui_erreursousgestionnaire.h"
 #include "../../../Outils/idgenerator.h"
 #include <QSqlDatabase>
 #include <QSqlError>

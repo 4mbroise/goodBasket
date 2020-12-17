@@ -24,9 +24,9 @@ SOURCES += \
  #   ../../utilisateurIG/utilisateurPanel/selectionig.cpp \
     cataloguesousig.cpp \
     consommateurig.cpp \
-    livraisonsousig.cpp \
+    livraisonsousconsommateur.cpp \
     main.cpp \
-    produitsousig.cpp
+    produitsousconsommateur.cpp
 
 HEADERS += \
     ../../../Outils/idgenerator.h \
@@ -36,14 +36,14 @@ HEADERS += \
  #   ../../utilisateurIG/utilisateurPanel/selectionig.h \
     cataloguesousig.h \
     consommateurig.h \
-    livraisonsousig.h \
-    produitsousig.h
+    livraisonsousconsommateur.h \
+    produitsousconsommateur.h
 
 FORMS += \
     cataloguesousig.ui \
     consommateurig.ui \
-    livraisonsousig.ui \
-    produitsousig.ui
+    livraisonsousconsommateur.ui \
+    produitsousconsommateur.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

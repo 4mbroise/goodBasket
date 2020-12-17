@@ -127,6 +127,19 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="Gestionnaire">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>540</y>
+     <width>200</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gestionnaire</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

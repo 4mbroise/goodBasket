@@ -8,7 +8,7 @@
 #include "erreursousig.h"
 #include "producteursousig.h"
 #include "consommateursousig.h"
-
+#include "../../GestionnaireIG/Gestionnaire/gestionnaireig.h"
 
 WidgetResponsable::WidgetResponsable(QWidget *parent)
     : QWidget(parent)
@@ -212,4 +212,11 @@ void WidgetResponsable::on_ReporterReports_clicked()
     pItem->setSizeHint(QSize(240, 120));
     ui->SousList->addItem(pItem);
     ui->SousList->setItemWidget(pItem,pItemWidget);
+}
+
+void WidgetResponsable::on_Gestionnaire_clicked()
+{
+    GestionnaireIG* ges=new GestionnaireIG();
+    ges->show();
+    this->close();
 }

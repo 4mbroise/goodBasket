@@ -32,7 +32,7 @@ public:
     ~Inscriptionig();
 
     /**
-     * @brief verifier:vrifier tous les informations sont bien règlés et bien complétés
+     * @brief verifier:verifier tous les informations sont bien règlés et bien complétés
      * @return true si tous les informations sont bien règlés et bien complétés.false sinon
      */
     bool verifier();

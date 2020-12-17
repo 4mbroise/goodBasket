@@ -1,5 +1,5 @@
-#ifndef LIVRAISONSOUSIG_H
-#define LIVRAISONSOUSIG_H
+#ifndef LIVRAISONSOUSCONSOMMATEUR_H
+#define LIVRAISONSOUSCONSOMMATEUR_H
 
 #include <QWidget>
 #include "../../../livraison.h"

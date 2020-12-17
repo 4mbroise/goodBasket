@@ -1,4 +1,5 @@
 #include "producteur.h"
+#include "produit.h"
 #include <QDebug>
 #include <QString>
 #include <iostream>

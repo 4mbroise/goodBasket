@@ -21,7 +21,7 @@ SOURCES += \
     producteurpanel.cpp
 
 HEADERS += \
-    ../ajouterProduitIG/AjouterProduitIG.h \
+    ../ajouterProduitIG/Widgetp.h \
     ../../../produit.h \
     ../../../producteur.h \
     ../../../livraison.h \

@@ -1,5 +1,5 @@
-#ifndef PRODUITSOUSIG_H
-#define PRODUITSOUSIG_H
+#ifndef PRODUITSOUSCONSOMMATEUR_H
+#define PRODUITSOUSCONSOMMATEUR_H
 
 #include <QWidget>
 #include "cataloguesousig.h"

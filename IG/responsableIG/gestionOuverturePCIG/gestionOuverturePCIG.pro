@@ -14,6 +14,8 @@ SOURCES += \
     ../../../utilisateur.cpp \
     ../../../pc.cpp \
     ../../../responsable.cpp \
+    ../../../producteur.cpp \
+    ../../../produit.cpp \
     ../formulaireCycle/formulairecycle.cpp \
     ../../../Outils/idgenerator.cpp \
     gestionouverturepcpanel.cpp
@@ -23,6 +25,8 @@ HEADERS += \
     ../../../utilisateur.h \
     ../../../pc.h \
     ../../../responsable.h \
+    ../../../producteur.h \
+    ../../../produit.h \
     ../formulaireCycle/formulairecycle.h \
     ../../../Outils/idgenerator.h \
     gestionouverturepcpanel.h

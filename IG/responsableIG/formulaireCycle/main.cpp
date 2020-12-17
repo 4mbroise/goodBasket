@@ -1,7 +1,9 @@
 #include "formulairecycle.h"
 #include "../../../Outils/sqltool.h"
 #include <QApplication>
-#include "../../../utilisateur.cpp"
+#include "../../../responsable.h"
+#include "../../../utilisateur.h"
+#include "../../../produit.h"
 int main(int argc, char *argv[])
 {
     if(!sqlTool::openConnexion())

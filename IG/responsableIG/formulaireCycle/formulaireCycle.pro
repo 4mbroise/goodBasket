@@ -13,6 +13,8 @@ SOURCES += \
     ../../../Outils/sqltool.cpp \
     ../../../utilisateur.cpp \
     ../../../producteur.cpp \
+    ../../../produit.cpp \
+    ../../../consommateur.cpp \
     ../../../pc.cpp \
     ../../../responsable.cpp \
     ../../../Outils/idgenerator.cpp \
@@ -22,6 +24,9 @@ HEADERS += \
     ../../../Outils/sqltool.h \
     ../../../utilisateur.h \
     ../../../pc.h \
+    ../../../consommateur.h \
+    ../../../produit.h \
+    ../../../cycle.h \
     ../../../producteur.h \
     ../../../responsable.h \
     ../../../Outils/idgenerator.h \

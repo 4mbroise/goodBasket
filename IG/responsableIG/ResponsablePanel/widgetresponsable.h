@@ -52,6 +52,8 @@ private slots:
      */
     void on_ReporterReports_clicked();
 
+    void on_Gestionnaire_clicked();
+
 private:
     /**
      * @brief ui de interface responsable

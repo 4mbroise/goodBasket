@@ -1,11 +1,11 @@
 #include "consommateurig.h"
 #include "ui_consommateurig.h"
-#include "livraisonsousig.h"
-#include "ui_livraisonsousig.h"
+#include "livraisonsousconsommateur.h"
+#include "ui_livraisonsousconsommateur.h"
 #include "cataloguesousig.h"
 #include "ui_cataloguesousig.h"
-#include "produitsousig.h"
-#include "ui_produitsousig.h"
+#include "produitsousconsommateur.h"
+#include "ui_produitsousconsommateur.h"
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlDatabase>

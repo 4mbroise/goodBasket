@@ -5,8 +5,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QListWidget>
-#include "erreursousig.h"
-#include "ui_erreursousig.h"
+#include "erreursousgestionnaire.h"
+#include "ui_erreursousgestionnaire.h"
 #include "pcsousig.h"
 #include "ui_pcsousig.h"
 

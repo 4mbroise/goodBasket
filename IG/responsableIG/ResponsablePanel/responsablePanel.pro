@@ -25,6 +25,9 @@ SOURCES += \
     produitsousig.cpp \
     producteuritemsousig.cpp \
     ../../../Outils/idgenerator.cpp \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.cpp \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.cpp \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.cpp \
     widgetresponsable.cpp
 
 HEADERS += \
@@ -35,6 +38,9 @@ HEADERS += \
     produitsousig.h \
     producteuritemsousig.h \
     ../../../Outils/idgenerator.h \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.h \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.h \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.h \
     widgetresponsable.h
 
 FORMS += \
@@ -44,6 +50,9 @@ FORMS += \
     producteursousig.ui \
     produitsousig.ui \
     producteuritemsousig.ui \
+    ../../GestionnaireIG/Gestionnaire/erreursousgestionnaire.ui \
+    ../../GestionnaireIG/Gestionnaire/gestionnaireig.ui \
+    ../../GestionnaireIG/Gestionnaire/pcsousig.ui \
     widgetresponsable.ui
 
 # Default rules for deployment.
