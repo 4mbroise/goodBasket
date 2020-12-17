@@ -22,8 +22,8 @@ public:
     Consommateurig(QWidget *parent = nullptr,Consommateur c=Consommateur(-1));
     //Consommateurig(Consommateur *p);
     ~Consommateurig();
-    void setLivraison(const QString & idConsommateur);
-    void setLivraisonPrevue(const QString &idConsommateur);
+    void setLivraison(int idConsommateur);
+    void setLivraisonPrevue(int idConsommateur);
     void setPC();
     void metterAJour();
 

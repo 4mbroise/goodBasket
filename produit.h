@@ -22,6 +22,8 @@ public:
      */
     Produit(int id, int q,double prix,std::string nom,std::string imagePath);
 
+    Produit(int id);
+
     /**
      * @brief Getter du nom du produit
      * 

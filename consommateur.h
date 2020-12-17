@@ -88,7 +88,7 @@ class Consommateur:public Utilisateur
       * @brief ajouterProduitAuPanier:ajouter le prouduit au panier
       * @param l:le prouduit en livraison
       */
-     void ajouterProduitAuPanier(Livraison l);
+     void ajouterProduitAuPanier(QString nom,int idConsommateur,int idProduit,int quantite,int prix,QString adressePC);
 
      /**
       * @brief demanderExtraAjouter:demander d'ajoute le produit qui est déjà dans le panier

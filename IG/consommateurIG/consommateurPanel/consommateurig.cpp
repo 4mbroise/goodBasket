@@ -19,19 +19,21 @@ Consommateurig::Consommateurig(QWidget *parent,Consommateur c)
     , ui(new Ui::Consommateurig)
     ,consommateur(c)
 {
+    this->idConsommateur=c.getId();
     ui->setupUi(this);
     metterAJour();
 
 }
 
-void Consommateurig::setLivraison(const QString& idConsommateur){
+void Consommateurig::setLivraison(int idConsommateur){
     QSqlQuery query;
 
     qDebug() << "erreur---------------------" << idConsommateur;
-
-    if(!query.exec("select * from Livraisons where idConsommateur=\""+idConsommateur+"\" and prevue=false"))
+    query.prepare("select * from Livraisons where idConsommateur=:id and prevue=false");
+    query.bindValue(":id",idConsommateur);
+    if(!query.exec())
     {
-        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
+        qDebug() << "Erreur: " <<query.lastError();
     }
     else
     {
@@ -52,7 +54,7 @@ void Consommateurig::setLivraison(const QString& idConsommateur){
         LivraisonSousConsommateur* pItemWidget = new LivraisonSousConsommateur(this);
         pItemWidget->setData(livraisonId,nom,produitId,quantite,dateLivraison,adressePC);
         QListWidgetItem* pItem = new QListWidgetItem();
-        pItem->setSizeHint(QSize(1243,137));
+        pItem->setSizeHint(QSize(1240,50));
         ui->Livraison->addItem(pItem);
         ui->Livraison->setItemWidget(pItem,pItemWidget);
 
@@ -64,19 +66,17 @@ void Consommateurig::setLivraison(const QString& idConsommateur){
     ui->LivraisonLabel->setText("La liste de la Livraison\nTotal:"+QString::number(total));
 }
 
-void Consommateurig::setLivraisonPrevue(const QString &idConsommateur){
+void Consommateurig::setLivraisonPrevue(int idConsommateur){
     QSqlQuery query;
 
     qDebug() << "erreur---------------------" << idConsommateur;
-
-    if(!query.exec("select * from Livraisons where idConsommateur=\""+idConsommateur+"\" and prevue=true"))
-    {
-        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
-    }
-    else
-    {
-        qDebug() << "Trouvé!";
-    }
+    query.prepare("select * from Livraisons where idConsommateur=:id and prevue=false");
+    query.bindValue(":id",idConsommateur);
+    if(!query.exec()){
+        qDebug() << "Erreur: " <<query.lastError();
+     } else {
+             qDebug() << "Trouvé!";
+         }
     int total=0;
     while(query.next())
     {
@@ -108,9 +108,9 @@ void Consommateurig::setPC(){
 
     qDebug() << "erreur---------------------" << endl;
 
-    if(query.exec("select distinct idPointDeCollecte, idResponsablePC, adresse, venteOuverte from PointDeCollecte join Cycle where date('now')>dateVente and date('now')<dateFinVente and idPC = idPointDeCollecte "))
+    if(query.exec("select adresse from PointDeCollecte"))
     {
-        qDebug() << "Erreur: recherche ce producteur. " <<query.lastError();
+        qDebug() << "Erreur:  " <<query.lastError();
     }
     else
     {
@@ -139,23 +139,24 @@ void Consommateurig::on_ConsulterCatalogue_clicked(){
         }
        QString adresse=pc->text();
 
-        /*query.prepare("select Produit.idProduit,Produit.nom,Produit.prix,Produit.quantite,Produit.idProducteur from Produit,Producteurs,PointDeCollecte\
-                              where Produit.idProducteur=Producteurs.id\
-                              and Producteurs.adressePC=PointDeCollecte.adresse\
-                              and PointDeCollecte.adresse=:adresse;");*/
-        query.prepare("select * from Produit,Producteurs,PointDeCollecte\
-                              where Produit.idProducteur=Producteurs.id;");
-        //query.bindValue(":adresse",adresse);
+        query.prepare("select Produit.idProduit,Produit.nom,Produit.prix,Produit.quantite,Produit.idProducteur from Produit,Producteurs,PointDeCollecte,AppartenanceProducteur"
+                              "where Produit.idProducteur=Producteurs.id"
+                              "and AppartenanceProducteur.idProducteur=Producteurs.id"
+                              "and AppartenanceProducteur.Etat='accord'"
+                              "and AppartenanceProducteur.idPC=PointDeCollecte.idPC"
+                              "and PointDeCollecte.adresse=:adresse;");
+
+        query.bindValue(":adresse",adresse);
 
         if(!query.exec())
         {
-            qDebug() << "Erreur:consulter catalogue. " <<query.lastError();
+            qDebug() << "Erreur: " <<query.lastError();
         }
         else
         {
             qDebug() << "Trouvé!";
         }
-        CatalogueSousConsommateur* pListe =new CatalogueSousConsommateur(nullptr,adresse,this->idConsommateur);
+        CatalogueSousConsommateur* pListe =new CatalogueSousConsommateur(nullptr,adresse,this->consommateur);
         while(query.next())
         {
             QString idProduit=query.value(0).toString();
@@ -183,10 +184,11 @@ Consommateurig::~Consommateurig(){
 }
 void Consommateurig::reshow(){
     this->show();
+    metterAJour();
 }
 
 void Consommateurig::metterAJour(){
-    setLivraison(QString::number(idConsommateur));
-    setLivraisonPrevue(QString::number(idConsommateur));
+    setLivraison(idConsommateur);
+    setLivraisonPrevue(idConsommateur);
     setPC();
 }

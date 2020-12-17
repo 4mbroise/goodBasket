@@ -7,11 +7,11 @@
 #include <QListWidget>
 
 
-CatalogueSousConsommateur::CatalogueSousConsommateur(QWidget *parent,QString adressePC,int idConsommateur)
-    : QWidget(parent), ui(new Ui::CatalogueSousConsommateur),adressePC(adressePC),idConsommateur(idConsommateur)
+CatalogueSousConsommateur::CatalogueSousConsommateur(QWidget *parent,QString adressePC,Consommateur consommateur)
+    : QWidget(parent), ui(new Ui::CatalogueSousConsommateur),adressePC(adressePC),consommateur(consommateur)
 {
     ui->setupUi(this);
-
+    this->idConsommateur=consommateur.getId();
 }
 
 CatalogueSousConsommateur::~CatalogueSousConsommateur()
@@ -26,7 +26,9 @@ void CatalogueSousConsommateur::setData(){
 
 }
 
-
+Consommateur& CatalogueSousConsommateur::getConsommateur(){
+    return consommateur;
+}
 
 void CatalogueSousConsommateur::on_Retourner_clicked(){
     emit sendsignal();

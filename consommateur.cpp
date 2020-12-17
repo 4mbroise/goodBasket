@@ -2,11 +2,10 @@
 #include "utilisateur.h"
 #include <QDebug>
 #include <iostream>
-
+#include <QDate>
 using namespace std;
 
 Consommateur::Consommateur(QString nom,QString prenom,QString adresse,QString phone,QString email, QString pass):Utilisateur(nom,prenom,adresse,phone,email,pass){
-    //this->gestionnaireDialogue.ajouterConsommateur(this);
     estConsommateur=true;
     this->estResponsable=true;
     this->estProducteur=false;
@@ -32,14 +31,82 @@ void Consommateur::consulterCatalogue(){
 
 }
 
-/*void Consommateur::demanderAjouter(Produit p,int commande){
-    this->gestionnaireDialogue.ajouterPanier(p,commande,this->id);
-}
 
-void Consommateur::ajouterProduitAuPanier(Livraison l){
-    this->Panier.append(l);
-}
 
+void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idProduit,int quantite,int prix,QString adressePC){
+    QSqlQuery query;
+    //recherche id max
+    if(!query.exec("SELECT max(id) FROM Livraisons"))
+       {
+           qDebug() << "ERREUR recherche" << query.lastError();
+       }
+       else
+       {
+             qDebug() << "réussi"<<endl;
+            query.next();
+       }
+        int actualMaxId = query.value(0).toInt();
+    query.clear();
+    //recherche dateLivraison
+    query.prepare("SELECT dateLivraison FROM Cycle WHERE adressePC=:adresse");
+    query.bindValue(":adresse",adressePC);
+    if(!query.exec())
+       {
+           qDebug() << "ERREUR recherche" << query.lastError();
+       }
+       else
+       {
+            qDebug() << "réussi"<<endl;
+            query.next();
+       }
+        QDate date = query.value(0).toDate();
+         query.clear();
+    //
+
+    query.prepare("INSERT INTO Livraison(id,nom,idConsommatuer,idProduit,quantite,prix,dateDeLivraison,dateAchat,adressePC,prevue,annuler,payerResponsable)"
+                  "VALUES(:id,:nom,:idConsommatuer,:idProduit,:quantite,:prix,:dateDeLivraison,:dateAchat,date('now'),false,false,false)");
+    query.bindValue(":id",actualMaxId+1);
+    query.bindValue(":nom",nom);
+    query.bindValue(":idConsommateur",idConsommateur);
+    query.bindValue(":idProduit",idProduit);
+    query.bindValue(":quantite",quantite);
+    query.bindValue(":prix",prix);
+    query.bindValue(":dateDeLivraison",date);
+    query.bindValue(":adressePC",adressePC);
+    if(!query.exec())
+    {
+        qDebug() << "Erreur: " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Réussi!";
+    }
+    query.clear();
+    query.prepare("select quantite from Produit where idProduit=:idP");
+    query.bindValue(":idP",idProduit);
+    if(!query.exec())
+    {
+        qDebug() << "Erreur: " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Réussi!";
+    }
+    query.next();
+    int q=query.value(0).toInt();
+    query.prepare("UPDATE Produit SET quantite=:quantite where idProduit=:idP");
+    q=q-quantite;
+    query.bindValue(":quantite",q);
+    if(!query.exec())
+    {
+        qDebug() << "Erreur: " <<query.lastError();
+    }
+    else
+    {
+        qDebug() << "Réussi!";
+    }
+}
+/*
 void Consommateur::demanderExtraAjouter(Produit p,int extra){
     this->gestionnaireDialogue.extraAjouter(p,extra,this->id);
 }

@@ -11,6 +11,7 @@ Produit::Produit(int id, int q, double prix, std::string nom, std::string imageP
 }
 
 
+
 const int& Produit::getId()
 {
     return this->id;
