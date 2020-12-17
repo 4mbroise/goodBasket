@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
             cout<<"BDD est connexion"<<endl;
             QApplication a(argc, argv);
             Consommateur consommateur=Consommateur(0);
-            Consommateurig *c=new Consommateurig(nullptr,1);
+            Consommateurig *c=new Consommateurig(nullptr,2);
             c->show();
             return a.exec();
             sqlTool::closeConnexion();
