@@ -19,6 +19,7 @@ SOURCES += \
     ../ResponsablePanel/producteuritemsousig.cpp \
     ../../../pc.cpp \
     ../../../utilisateur.cpp \
+    ../../../producteur.cpp \
     ../../../responsable.cpp \
     ../formulaireCycle/formulairecycle.cpp \
     ../../../Outils/sqltool.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     ../ResponsablePanel/produitsousig.h \
     ../ResponsablePanel/producteuritemsousig.h \
     ../../../utilisateur.h \
+    ../../../producteur.cpp \
     ../../../responsable.h \
     ../../../Outils/sqltool.h \
     ../../../Outils/idgenerator.h \

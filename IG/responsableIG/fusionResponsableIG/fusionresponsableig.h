@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../gestionOuverturePCIG/gestionouverturepcpanel.h"
+#include "../ResponsablePanel/widgetresponsable.h"
 #include "../../../responsable.h"
 
 QT_BEGIN_NAMESPACE

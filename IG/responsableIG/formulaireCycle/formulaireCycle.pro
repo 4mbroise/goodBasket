@@ -12,9 +12,9 @@ SOURCES += \
     main.cpp \
     ../../../Outils/sqltool.cpp \
     ../../../utilisateur.cpp \
+    ../../../producteur.cpp \
     ../../../pc.cpp \
     ../../../responsable.cpp \
-    ../../../utilisateur.cpp \
     ../../../Outils/idgenerator.cpp \
     formulairecycle.cpp
 
@@ -22,8 +22,8 @@ HEADERS += \
     ../../../Outils/sqltool.h \
     ../../../utilisateur.h \
     ../../../pc.h \
+    ../../../producteur.h \
     ../../../responsable.h \
-    ../../../utilisateur.h \
     ../../../Outils/idgenerator.h \
     formulairecycle.h
 
