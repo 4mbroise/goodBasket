@@ -18,9 +18,9 @@
     <widget class="QListWidget" name="Livraison"/>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="Confirmer">
+    <widget class="QPushButton" name="CommanderPanier">
      <property name="text">
-      <string>Confirmer</string>
+      <string>Commander Panier</string>
      </property>
     </widget>
    </item>
@@ -58,17 +58,10 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="ID">
      <property name="text">
-      <string>ID:100</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QPushButton" name="EspacePersionnel">
-     <property name="text">
-      <string>Espace Personnel</string>
+      <string>ID:</string>
      </property>
     </widget>
    </item>

@@ -2,13 +2,22 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QPushButton>
-#include <QSqlQueryModel>
-#include <QStandardItemModel>
-#include <QStandardItem>
 #include "../../../consommateur.h"
 #include "../../../utilisateur.h"
 #include "../../../Outils/idgenerator.h"
+
+/**
+ * @brief Consommateurig
+ * interface graphique du consommateur
+ * il va prendre consommateur avec id à traiter les donnée
+ * il va afficher interface graphique consommateur avec:
+ * (panier)la liste Livraison et LivraisonPrevue pour supprimer ou commander le panier
+ * (panierprevue)la liste PC pour consulter le catalogue
+ * choisir un PC et on peut consulter PC
+ * toutes les listes sont listwidget
+ * @version 4
+ * @author GE Yuxuan
+ */
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Consommateurig; }
@@ -19,21 +28,75 @@ class Consommateurig : public QWidget
     Q_OBJECT
 
 public:
+    /**
+     * @brief Consommateurig:constructeur du consommateur interface graphique
+     * @param parent:Qwidget parent pointeur
+     * @param c:consommateur avec id
+     */
     Consommateurig(QWidget *parent = nullptr,Consommateur c=Consommateur(-1));
-    //Consommateurig(Consommateur *p);
+
+    /**
+     * destructeur du consommateurig
+     */
     ~Consommateurig();
+
+    /**
+     * @brief setLivraison:installer la liste de la livraison par rapport à donnée dans BDD
+     * @param idConsommateur:id du Consommateur
+     */
     void setLivraison(int idConsommateur);
+
+    /**
+     * @brief setLivraisonPrevue:installer la liste de la livraison prevue par rapport à donnée dans BDD
+     * @param idConsommateur:id du Consommateur
+     */
     void setLivraisonPrevue(int idConsommateur);
+
+    /**
+     * @brief setPC:installer liste pc par rapport à donnée dans BDD
+     */
     void setPC();
+
+    /**
+     * @brief metterAJour:mettre à jour tout les Uis
+     */
     void metterAJour();
 
 
 private slots:
+    /**
+     * @brief on_ConsulterCatalogue_clicked:bouton signal si on clicke sur le bouton,la fonction va exécuter
+     * pour consulter le catalogue du pc sélèctionné.
+     */
     void on_ConsulterCatalogue_clicked();
+
+    /**
+     * @brief on_CommanderPanier_clicked:bouton signal si on clicke sur le bouton,la fonction va exécuter
+     * pour commander tout les livraisons dans panier
+     */
+    void on_CommanderPanier_clicked();
+
+    /**
+     * @brief reshow: signal s'il reçoit le siganl, il va exécuter
+     * pour reprendre l'interface graphique du consommateur cassé
+     */
     void reshow();
+
 private:
+
+    /**
+     * @brief ui:ui contient tous les layouts et outils
+     */
     Ui::Consommateurig *ui;
+
+    /**
+     * @brief idConsommateur:id du consommateur
+     */
     int idConsommateur;
+
+    /**
+     * @brief consommateur:objet consommateur
+     */
     Consommateur consommateur;
 
 
