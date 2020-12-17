@@ -12,7 +12,7 @@
 #include "../../../producteur.h"
 #include "../../../Outils/idgenerator.h"
 #include "../../../GestionnairesDeDialogue/dialogueproducteurs.h"
-#include "../ajouterProduitIG/widget.h"
+#include "../ajouterProduitIG/widgetp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class producteurPanel; }
@@ -34,7 +34,7 @@ private slots:
     void on_pushButton_2_released();
 
 private:
-    Widget *formulaire;
+    WidgetProducteur *formulaire;
     Producteur prod;
     QSqlQueryModel *modelProduits;
     QSqlQueryModel *modelLivraisons;

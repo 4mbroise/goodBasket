@@ -1,5 +1,5 @@
-#include "widget.h"
-#include "ui_widget.h"
+#include "widgetresponsable.h"
+#include "ui_widgetresponsable.h"
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -10,9 +10,9 @@
 #include "consommateursousig.h"
 
 
-Widget::Widget(QWidget *parent)
+WidgetResponsable::WidgetResponsable(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Widget)
+    , ui(new Ui::WidgetResponsable)
 {
     ui->setupUi(this);
 
@@ -114,13 +114,13 @@ Widget::Widget(QWidget *parent)
 
 }
 
-Widget::~Widget()
+WidgetResponsable::~WidgetResponsable()
 {
     delete ui;
 }
 
 
-void Widget::on_PayerProducteur_clicked()
+void WidgetResponsable::on_PayerProducteur_clicked()
 {
     QSqlQuery query;
 
@@ -151,7 +151,7 @@ void Widget::on_PayerProducteur_clicked()
 }
 
 
-void Widget::on_Rembourser_clicked()
+void WidgetResponsable::on_Rembourser_clicked()
 {
     QSqlQuery query;
 
@@ -183,7 +183,7 @@ void Widget::on_Rembourser_clicked()
 }
 
 
-void Widget::on_RecruterProducteur_clicked()
+void WidgetResponsable::on_RecruterProducteur_clicked()
 {
     QSqlQuery query;
 
@@ -201,7 +201,7 @@ void Widget::on_RecruterProducteur_clicked()
 
 }
 
-void Widget::on_ReporterReports_clicked()
+void WidgetResponsable::on_ReporterReports_clicked()
 {
     QSqlQuery query;
 

@@ -1,10 +1,10 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef WIDGETRESPONSABLE_H
+#define WIDGETRESPONSABLE_H
 
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Widget; }
+namespace Ui { class WidgetResponsable; }
 QT_END_NAMESPACE
 
 
@@ -13,7 +13,7 @@ QT_END_NAMESPACE
  * @version 1
  * @author CAI Yunfan
  */
-class Widget : public QWidget
+class WidgetResponsable : public QWidget
 {
     Q_OBJECT
 
@@ -22,12 +22,12 @@ public:
      * @brief Class  Responsbale
      * @param Qwidget widget de QT
      */
-    Widget(QWidget *parent = nullptr);
+    WidgetResponsable(QWidget *parent = nullptr);
 
     /**
      * @brief Destructeur de la classe Responsable
      */
-    ~Widget();
+    ~WidgetResponsable();
 
 private slots:
 
@@ -56,6 +56,6 @@ private:
     /**
      * @brief ui de interface responsable
      */
-    Ui::Widget *ui;
+    Ui::WidgetResponsable *ui;
 };
 #endif // WIDGET_H

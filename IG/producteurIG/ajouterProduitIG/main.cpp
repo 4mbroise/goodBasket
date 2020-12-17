@@ -1,4 +1,4 @@
-#include "Widget.h"
+#include "Widgetp.h"
 
 #include <QApplication>
 
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
         Producteur pr1 = Producteur(0);
 
         QApplication a(argc, argv);
-        Widget* w = new Widget(nullptr, pr1);
+        WidgetProducteur* w = new WidgetProducteur(nullptr, pr1);
         w->show();
         return a.exec();
         cout << "close Co" <<endl;

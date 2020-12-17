@@ -1,6 +1,8 @@
 #include "fusionresponsableig.h"
 #include "ui_fusionresponsableig.h"
 
+#include "../ResponsablePanel/widgetresponsable.h"
+
 fusionResponsableIg::fusionResponsableIg(QWidget *parent, Responsable r)
     : QWidget(parent), responsable(r)
     , ui(new Ui::fusionResponsableIg)
@@ -10,7 +12,7 @@ fusionResponsableIg::fusionResponsableIg(QWidget *parent, Responsable r)
     this->responsable = r;
 
     this->gestionOuvertureWidget = new GestionOuverturePCPanel(nullptr, r);
-    this->responsablePanel = new Widget(ui->tabWidget);
+    this->responsablePanel = new WidgetResponsable(ui->tabWidget);
 
     ui->tabWidget->removeTab(0);
     ui->tabWidget->removeTab(0);

@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "../gestionOuverturePCIG/gestionouverturepcpanel.h"
-#include "../ResponsablePanel/widget.h"
+#include "../ResponsablePanel/widgetresponsable.h"
 #include "../../../responsable.h"
 
 QT_BEGIN_NAMESPACE
@@ -19,7 +19,7 @@ public:
     ~fusionResponsableIg();
 
 private:
-    Widget *responsablePanel;
+    WidgetResponsable *responsablePanel;
     GestionOuverturePCPanel *gestionOuvertureWidget;
     Responsable responsable;
     Ui::fusionResponsableIg *ui;

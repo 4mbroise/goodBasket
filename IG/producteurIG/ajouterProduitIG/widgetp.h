@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef WIDGETP_H
+#define WIDGETP_H
 
 #include <QWidget>
 
@@ -9,17 +9,17 @@
 #include "../../../GestionnairesDeDialogue/dialogueProducteurs.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Widget; }
+namespace Ui { class WidgetProducteur; }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
+class WidgetProducteur : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr, Producteur p = Producteur(-1));
-    Widget(Producteur p);
-    ~Widget();
+    WidgetProducteur(QWidget *parent = nullptr, Producteur p = Producteur(-1));
+    WidgetProducteur(Producteur p);
+    ~WidgetProducteur();
 
 signals:
     void miseAjourBoutique();
@@ -30,6 +30,6 @@ private slots:
 private:
     bool isFormulaireOK();
     Producteur model;
-    Ui::Widget *ui;
+    Ui::WidgetProducteur *ui;
 };
 #endif // WIDGET_H

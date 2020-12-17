@@ -17,7 +17,7 @@ SOURCES += \
     ../../../Outils/sqltool.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
     main.cpp \
-    Widget.cpp
+    Widgetp.cpp
 
 HEADERS += \
     ../../../produit.h \
@@ -27,10 +27,10 @@ HEADERS += \
     ../../../Outils/sqltool.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
-    Widget.h
+    Widgetp.h
 
 FORMS += \
-    Widget.ui
+    Widgetp.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

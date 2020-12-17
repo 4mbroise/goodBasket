@@ -1,23 +1,23 @@
-#include "Widget.h"
-#include "ui_Widget.h"
+#include "Widgetp.h"
+#include "ui_Widgetp.h"
 #include "../../../producteur.h"
 using namespace std;
 
-Widget::Widget(QWidget *parent, Producteur p)
+WidgetProducteur::WidgetProducteur(QWidget *parent, Producteur p)
     : QWidget(parent) ,model(p)
-    , ui(new Ui::Widget)
+    , ui(new Ui::WidgetProducteur)
 {
     ui->setupUi(this);
     this->model = p;
 }
 
-Widget::~Widget()
+WidgetProducteur::~WidgetProducteur()
 {
     cout << "Destruction widget" <<endl;
     delete ui;
 }
 
-void Widget::on_buttonAjouterProduit_released()
+void WidgetProducteur::on_buttonAjouterProduit_released()
 {
     double prix = ui->spinPrix->value();
     int quantity = ui->spinQuantity->value();
@@ -37,7 +37,7 @@ void Widget::on_buttonAjouterProduit_released()
 
 
 
-bool Widget::isFormulaireOK()
+bool WidgetProducteur::isFormulaireOK()
 {
     double prix = ui->spinPrix->value();
     int quantity = ui->spinQuantity->value();

@@ -19,7 +19,7 @@ producteurPanel::producteurPanel(QWidget *parent , Producteur p)
 
         //ui->tableView->update();
 
-        this->formulaire = new Widget(this, p);
+        this->formulaire = new WidgetProducteur(this, p);
 
         this->layout()->addWidget(formulaire);
 
