@@ -99,7 +99,7 @@ public:
      * @param consomateurId Id du consommateur
      * @param message
      */
-    void notifierConsommateur(int idConcommateur,std::string);
+   // void notifierConsommateur(int idConcommateur,std::string);
 
 
     QHashIterator<int,Consommateur*> iterator();
