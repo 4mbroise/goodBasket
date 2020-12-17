@@ -6,7 +6,18 @@
 #include "../../../utilisateur.h"
 #include "../../../Outils/idgenerator.h"
 
-
+/**
+ * @brief Consommateurig
+ * interface graphique du consommateur
+ * il va prendre consommateur avec id à traiter les donnée
+ * il va afficher interface graphique consommateur avec:
+ * (panier)la liste Livraison et LivraisonPrevue pour supprimer ou commander le panier
+ * (panierprevue)la liste PC pour consulter le catalogue
+ * choisir un PC et on peut consulter PC
+ * toutes les listes sont listwidget
+ * @version 4
+ * @author GE Yuxuan
+ */
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Consommateurig; }
