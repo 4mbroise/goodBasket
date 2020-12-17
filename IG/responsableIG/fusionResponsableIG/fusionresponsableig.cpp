@@ -9,6 +9,8 @@ fusionResponsableIg::fusionResponsableIg(QWidget *parent, Responsable r)
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Responsable Panel");
+
     this->responsable = r;
 
     this->gestionOuvertureWidget = new GestionOuverturePCPanel(nullptr, r);

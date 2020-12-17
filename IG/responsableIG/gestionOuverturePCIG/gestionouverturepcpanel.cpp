@@ -6,6 +6,9 @@ GestionOuverturePCPanel::GestionOuverturePCPanel(QWidget *parent, Responsable r)
     : QWidget(parent), responsable(r)
     , ui(new Ui::GestionOuverturePCPanel)
 {
+
+    this->setWindowTitle("gestion Ouverture du PC");
+
     ui->setupUi(this);
     this->responsable= r;
 

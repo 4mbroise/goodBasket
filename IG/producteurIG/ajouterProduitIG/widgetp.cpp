@@ -7,6 +7,7 @@ WidgetProducteur::WidgetProducteur(QWidget *parent, Producteur p)
     : QWidget(parent) ,model(p)
     , ui(new Ui::WidgetProducteur)
 {
+    this->setWindowTitle("ajouter produit formulaire");
     ui->setupUi(this);
     this->model = p;
 }

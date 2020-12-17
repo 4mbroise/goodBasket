@@ -9,6 +9,7 @@ producteurPanel::producteurPanel(QWidget *parent , Producteur p)
     this->prod = Producteur(-1);
     this->prod = p;
 
+        this->setWindowTitle("panelProducteur");
 
         //init table
         this->modelProduits = new QSqlQueryModel;

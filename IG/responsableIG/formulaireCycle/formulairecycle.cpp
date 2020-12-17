@@ -7,6 +7,9 @@ formulaireCycle::formulaireCycle(QWidget *parent, Responsable r)
     : QWidget(parent), responsable(r)
     , ui(new Ui::formulaireCycle)
 {
+
+    this->setWindowTitle("ajouter Cycle form");
+
     ui->setupUi(this);
     this->responsable = r;
 }
