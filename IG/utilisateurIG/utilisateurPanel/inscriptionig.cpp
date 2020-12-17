@@ -25,6 +25,7 @@ Inscriptionig::Inscriptionig(QWidget *parent)
     this->ui->Postal->setClearButtonEnabled(true);
     this->ui->Rue->setClearButtonEnabled(true);
 
+    //regle Expression
     ui->Nom->setPlaceholderText("que lettres");
     QRegExp no("[A-Za-z]+");
     ui->Nom->setValidator(new QRegExpValidator(no,this));
