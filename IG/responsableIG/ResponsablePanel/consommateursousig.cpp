@@ -13,6 +13,7 @@ ConsommateurSousResponsable::ConsommateurSousResponsable(QWidget *parent)
     : QWidget(parent), ui(new Ui::ConsommateurSousResponsable)
 {
     ui->setupUi(this);
+    //title
 
 
 }

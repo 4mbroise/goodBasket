@@ -14,6 +14,9 @@ Connecterig::Connecterig(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //title
+    this->setWindowTitle("Connexion");
+
     ui->Pass->setEchoMode(QLineEdit::Password);
 }
 
