@@ -29,6 +29,8 @@ SOURCES += \
     ../../consommateurIG/consommateurPanel/consommateurig.cpp \
     ../../consommateurIG/consommateurPanel/livraisonsousig.cpp \
     ../../consommateurIG/consommateurPanel/produitsousig.cpp \
+    ../../producteurIG/producteurPanel/producteurpanel.cpp \
+    ../../responsableIG/fusionResponsableIG/fusionresponsableig.cpp \
     connecterig.cpp \
     demanderpcig.cpp \
     inscriptionig.cpp \
@@ -45,6 +47,8 @@ HEADERS += \
     ../../consommateurIG/consommateurPanel/ui_consommateurig.h \
     ../../consommateurIG/consommateurPanel/ui_livraisonsousig.h \
     ../../consommateurIG/consommateurPanel/ui_produitsousig.h \
+    ../../producteurIG/producteurPanel/producteurpanel.h \
+    ../../responsableIG/fusionResponsableIG/fusionresponsableig.h \
     connecterig.h \
     demanderpcig.h \
     inscriptionig.h \
@@ -63,6 +67,8 @@ FORMS += \
     ../../consommateurIG/consommateurPanel/livraisonsousig.ui \
     ../../consommateurIG/consommateurPanel/produitsousig.ui \
     ../../consommateurIG/consommateurPanel/widget.ui \
+    ../../producteurIG/producteurPanel/producteurpanel.ui \
+    ../../responsableIG/fusionResponsableIG/fusionresponsableig.ui \
     connecterig.ui \
     demanderpcig.ui \
     inscriptionig.ui \

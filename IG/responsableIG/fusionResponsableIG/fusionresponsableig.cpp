@@ -2,7 +2,7 @@
 #include "ui_fusionresponsableig.h"
 
 fusionResponsableIg::fusionResponsableIg(QWidget *parent, Responsable r)
-    : QWidget(parent)
+    : QWidget(parent), responsable(r)
     , ui(new Ui::fusionResponsableIg)
 {
     ui->setupUi(this);

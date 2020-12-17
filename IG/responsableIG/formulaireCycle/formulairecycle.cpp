@@ -1,8 +1,8 @@
 #include "formulairecycle.h"
 #include "ui_formulairecycle.h"
-
+#include "../../../utilisateur.cpp"
 formulaireCycle::formulaireCycle(QWidget *parent, Responsable r)
-    : QWidget(parent)
+    : QWidget(parent), responsable(r)
     , ui(new Ui::formulaireCycle)
 {
     ui->setupUi(this);

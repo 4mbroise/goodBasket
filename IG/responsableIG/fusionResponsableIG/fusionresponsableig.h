@@ -15,7 +15,7 @@ class fusionResponsableIg : public QWidget
     Q_OBJECT
 
 public:
-    fusionResponsableIg(QWidget *parent = nullptr, Responsable r = Responsable());
+    fusionResponsableIg(QWidget *parent = nullptr, Responsable r = Responsable(-1));
     ~fusionResponsableIg();
 
 private:

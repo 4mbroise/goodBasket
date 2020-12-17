@@ -17,7 +17,7 @@ class GestionOuverturePCPanel : public QWidget
     Q_OBJECT
 
 public:
-    GestionOuverturePCPanel(QWidget *parent = nullptr, Responsable r = Responsable());
+    GestionOuverturePCPanel(QWidget *parent = nullptr, Responsable r = Responsable(-1));
     ~GestionOuverturePCPanel();
 
 private slots:

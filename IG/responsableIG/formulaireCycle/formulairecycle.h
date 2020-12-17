@@ -15,7 +15,7 @@ class formulaireCycle : public QWidget
     Q_OBJECT
 
 public:
-    formulaireCycle(QWidget *parent = nullptr, Responsable r = Responsable());
+    formulaireCycle(QWidget *parent = nullptr, Responsable r = Responsable(1));
     ~formulaireCycle();
 
 signals:

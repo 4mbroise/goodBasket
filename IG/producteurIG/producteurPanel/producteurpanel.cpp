@@ -2,7 +2,7 @@
 #include "ui_producteurpanel.h"
 
 producteurPanel::producteurPanel(QWidget *parent , Producteur p)
-    : QWidget(parent)
+    : QWidget(parent), prod(p)
     , ui(new Ui::producteurPanel)
 {
     ui->setupUi(this);

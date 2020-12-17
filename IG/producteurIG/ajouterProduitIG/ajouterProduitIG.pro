@@ -12,6 +12,7 @@ SOURCES += \
     ../../../produit.cpp \
     ../../../producteur.cpp \
     ../../../livraison.cpp \
+    ../../../utilisateur.cpp \
     ../../../Outils/idGenerator.cpp \
     ../../../Outils/sqltool.cpp \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     ../../../produit.h \
     ../../../producteur.h \
     ../../../livraison.h \
+    ../../../utilisateur.h \
     ../../../Outils/sqltool.h \
     ../../../Outils/idGenerator.h \
     ../../../GestionnairesDeDialogue/dialogueProducteurs.h \
