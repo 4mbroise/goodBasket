@@ -24,6 +24,8 @@ Consommateurig::Consommateurig(QWidget *parent,Consommateur c)
     setPC();
     metterAJour();
     ui->ID->setText("ID: "+QString::number(idConsommateur));
+    //title
+    this->setWindowTitle("Consommateur");
 }
 
 

@@ -16,6 +16,8 @@ Selectionig::Selectionig(QWidget *parent,QString nom,QString prenom,QString adre
     , nom(nom),prenom(prenom),adresse(adresse),phone(phone),email(email),pass(pass)
 {
     ui->setupUi(this);
+    //title
+    this->setWindowTitle("selection");
 
 }
 

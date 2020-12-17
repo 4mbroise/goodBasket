@@ -17,6 +17,9 @@ Demanderpcig::Demanderpcig(QWidget *parent,QString nom,QString prenom,QString ad
 {
     ui->setupUi(this);
 
+    //title
+    this->setWindowTitle("DemandePC");
+
     this->ui->Ville->setClearButtonEnabled(true);
     this->ui->Numero->setClearButtonEnabled(true);
     this->ui->Postal->setClearButtonEnabled(true);
