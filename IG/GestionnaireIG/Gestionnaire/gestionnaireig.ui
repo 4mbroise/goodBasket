@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ReporterErreur</string>
+    <string>ConsulterReports</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ReporterErreur</string>
+    <string>ValiderPC</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

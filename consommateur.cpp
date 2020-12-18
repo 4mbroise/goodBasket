@@ -31,7 +31,7 @@ void Consommateur::ajouterProduitAuPanier(QString nom,int idConsommateur,int idP
         int actualMaxId = query.value(0).toInt();
     query.clear();
     //recherche dateLivraison
-    query.prepare("SELECT dateLivraison FROM Cycle WHERE adressePC=:adresse");
+    query.prepare("SELECT distinct dateLivraison FROM Cycle,PointDeCollecte WHERE PointDeCollecte.adresse=:adresse AND PointDeCollecte.idPointDeCollecte=Cycle.idPC ");
     query.bindValue(":adresse",adressePC);
     if(!query.exec())
        {
@@ -79,7 +79,7 @@ void Consommateur::ajouterConsommateurBDD(){
 
     qDebug()<<"++++++++++++++++++"+pass<<endl;
     insertion.clear();
-    insertion.prepare("INSERT INTO Utilisateurs(UtilisateurID,nom,prenom,adresse,telephone,email,pass,estConsommateur,estResponsable,estProducteur) VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,true,false,false)");
+    insertion.prepare("INSERT INTO Utilisateurs(UtilisateurID,nom,prenom,adresse,telephone,email,passe,estConsommateur,estResponsable,estProducteur) VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,true,false,false)");
     insertion.bindValue(":id",actualMaxId+1);
     insertion.bindValue(":nom",nom);
     insertion.bindValue(":prenom",prenom);
