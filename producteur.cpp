@@ -60,8 +60,19 @@ void Producteur::ajouterProduit(int quantite, double prix, std::string nom, std:
 
 void Producteur::ajouterProducteurBDD(){
     QSqlQuery insertion;
+
+    if(!insertion.exec("SELECT max(UtilisateurID) FROM Utilisateurs"))
+       {
+           qDebug() << "ERREUR requete SQL" << insertion.lastError();
+       }
+       else
+       {
+            insertion.next();
+       }
+        int actualMaxId = insertion.value(0).toInt();
+
     insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,false,false,true)");
-    insertion.bindValue(":id",id);
+    insertion.bindValue(":id",actualMaxId+1);
     insertion.bindValue(":nom",nom);
     insertion.bindValue(":prenom",prenom);
     insertion.bindValue(":adresse",adresse);

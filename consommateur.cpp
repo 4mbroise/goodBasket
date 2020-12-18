@@ -79,7 +79,7 @@ void Consommateur::ajouterConsommateurBDD(){
 
     qDebug()<<"++++++++++++++++++"+pass<<endl;
     insertion.clear();
-    insertion.prepare("INSERT INTO Utilisateurs(UtilisateurID,nom,prenom,adresse,telephone,email,passe,estConsommateur,estResponsable,estProducteur) VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,true,false,false)");
+    insertion.prepare("INSERT INTO Utilisateurs VALUES(:id,:nom,:prenom,:adresse,:telephone,:email,:pass,true,false,false)");
     insertion.bindValue(":id",actualMaxId+1);
     insertion.bindValue(":nom",nom);
     insertion.bindValue(":prenom",prenom);
